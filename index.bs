@@ -1,0 +1,272 @@
+<pre class='metadata'>
+Title: Ethical Web Machine Learning
+Shortname: ethical-webmachinelearning
+Level: none
+Status: ED
+Group: webmlwg
+Repository: webmachinelearning/ethical-webmachinelearning
+TR: https://w3.org/TR/ethical-webmachinelearning
+URL: https://webmachinelearning.github.io/ethical-webmachinelearning
+Editor: Anssi Kostiainen, Intel Corporation
+Boilerplate: conformance no, index no, issues-index no
+Abstract: This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases. 
+Status Text: This document is published by the [Machine Learning Working Group](https://www.w3.org/groups/wg/webmachinelearning) as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.
+Markup Shorthands: markdown yes
+
+</pre>
+
+# Introduction
+
+Machine Learning (ML) enables compelling new user experiences that affect individuals, society and shape the world. These experiences may feel magical, but there's no magic. It is algorithms at play that are just invisible and opaque to the user, and sometimes their output is wrong. Such a powerful technology with broad influence should be developed together with an ethical set of guiding principles to ensure any ethical issues that arise are widely understood so they can be considered from the get-go when designing and applying this technology to solve real-world problems. The objective of this document is to advance understanding of ethical issues at the intersection of the and web technologies.
+
+Joseph Weizenbaum, a pioneer of modern artificial intelligence, wrote a book in 1976 whose guidance on the limitations of computers and unique human qualities remains even more important and relevant today:
+
+><small>*"I want them [teachers of computer science] to have heard me affirm that the computer is a powerful new metaphor for helping us understand many aspects of the world, but that it enslaves the mind that has no other metaphors and few other resources to call on. The world is many things, and no single framework is large enough to contain them all, neither that of man's science nor of his poetry, neither that of calculating reason nor that of pure intuition. And just as the love of music does not suffice to enable one to play the violin - one must also master the craft of the instrument and the music itself - so it is not enough to love humanity in order to help it survive. The teacher's calling to his craft is therefore an honorable one. But he must do more than that: he must teach more than one metaphor, and he must teach more by the example of his conduct than by what he writes on the blackboard. He must teach the limitations of his tools as well as their power."*</small>
+—Joseph Weizenbaum [[weizenbaum1976cpahr]]
+
+# The branches of ethics
+
+The branches of ethics that inform this field include, but are not limited to [[europarl2020gdprai]]:
+
+- <dfn>Information ethic</dfn> [defined](https://en.wikipedia.org/wiki/Information_ethics) as "the branch of ethics that focuses on the relationship between the creation, organization, dissemination, and use of information, and the ethical standards and moral codes governing human conduct in society";
+
+- <dfn>Computer ethics</dfn> [concerned](https://en.wikipedia.org/wiki/Computer_ethics) with "how computing professionals should make decisions regarding professional and social conduct";
+
+- <dfn>Machine ethics</dfn> [concerned](https://en.wikipedia.org/wiki/Machine_ethics) with "adding or ensuring moral behaviors of man-made machines that use artificial intelligence [...]".
+
+Today, ML algorithms are commonly used in decision-making processes in modern applications across domains e.g. in chatbots, fraud detection systems and recommendation engines. ML is also increasingly used in applications that directly deal with personal data e.g. in facial recognition and speech recognition systems. ML-assisted decision-making processes that involve personal data are susceptible to ethical issues such as bias, transparency and privacy.
+
+This document identifies and discusses key ethical issues in machine learning in particular from the perspective of the web as a development and deployment platform. The web community has accumulated expertise in [privacy-by-design web standards](https://www.w3.org/Privacy/), [accessibility techniques to support social inclusion](https://www.w3.org/standards/webdesign/accessibility) and more recently has also distilled [ethical web principles](https://w3ctag.github.io/ethical-web-principles/) to steer web technologies to consider general ethical issues. The aim of this document is to build on this foundation and focus on ethical issues at the Web and Machine Learning intersection, for example, to help identify mitigation techniques and best practices for normative web specifications.
+
+# Machine Learning and the Web Platform
+
+In parallel to general advances in ML, the web platform is gaining [client-side Machine Learning capabilities](https://github.com/webmachinelearning/webnn/blob/main/explainer.md) that makes large-scale deployment of ML systems feasible without investment in cloud-based infrastructure by moving this process to the client, mediated by the browser. This development opens the door to tens of millions of do-it-yourself web developers and aligns this technology with the [decentralized web architecture](https://w3ctag.github.io/ethical-web-principles/#control) ideal that minimizes single points of failure and single points of control, democratizing the technology's use.
+
+At its core, an application that makes use of ML employs a model trained to infer understanding from data in order to solve a domain-specific problem. These models used to solve real-world problems are complex input-output functions that attempt to uncover statistical correlations mapping inputs to expected outputs learning from past relationships. It is in practice impossible for humans without domain-specific expertise to understand and evaluate the predictions or decisions made by such systems. In web-based ML applications, the model may reside on the server or on the client, and similarly the data processing, or inference, can be offloaded to the client.
+
+By offloading computationally expensive tasks involving ML to on-device hardware, any web application could be enriched with ML capabilities, and existing web content progressively enhanced. The web browser, also known as the user agent, acts on behalf of a user and is well-positioned to help the user make ethical decisions, e.g. by improving transparency and explainability of machine learning models.
+
+Issue: James H. Moor [defines](https://en.wikipedia.org/wiki/James_H._Moor#Work) four kinds of ethical robots: ethical impact agent, implicit ethical agents, explicit ethical agents, and full ethical agents. Using Moor's definition, expand the user agent's role as a good ethical decision-maker.
+
+Solving all ethical issues identified in this space by means of web specifications and Web API design alone is not realistic. However, that does not mean substantial improvements could not be made or set in motion. Raising the awareness of ethical issues in this context is important and the group's long-term aspiration is to see ethical issues elevated to the level of other web platform horizontal considerations — internationalization, accessibility, privacy and security — to ensure this evolving technology with all its flaws and uncertainties, remains a force for good when combined with the reach of the Web.
+
+# Ethical frameworks
+
+This section aims to build understanding of the still evolving landscape of ethical frameworks through review of existing literature studies and recast the most prominent principles extracted from these studies relevant in web context in [[#ethical-considerations-for-ml-enabling-web-technologies]].
+
+- [How to Prevent Discriminatory Outcomes in Machine Learning](https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf) [[weforum2018study]] by The World Economic Forum made four recommendations:
+    - Active Inclusion
+	- Fairness
+	- Right to understanding
+	- Access to redress
+
+- [Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI](https://dash.harvard.edu/handle/1/42160420) [[harvard2020study]] by Harvard University's Berkman Klein Center for Internet and Society identified eight key themes from a meta-study of 36 prominent sets of principles for AI :
+	- Privacy
+	- Accountability
+	- Safety and security
+	- Transparency and explainability
+	- Fairness and non-discrimination
+	- Human control of technology
+	- Professional responsibility
+	- Promotion of human values
+	- See also: A Map of Ethical and Rights-Based Approaches to Principles for AI (p18)
+
+- [The global landscape of AI ethics guidelines](https://arxiv.org/pdf/1906.11668.pdf) [[ethzurich2019study]] by ETH Zurich identified 84 documents containing ethical principles or guidelines, extracting the following 11 key ethical principles:
+    - In >50% of documents:
+        - Transparency
+	    - Justice, fairness and equity
+	    - Non-maleficence
+        - Responsibility
+	    - Privacy
+	- In <50% of documents:
+	    - Beneficence
+	    - Freedom and autonomy
+	    - Trust
+	    - Sustainability
+	    - Dignity
+	    - Solidarity
+
+# Ethical Web Principles
+
+This section discusses the [W3C TAG Ethical Web Principles](https://w3ctag.github.io/ethical-web-principles/) [[ETHICAL-WEB]] and highlights issues and opportunities applying these principles to web technologies that enable new web user experiences with ML. Where applicable, these principles are mapped to [[#ethical-considerations-for-ml-enabling-web-technologies]].
+
+: [There is one web](https://w3ctag.github.io/ethical-web-principles/#oneweb)
+
+:: Differences in [Internet connection speeds](https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds) across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations. This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models. This network condition-based adaptation is possible if network characteristics are exposed to the client, as proposed by the [Network Information API](https://wicg.github.io/netinfo/). This concern generalizes to distribution of other large assets such as video and image assets that can adapt on demand.
+
+: [The web should not cause harm to society](https://w3ctag.github.io/ethical-web-principles/#noharm)
+
+:: The group is committed to [priority of constituencies](https://www.w3.org/TR/design-principles/#priority-of-constituencies) as demonstrated by API design driven by [use cases](https://webmachinelearning.github.io/webnn/#usecases) that prioritize privacy-enhancing and accessibility-improving features. The work is governed by the open W3C Process and W3C Code of Ethics and Professional Conduct to ensure the requirements and views of marginalized communities are respected. 
+
+: [The web must support healthy community and debate](https://w3ctag.github.io/ethical-web-principles/#community)
+
+:: The group encourages submission of use cases that apply this technology in ways that mitigate ethical issues on the web. For example, [detecting fake video](https://webmachinelearning.github.io/webnn/#usecase-detecting-fake-video) use case enables mitigation of misinformation by means of identifying fake videos and images in real-time using this technology.
+
+: [The web is for all people](https://w3ctag.github.io/ethical-web-principles/#allpeople)
+
+:: Machine Learning can improve web accessibility of people with a wide range of disabilities. People with visual disabilities benefit, for example, from [person detection](https://webmachinelearning.github.io/webnn/#usecase-person-detection), [face recognition](https://webmachinelearning.github.io/webnn/#usecase-face-recognition), [super resolution](https://webmachinelearning.github.io/webnn/#usecase-super-resolution), [image captioning](https://webmachinelearning.github.io/webnn/#usecase-image-captioning), and [video summarization](https://webmachinelearning.github.io/webnn/#usecase-video-summalization) capabilities. Furthermore, web user experience for people with auditory disabilities is improved with [noise suppression](https://webmachinelearning.github.io/webnn/#usecase-noise-suppression) and language disabilities are addressed by [machine translation](https://webmachinelearning.github.io/webnn/#usecase-translation) capabilities. Many of these capabilities are beneficial not just to disabled, but all people.
+
+:: - [[#bias]]
+
+: [Security and privacy are essential](https://w3ctag.github.io/ethical-web-principles/#privacy)
+
+:: Client-side inference enhances privacy compared to cloud-based inference, since input data such as locally sourced images or video streams stay within the browser’s sandbox. Furthermore, transparency toward the user is increased when an explicit API is utilized compared to re-purposing e.g. the WebGL graphics API for inference.
+
+:: - [[#privacy]]
+
+: [The web must enable freedom of expression](https://w3ctag.github.io/ethical-web-principles/#expression)
+
+:: Some use cases, such as face recognition, are known to be used in inappropriate ways e.g. for surveillance. While this is not a web-specific concern, the web has built-in affordances that help mitigate this concern by requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.
+
+: [The web must make it possible for people to verify the information they see](https://w3ctag.github.io/ethical-web-principles/#verify)
+
+:: The complexity of real-world model architectures means validating or verifying the output of a model is in feasible. However, Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of ["view source"](https://w3ctag.github.io/ethical-web-principles/#transparent) principle. Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.
+
+:: - [[#explainability-and-transparency]]
+
+: [The web must enhance individuals' control and power](https://w3ctag.github.io/ethical-web-principles/#control)
+
+:: Client-side Web APIs such as [Web Neural Network API](https://www.w3.org/TR/webnn/) enable local processing and enable decentralized web architecture democratizing development.
+
+: [The web must be an environmentally sustainable platform](https://w3ctag.github.io/ethical-web-principles/#sustainable)
+
+:: Machine learning algorithms consume significant amount of energy and the field of energy evaluation is still evolving, with both energy prediction modeling and power monitoring tools being developed [[garcia2019energyconsumption]]. This represents an opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed [Compute Pressure API](https://wicg.github.io/compute-pressure/).
+
+: [The web is transparent](https://w3ctag.github.io/ethical-web-principles/#transparent)
+
+:: Given the design of the Web Neural Network API, it is possible to integrate into web browser developer tools a conceptual graph of the model's structure to inspect and understand the model architecture.
+
+: [The web is multi-browser, multi-OS and multi-device](https://w3ctag.github.io/ethical-web-principles/#multi)
+
+:: The APIs in scope of this group will not be tied to any particular platform and will be implementable on top of existing major platform APIs, such as Android Neural Networks API, Windows DirectML, and macOS/iOS Metal Performance Shaders and Basic Neural Network Subroutines.
+
+: [People should be able to render web content as they want](https://w3ctag.github.io/ethical-web-principles/#render)
+
+:: This technology is agnostic with respect to presentational aspects. There is however a useful analog to other web content that impose substantial network and compute resource usage on load such as auto-played videos. Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.
+
+# Ethical considerations for ML-enabling web technologies
+
+Issue: Discuss ethical considerations for ML-enabling web technologies and web-applicable mitigations in this section. Choose a subset of issues identified in [[#ethical-frameworks]] based on popularity, applicability and/or severity in the web context and cross-link to [[#ethical-web-principles]]?
+
+While the WebGL graphics API [[webgl-2]], WebGPU API [[webgpu]] and WebAssembly [[wasm-core-1]] enable certain ML use cases in constrained manner, while many latency-sensitive [real-world use cases](https://www.w3.org/TR/webnn/#usecases) backed by bigger complex models in practice require a purpose-built [Web Neural Network API](https://www.w3.org/TR/webnn/) [[webnn]] for good user experience. This emerging API makes use of platform capabilities beneficial for ML such as CPU parallelism, general-purpose GPU, or dedicated ML hardware accelerators, and allow browsers to better understand workloads being executed and implement adequate controls.
+
+## Bias
+
+>*Decision-making systems may be unfair, or have harmful impacts to certain groups of people due to social differences.*
+
+- TODO
+
+## Privacy
+
+>*Models that involve sensitive human-centric data e.g. biometrics, medical information and facial recognition data can be used to exploit user's privacy.*
+
+<div class="issue">TODO: Review An Overview of Privacy in Machine Learning [[decristofaro2020overview]] and extract web-applicable considerations.
+    - Attacks: Membership Inference Attack (realistic), Model Inversion (theoretical?), Property Inference (theoretical?), Model and Functionality Stealing (needs further work)
+    - Mitigations: Cryptography, Differential Privacy, Trusted Execution Environments, ML-Specific Approaches
+</div>
+
+## Explainability and Transparency
+
+>*Complex relationships between model inputs and outputs make it impossible for users to infer how the process leads to a particular outcome.*
+
+### Visualization techniques
+
+Visualization of neural networks helps domain experts build intuition on how changes to the network structure and hyperparameters influence the output. An example of an educational visualizations that runs in a browser is [TensorFlow Playground](https://playground.tensorflow.org/) [[smilkov2017directmanipulation]], particularly helpful for training. [Netron](https://github.com/lutzroeder/netron) is a viewer for neural networks that supports popular model formats and runs in a browser, aimed as a tool for domain experts to analyze a model's structure.
+
+Feature visualization techniques such as [saliency map](https://en.wikipedia.org/wiki/Saliency_map) help visualize what a neural network is paying attention to and offers a view into computer vision models that otherwise seem like black boxes to regular web users. [FlashTorch](https://github.com/MisaOgura/flashtorch) is one toolkit using this technique to help understand how neural networks perceive images.
+  
+Integration of visualization techniques into browser developer tools and ML libraries as user-facing features is possible future work.
+
+
+### Model reporting
+
+Another approach to increasing transparency is to make visible information about what a trained machine learning model is and how well it works. Model Cards [[mitchell2019modelcards]] is a framework for reporting such information in a human-readable manner and is accompanied by [Model Cards Toolkit](https://github.com/tensorflow/model-card-toolkit) to automate Model Card creation. Exposing such information through browser UI in a consistent manner is possible future work, as discussed at the [W3C workshop](https://github.com/w3c/machine-learning-workshop/issues/108).
+
+# References backlog
+
+Issue: This section is where we park references and related thoughts that might be useful and need to be refined and looked into.
+
+- ABOUT ML Resources Library [[about-ml]]
+    - [Literature Review Current Recommendations on Documentation for Transparency in the ML Lifecycle](https://partnershiponai.org/paper/about-ml-reference-document/5/)
+- BBC ethics work (reuse requires prior written permission of BBC Research)
+    - [Artificial Intelligence & Machine Learning topics](https://www.bbc.co.uk/rd/topics/artificial-intelligence-machine-learning)
+	- [Responsible AI at the BBC: Our Machine Learning Engine Principles]( https://www.bbc.co.uk/rd/publications/responsible-ai-at-the-bbc-our-machine-learning-engine-principles)
+	- [Ethics of recommendation systems in public service media](https://www.bbc.co.uk/rd/blog/2021-08-recommendations-ethics-public-service-media)
+	- [Explaining Artificial Intelligence Part 4: A Practical Toolkit](https://www.bbc.co.uk/rd/blog/2021-09-explaining-artificial-intelligence-part-4-a-practical-toolkit)
+- [Ada Lovelace Institute Library (content CC-BY 4.0 licensed)](https://www.adalovelaceinstitute.org/our-work/library/)
+- Law and ethics. Distributed processing and storage of data raise data protection and data ownership issues with implications in both regulatory field [[europarl2020gdprai]] and civil law [[asbroeck2019dataownership]] respectively. Identify more examples where regulation plays a role in ML to inform discussion, if deemed in scope of this document.
+- [Machine Ethics, Ethical frameworks and practices Wikipedia entry](https://en.wikipedia.org/wiki/Machine_ethics#Ethical_frameworks_and_practices)
+
+<pre class=biblio>
+{
+	"about-ml": {
+		"href": "https://partnershiponai.org/about-ml-resources-library/",
+		"title": "ABOUT ML Resources Library",
+		"publisher": "Partnership on AI"
+	},
+	"decristofaro2020overview": {
+		"href": "https://arxiv.org/abs/2005.08679",
+        "author": "Emiliano De Cristofaro",
+		"title": "An Overview of Privacy in Machine Learning"
+    },
+	"technoethics": {
+		"href": "https://en.wikipedia.org/wiki/Ethics_of_technology",
+		"title": "Ethics of technology"
+    },
+	"smilkov2017directmanipulation": {
+		"href": "https://arxiv.org/abs/1708.03788",
+		"title": "Direct-Manipulation Visualization of Deep Networks",
+		"author": "Daniel Smilkov, Shan Carter, D. Sculley, Fernanda B. Viégas, Martin Wattenberg"
+    },
+	"mitchell2019modelcards": {
+		"href": "https://arxiv.org/abs/1810.03993",
+		"title": "Model Cards for Model Reporting",
+		"author": "Margaret Mitchell, Simone Wu, Andrew Zaldivar, Parker Barnes, Lucy Vasserman, Ben Hutchinson, Elena Spitzer, Inioluwa Deborah Raji, Timnit Gebru",
+		"publisher": "Conference on Fairness, Accountability, and Transparency",
+		"date": "2019"
+    },
+	"garcia2019energyconsumption": {
+		"href": "https://doi.org/10.1016/j.jpdc.2019.07.007",
+		"title": "Estimation of energy consumption in machine learning",
+		"author": "Eva García-Martín, Crefeda Faviola Rodrigues, Graham Riley, Håkan Grahn",
+		"publisher": "Journal of Parallel and Distributed Computing",
+		"date": "2019"
+    },
+	"europarl2020gdprai": {
+		"href": "https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530",
+		"title": "The impact of the General Data Protection Regulation (GDPR) on artificial intelligence",
+		"publisher": "Panel for the Future of Science and Technology",
+		"date": "2020"
+    },
+	"asbroeck2019dataownership": {
+		"href": "https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership",
+		"title": "Big Data & Issues & Opportunities: Data Ownership",
+		"date": "2019"
+    },
+	"weizenbaum1976cpahr": {
+		"title": "Computer Power and Human Reason: From Judgment to Calculation",
+		"author": "Joseph Weizenbaum",
+		"date": "1976"
+    },
+	"weforum2018study": {
+		"href": "https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf",
+		"title": "How to Prevent Discriminatory Outcomes in Machine Learning",
+		"publisher": "The World Economic Forum",
+		"date": "2018"
+    },
+	"harvard2020study": {
+		"href": "https://dash.harvard.edu/handle/1/42160420",
+		"title": "Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI",
+		"author": "Fjeld, Jessica, Nele Achten, Hannah Hilligoss, Adam Nagy, and Madhulika Srikumar",
+		"publisher": "Harvard University’s Berkman Klein Center for Internet and Society",
+		"date": "2020"
+    },
+	"ethzurich2019study": {
+		"href": "https://arxiv.org/pdf/1906.11668.pdf",
+		"title": "Artificial Intelligence: the global landscape of ethics guidelines (preprint)",
+		"author": "Anna Jobin, Marcello Ienca, Effy Vayena",
+		"publisher": "Health Ethics & Policy Lab, ETH Zurich",
+		"date": "2019"
+    }
+}
+</pre>
