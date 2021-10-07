@@ -1,0 +1,721 @@
+<!doctype html><html lang="en">
+ <head>
+  <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  <title>Ethical Web Machine Learning</title>
+  <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
+  <meta content="Bikeshed version a210b7d86, updated Thu Sep 16 13:45:19 2021 -0700" name="generator">
+  <link href="https://w3.org/TR/ethical-webmachinelearning" rel="canonical">
+  <meta content="0e305a5fcceb262d4681b37f484b4b8b0f0d0b4c" name="document-revision">
+<style>/* style-autolinks */
+
+.css.css, .property.property, .descriptor.descriptor {
+    color: var(--a-normal-text);
+    font-size: inherit;
+    font-family: inherit;
+}
+.css::before, .property::before, .descriptor::before {
+    content: "‘";
+}
+.css::after, .property::after, .descriptor::after {
+    content: "’";
+}
+.property, .descriptor {
+    /* Don't wrap property and descriptor names */
+    white-space: nowrap;
+}
+.type { /* CSS value <type> */
+    font-style: italic;
+}
+pre .property::before, pre .property::after {
+    content: "";
+}
+[data-link-type="property"]::before,
+[data-link-type="propdesc"]::before,
+[data-link-type="descriptor"]::before,
+[data-link-type="value"]::before,
+[data-link-type="function"]::before,
+[data-link-type="at-rule"]::before,
+[data-link-type="selector"]::before,
+[data-link-type="maybe"]::before {
+    content: "‘";
+}
+[data-link-type="property"]::after,
+[data-link-type="propdesc"]::after,
+[data-link-type="descriptor"]::after,
+[data-link-type="value"]::after,
+[data-link-type="function"]::after,
+[data-link-type="at-rule"]::after,
+[data-link-type="selector"]::after,
+[data-link-type="maybe"]::after {
+    content: "’";
+}
+
+[data-link-type].production::before,
+[data-link-type].production::after,
+.prod [data-link-type]::before,
+.prod [data-link-type]::after {
+    content: "";
+}
+
+[data-link-type=element],
+[data-link-type=element-attr] {
+    font-family: Menlo, Consolas, "DejaVu Sans Mono", monospace;
+    font-size: .9em;
+}
+[data-link-type=element]::before { content: "<" }
+[data-link-type=element]::after  { content: ">" }
+
+[data-link-type=biblio] {
+    white-space: pre;
+}</style>
+<style>/* style-colors */
+
+/* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+:root {
+    color-scheme: light dark;
+
+    --text: black;
+    --bg: white;
+
+    --unofficial-watermark: url(https://www.w3.org/StyleSheets/TR/2016/logos/UD-watermark);
+
+    --logo-bg: #1a5e9a;
+    --logo-active-bg: #c00;
+    --logo-text: white;
+
+    --tocnav-normal-text: #707070;
+    --tocnav-normal-bg: var(--bg);
+    --tocnav-hover-text: var(--tocnav-normal-text);
+    --tocnav-hover-bg: #f8f8f8;
+    --tocnav-active-text: #c00;
+    --tocnav-active-bg: var(--tocnav-normal-bg);
+
+    --tocsidebar-text: var(--text);
+    --tocsidebar-bg: #f7f8f9;
+    --tocsidebar-shadow: rgba(0,0,0,.1);
+    --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+    --toclink-text: var(--text);
+    --toclink-underline: #3980b5;
+    --toclink-visited-text: var(--toclink-text);
+    --toclink-visited-underline: #054572;
+
+    --heading-text: #005a9c;
+
+    --hr-text: var(--text);
+
+    --algo-border: #def;
+
+    --del-text: red;
+    --del-bg: transparent;
+    --ins-text: #080;
+    --ins-bg: transparent;
+
+    --a-normal-text: #034575;
+    --a-normal-underline: #bbb;
+    --a-visited-text: var(--a-normal-text);
+    --a-visited-underline: #707070;
+    --a-hover-bg: rgba(75%, 75%, 75%, .25);
+    --a-active-text: #c00;
+    --a-active-underline: #c00;
+
+    --blockquote-border: silver;
+    --blockquote-bg: transparent;
+    --blockquote-text: currentcolor;
+
+    --issue-border: #e05252;
+    --issue-bg: #fbe9e9;
+    --issue-text: var(--text);
+    --issueheading-text: #831616;
+
+    --example-border: #e0cb52;
+    --example-bg: #fcfaee;
+    --example-text: var(--text);
+    --exampleheading-text: #574b0f;
+
+    --note-border: #52e052;
+    --note-bg: #e9fbe9;
+    --note-text: var(--text);
+    --noteheading-text: hsl(120, 70%, 30%);
+    --notesummary-underline: silver;
+
+    --assertion-border: #aaa;
+    --assertion-bg: #eee;
+    --assertion-text: black;
+
+    --advisement-border: orange;
+    --advisement-bg: #fec;
+    --advisement-text: var(--text);
+    --advisementheading-text: #b35f00;
+
+    --warning-border: red;
+    --warning-bg: hsla(40,100%,50%,0.95);
+    --warning-text: var(--text);
+
+    --amendment-border: #330099;
+    --amendment-bg: #F5F0FF;
+    --amendment-text: var(--text);
+    --amendmentheading-text: #220066;
+
+    --def-border: #8ccbf2;
+    --def-bg: #def;
+    --def-text: var(--text);
+    --defrow-border: #bbd7e9;
+
+    --datacell-border: silver;
+
+    --indexinfo-text: #707070;
+
+    --indextable-hover-text: black;
+    --indextable-hover-bg: #f7f8f9;
+
+    --outdatedspec-bg: rgba(0, 0, 0, .5);
+    --outdatedspec-text: black;
+    --outdated-bg: maroon;
+    --outdated-text: white;
+    --outdated-shadow: red;
+
+    --editedrec-bg: darkorange;
+}</style>
+<style>/* style-counters */
+
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
+}
+
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}</style>
+<style>/* style-md-lists */
+
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}</style>
+<style>/* style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* style-darkmode */
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text: #ddd;
+        --bg: black;
+
+        --unofficial-watermark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cg fill='%23100808' transform='translate(200 200) rotate(-45) translate(-200 -200)' stroke='%23100808' stroke-width='3'%3E%3Ctext x='50%25' y='220' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EUNOFFICIAL%3C/text%3E%3Ctext x='50%25' y='305' style='font: bold 70px sans-serif; text-anchor: middle; letter-spacing: 6px;'%3EDRAFT%3C/text%3E%3C/g%3E%3C/svg%3E");
+
+        --logo-bg: #1a5e9a;
+        --logo-active-bg: #c00;
+        --logo-text: white;
+
+        --tocnav-normal-text: #999;
+        --tocnav-normal-bg: var(--bg);
+        --tocnav-hover-text: var(--tocnav-normal-text);
+        --tocnav-hover-bg: #080808;
+        --tocnav-active-text: #f44;
+        --tocnav-active-bg: var(--tocnav-normal-bg);
+
+        --tocsidebar-text: var(--text);
+        --tocsidebar-bg: #080808;
+        --tocsidebar-shadow: rgba(255,255,255,.1);
+        --tocsidebar-heading-text: hsla(203,20%,40%,.7);
+
+        --toclink-text: var(--text);
+        --toclink-underline: #6af;
+        --toclink-visited-text: var(--toclink-text);
+        --toclink-visited-underline: #054572;
+
+        --heading-text: #8af;
+
+        --hr-text: var(--text);
+
+        --algo-border: #456;
+
+        --del-text: #f44;
+        --del-bg: transparent;
+        --ins-text: #4a4;
+        --ins-bg: transparent;
+
+        --a-normal-text: #6af;
+        --a-normal-underline: #555;
+        --a-visited-text: var(--a-normal-text);
+        --a-visited-underline: var(--a-normal-underline);
+        --a-hover-bg: rgba(25%, 25%, 25%, .2);
+        --a-active-text: #f44;
+        --a-active-underline: var(--a-active-text);
+
+        --borderedblock-bg: rgba(255, 255, 255, .05);
+
+        --blockquote-border: silver;
+        --blockquote-bg: var(--borderedblock-bg);
+        --blockquote-text: currentcolor;
+
+        --issue-border: #e05252;
+        --issue-bg: var(--borderedblock-bg);
+        --issue-text: var(--text);
+        --issueheading-text: hsl(0deg, 70%, 70%);
+
+        --example-border: hsl(50deg, 90%, 60%);
+        --example-bg: var(--borderedblock-bg);
+        --example-text: var(--text);
+        --exampleheading-text: hsl(50deg, 70%, 70%);
+
+        --note-border: hsl(120deg, 100%, 35%);
+        --note-bg: var(--borderedblock-bg);
+        --note-text: var(--text);
+        --noteheading-text: hsl(120, 70%, 70%);
+        --notesummary-underline: silver;
+
+        --assertion-border: #444;
+        --assertion-bg: var(--borderedblock-bg);
+        --assertion-text: var(--text);
+
+        --advisement-border: orange;
+        --advisement-bg: #222218;
+        --advisement-text: var(--text);
+        --advisementheading-text: #f84;
+
+        --warning-border: red;
+        --warning-bg: hsla(40,100%,20%,0.95);
+        --warning-text: var(--text);
+
+        --amendment-border: #330099;
+        --amendment-bg: #080010;
+        --amendment-text: var(--text);
+        --amendmentheading-text: #cc00ff;
+
+        --def-border: #8ccbf2;
+        --def-bg: #080818;
+        --def-text: var(--text);
+        --defrow-border: #136;
+
+        --datacell-border: silver;
+
+        --indexinfo-text: #aaa;
+
+        --indextable-hover-text: var(--text);
+        --indextable-hover-bg: #181818;
+
+        --outdatedspec-bg: rgba(255, 255, 255, .5);
+        --outdatedspec-text: black;
+        --outdated-bg: maroon;
+        --outdated-text: white;
+        --outdated-shadow: red;
+
+        --editedrec-bg: darkorange;
+    }
+    /* In case a transparent-bg image doesn't expect to be on a dark bg,
+       which is quite common in practice... */
+    img { background: white; }
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+ <body class="h-entry">
+  <div class="head">
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
+   <h1 class="p-name no-ref" id="title">Ethical Web Machine Learning</h1>
+   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-10-07">7 October 2021</time></span></h2>
+   <div data-fill-with="spec-metadata">
+    <dl>
+     <dt>This version:
+     <dd><a class="u-url" href="https://webmachinelearning.github.io/ethical-webmachinelearning">https://webmachinelearning.github.io/ethical-webmachinelearning</a>
+     <dt>Latest published version:
+     <dd><a href="https://w3.org/TR/ethical-webmachinelearning">https://w3.org/TR/ethical-webmachinelearning</a>
+     <dt>Issue Tracking:
+     <dd><a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/">GitHub</a>
+     <dt class="editor">Editor:
+     <dd class="editor p-author h-card vcard"><span class="p-name fn">Anssi Kostiainen</span> (<span class="p-org org">Intel Corporation</span>)
+    </dl>
+   </div>
+   <div data-fill-with="warning"></div>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <hr title="Separator for header">
+  </div>
+  <div class="p-summary" data-fill-with="abstract">
+   <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
+   <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases.</p>
+  </div>
+  <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
+  <div data-fill-with="status">
+   <p> <em>This section describes the status of this document at the time of its publication. Other
+    documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this
+    technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical
+    reports index</a> at http://www.w3.org/TR/.</em> </p>
+   <p> This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning/">Web Machine Learning Working Group</a> as an Editors' Draft. This document is intended to become a W3C Recommendation.
+
+    Feedback and comments on this specification are welcome. Please use <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues">Github issues</a>.
+    Discussions may also be found in the <a href="http://lists.w3.org/Archives/Public/public-webmachinelearning/">public-webmachinelearning@w3.org archives</a>. </p>
+   <p> Publication as an Editors' Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may
+    be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
+    this document as other than work in progress. </p>
+   <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy/"> <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/webmachinelearning/ipr" rel="disclosure">public list of any
+    patent disclosures</a> made in connection with the deliverables of the group; that page also
+    includes instructions for disclosing a patent. An individual who has actual knowledge of a
+    patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
+    Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
+   <p></p>
+   <p>This document is published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.</p>
+  </div>
+  <div data-fill-with="at-risk"></div>
+  <nav data-fill-with="table-of-contents" id="toc">
+   <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
+   <ol class="toc" role="directory">
+    <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
+    <li><a href="#the-branches-of-ethics"><span class="secno">2</span> <span class="content">The branches of ethics</span></a>
+    <li><a href="#machine-learning-and-the-web-platform"><span class="secno">3</span> <span class="content">Machine Learning and the Web Platform</span></a>
+    <li><a href="#ethical-frameworks"><span class="secno">4</span> <span class="content">Ethical frameworks</span></a>
+    <li><a href="#ethical-web-principles"><span class="secno">5</span> <span class="content">Ethical Web Principles</span></a>
+    <li>
+     <a href="#ethical-considerations-for-ml-enabling-web-technologies"><span class="secno">6</span> <span class="content">Ethical considerations for ML-enabling web technologies</span></a>
+     <ol class="toc">
+      <li><a href="#bias"><span class="secno">6.1</span> <span class="content">Bias</span></a>
+      <li><a href="#privacy"><span class="secno">6.2</span> <span class="content">Privacy</span></a>
+      <li>
+       <a href="#explainability-and-transparency"><span class="secno">6.3</span> <span class="content">Explainability and Transparency</span></a>
+       <ol class="toc">
+        <li><a href="#visualization-techniques"><span class="secno">6.3.1</span> <span class="content">Visualization techniques</span></a>
+        <li><a href="#model-reporting"><span class="secno">6.3.2</span> <span class="content">Model reporting</span></a>
+       </ol>
+     </ol>
+    <li><a href="#references-backlog"><span class="secno">7</span> <span class="content">References backlog</span></a>
+    <li>
+     <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
+     <ol class="toc">
+      <li><a href="#informative"><span class="secno"></span> <span class="content">Informative References</span></a>
+     </ol>
+   </ol>
+  </nav>
+  <main>
+   <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
+   <p>Machine Learning (ML) enables compelling new user experiences that affect individuals, society and shape the world. These experiences may feel magical, but there’s no magic. It is algorithms at play that are just invisible and opaque to the user, and sometimes their output is wrong. Such a powerful technology with broad influence should be developed together with an ethical set of guiding principles to ensure any ethical issues that arise are widely understood so they can be considered from the get-go when designing and applying this technology to solve real-world problems. The objective of this document is to advance understanding of ethical issues at the intersection of the and web technologies.</p>
+   <p>Joseph Weizenbaum, a pioneer of modern artificial intelligence, wrote a book in 1976 whose guidance on the limitations of computers and unique human qualities remains even more important and relevant today:</p>
+   <blockquote>
+    <p><small><em>"I want them [teachers of computer science] to have heard me affirm that the computer is a powerful new metaphor for helping us understand many aspects of the world, but that it enslaves the mind that has no other metaphors and few other resources to call on. The world is many things, and no single framework is large enough to contain them all, neither that of man’s science nor of his poetry, neither that of calculating reason nor that of pure intuition. And just as the love of music does not suffice to enable one to play the violin - one must also master the craft of the instrument and the music itself - so it is not enough to love humanity in order to help it survive. The teacher’s calling to his craft is therefore an honorable one. But he must do more than that: he must teach more than one metaphor, and he must teach more by the example of his conduct than by what he writes on the blackboard. He must teach the limitations of his tools as well as their power."</em></small> —Joseph Weizenbaum <a data-link-type="biblio" href="#biblio-weizenbaum1976cpahr">[weizenbaum1976cpahr]</a></p>
+   </blockquote>
+   <h2 class="heading settled" data-level="2" id="the-branches-of-ethics"><span class="secno">2. </span><span class="content">The branches of ethics</span><a class="self-link" href="#the-branches-of-ethics"></a></h2>
+   <p>The branches of ethics that inform this field include, but are not limited to <a data-link-type="biblio" href="#biblio-europarl2020gdprai">[europarl2020gdprai]</a>:</p>
+   <ul>
+    <li data-md>
+     <p><dfn data-dfn-type="dfn" data-noexport id="information-ethic">Information ethic<a class="self-link" href="#information-ethic"></a></dfn> <a href="https://en.wikipedia.org/wiki/Information_ethics">defined</a> as "the branch of ethics that focuses on the relationship between the creation, organization, dissemination, and use of information, and the ethical standards and moral codes governing human conduct in society";</p>
+    <li data-md>
+     <p><dfn data-dfn-type="dfn" data-noexport id="computer-ethics">Computer ethics<a class="self-link" href="#computer-ethics"></a></dfn> <a href="https://en.wikipedia.org/wiki/Computer_ethics">concerned</a> with "how computing professionals should make decisions regarding professional and social conduct";</p>
+    <li data-md>
+     <p><dfn data-dfn-type="dfn" data-noexport id="machine-ethics">Machine ethics<a class="self-link" href="#machine-ethics"></a></dfn> <a href="https://en.wikipedia.org/wiki/Machine_ethics">concerned</a> with "adding or ensuring moral behaviors of man-made machines that use artificial intelligence [...]".</p>
+   </ul>
+   <p>Today, ML algorithms are commonly used in decision-making processes in modern applications across domains e.g. in chatbots, fraud detection systems and recommendation engines. ML is also increasingly used in applications that directly deal with personal data e.g. in facial recognition and speech recognition systems. ML-assisted decision-making processes that involve personal data are susceptible to ethical issues such as bias, transparency and privacy.</p>
+   <p>This document identifies and discusses key ethical issues in machine learning in particular from the perspective of the web as a development and deployment platform. The web community has accumulated expertise in <a href="https://www.w3.org/Privacy/">privacy-by-design web standards</a>, <a href="https://www.w3.org/standards/webdesign/accessibility">accessibility techniques to support social inclusion</a> and more recently has also distilled <a href="https://w3ctag.github.io/ethical-web-principles/">ethical web principles</a> to steer web technologies to consider general ethical issues. The aim of this document is to build on this foundation and focus on ethical issues at the Web and Machine Learning intersection, for example, to help identify mitigation techniques and best practices for normative web specifications.</p>
+   <h2 class="heading settled" data-level="3" id="machine-learning-and-the-web-platform"><span class="secno">3. </span><span class="content">Machine Learning and the Web Platform</span><a class="self-link" href="#machine-learning-and-the-web-platform"></a></h2>
+   <p>In parallel to general advances in ML, the web platform is gaining <a href="https://github.com/webmachinelearning/webnn/blob/main/explainer.md">client-side Machine Learning capabilities</a> that makes large-scale deployment of ML systems feasible without investment in cloud-based infrastructure by moving this process to the client, mediated by the browser. This development opens the door to tens of millions of do-it-yourself web developers and aligns this technology with the <a href="https://w3ctag.github.io/ethical-web-principles/#control">decentralized web architecture</a> ideal that minimizes single points of failure and single points of control, democratizing the technology’s use.</p>
+   <p>At its core, an application that makes use of ML employs a model trained to infer understanding from data in order to solve a domain-specific problem. These models used to solve real-world problems are complex input-output functions that attempt to uncover statistical correlations mapping inputs to expected outputs learning from past relationships. It is in practice impossible for humans without domain-specific expertise to understand and evaluate the predictions or decisions made by such systems. In web-based ML applications, the model may reside on the server or on the client, and similarly the data processing, or inference, can be offloaded to the client.</p>
+   <p>By offloading computationally expensive tasks involving ML to on-device hardware, any web application could be enriched with ML capabilities, and existing web content progressively enhanced. The web browser, also known as the user agent, acts on behalf of a user and is well-positioned to help the user make ethical decisions, e.g. by improving transparency and explainability of machine learning models.</p>
+   <p class="issue" id="issue-b574996f"><a class="self-link" href="#issue-b574996f"></a> James H. Moor <a href="https://en.wikipedia.org/wiki/James_H._Moor#Work">defines</a> four kinds of ethical robots: ethical impact agent, implicit ethical agents, explicit ethical agents, and full ethical agents. Using Moor’s definition, expand the user agent’s role as a good ethical decision-maker.</p>
+   <p>Solving all ethical issues identified in this space by means of web specifications and Web API design alone is not realistic. However, that does not mean substantial improvements could not be made or set in motion. Raising the awareness of ethical issues in this context is important and the group’s long-term aspiration is to see ethical issues elevated to the level of other web platform horizontal considerations — internationalization, accessibility, privacy and security — to ensure this evolving technology with all its flaws and uncertainties, remains a force for good when combined with the reach of the Web.</p>
+   <h2 class="heading settled" data-level="4" id="ethical-frameworks"><span class="secno">4. </span><span class="content">Ethical frameworks</span><a class="self-link" href="#ethical-frameworks"></a></h2>
+   <p>This section aims to build understanding of the still evolving landscape of ethical frameworks through review of existing literature studies and recast the most prominent principles extracted from these studies relevant in web context in <a href="#ethical-considerations-for-ml-enabling-web-technologies">§ 6 Ethical considerations for ML-enabling web technologies</a>.</p>
+   <ul>
+    <li data-md>
+     <p><a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf">How to Prevent Discriminatory Outcomes in Machine Learning</a> <a data-link-type="biblio" href="#biblio-weforum2018study">[weforum2018study]</a> by The World Economic Forum made four recommendations:</p>
+     <ul>
+      <li data-md>
+       <p>Active Inclusion</p>
+      <li data-md>
+       <p>Fairness</p>
+      <li data-md>
+       <p>Right to understanding</p>
+      <li data-md>
+       <p>Access to redress</p>
+     </ul>
+    <li data-md>
+     <p><a href="https://dash.harvard.edu/handle/1/42160420">Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI</a> <a data-link-type="biblio" href="#biblio-harvard2020study">[harvard2020study]</a> by Harvard University’s Berkman Klein Center for Internet and Society identified eight key themes from a meta-study of 36 prominent sets of principles for AI :</p>
+     <ul>
+      <li data-md>
+       <p>Privacy</p>
+      <li data-md>
+       <p>Accountability</p>
+      <li data-md>
+       <p>Safety and security</p>
+      <li data-md>
+       <p>Transparency and explainability</p>
+      <li data-md>
+       <p>Fairness and non-discrimination</p>
+      <li data-md>
+       <p>Human control of technology</p>
+      <li data-md>
+       <p>Professional responsibility</p>
+      <li data-md>
+       <p>Promotion of human values</p>
+      <li data-md>
+       <p>See also: A Map of Ethical and Rights-Based Approaches to Principles for AI (p18)</p>
+     </ul>
+    <li data-md>
+     <p><a href="https://arxiv.org/pdf/1906.11668.pdf">The global landscape of AI ethics guidelines</a> <a data-link-type="biblio" href="#biblio-ethzurich2019study">[ethzurich2019study]</a> by ETH Zurich identified 84 documents containing ethical principles or guidelines, extracting the following 11 key ethical principles:</p>
+     <ul>
+      <li data-md>
+       <p>In >50% of documents:</p>
+       <ul>
+        <li data-md>
+         <p>Transparency</p>
+        <li data-md>
+         <p>Justice, fairness and equity</p>
+        <li data-md>
+         <p>Non-maleficence</p>
+        <li data-md>
+         <p>Responsibility</p>
+        <li data-md>
+         <p>Privacy</p>
+       </ul>
+      <li data-md>
+       <p>In &lt;50% of documents:</p>
+       <ul>
+        <li data-md>
+         <p>Beneficence</p>
+        <li data-md>
+         <p>Freedom and autonomy</p>
+        <li data-md>
+         <p>Trust</p>
+        <li data-md>
+         <p>Sustainability</p>
+        <li data-md>
+         <p>Dignity</p>
+        <li data-md>
+         <p>Solidarity</p>
+       </ul>
+     </ul>
+   </ul>
+   <h2 class="heading settled" data-level="5" id="ethical-web-principles"><span class="secno">5. </span><span class="content">Ethical Web Principles</span><a class="self-link" href="#ethical-web-principles"></a></h2>
+   <p>This section discusses the <a href="https://w3ctag.github.io/ethical-web-principles/">W3C TAG Ethical Web Principles</a> <a data-link-type="biblio" href="#biblio-ethical-web">[ETHICAL-WEB]</a> and highlights issues and opportunities applying these principles to web technologies that enable new web user experiences with ML. Where applicable, these principles are mapped to <a href="#ethical-considerations-for-ml-enabling-web-technologies">§ 6 Ethical considerations for ML-enabling web technologies</a>.</p>
+   <dl>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#oneweb">There is one web</a>
+    <dd data-md>
+     <p>Differences in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds">Internet connection speeds</a> across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations. This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models. This network condition-based adaptation is possible if network characteristics are exposed to the client, as proposed by the <a href="https://wicg.github.io/netinfo/">Network Information API</a>. This concern generalizes to distribution of other large assets such as video and image assets that can adapt on demand.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#noharm">The web should not cause harm to society</a>
+    <dd data-md>
+     <p>The group is committed to <a href="https://www.w3.org/TR/design-principles/#priority-of-constituencies">priority of constituencies</a> as demonstrated by API design driven by <a href="https://webmachinelearning.github.io/webnn/#usecases">use cases</a> that prioritize privacy-enhancing and accessibility-improving features. The work is governed by the open W3C Process and W3C Code of Ethics and Professional Conduct to ensure the requirements and views of marginalized communities are respected.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#community">The web must support healthy community and debate</a>
+    <dd data-md>
+     <p>The group encourages submission of use cases that apply this technology in ways that mitigate ethical issues on the web. For example, <a href="https://webmachinelearning.github.io/webnn/#usecase-detecting-fake-video">detecting fake video</a> use case enables mitigation of misinformation by means of identifying fake videos and images in real-time using this technology.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#allpeople">The web is for all people</a>
+    <dd data-md>
+     <p>Machine Learning can improve web accessibility of people with a wide range of disabilities. People with visual disabilities benefit, for example, from <a href="https://webmachinelearning.github.io/webnn/#usecase-person-detection">person detection</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-face-recognition">face recognition</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-super-resolution">super resolution</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-image-captioning">image captioning</a>, and <a href="https://webmachinelearning.github.io/webnn/#usecase-video-summalization">video summarization</a> capabilities. Furthermore, web user experience for people with auditory disabilities is improved with <a href="https://webmachinelearning.github.io/webnn/#usecase-noise-suppression">noise suppression</a> and language disabilities are addressed by <a href="https://webmachinelearning.github.io/webnn/#usecase-translation">machine translation</a> capabilities. Many of these capabilities are beneficial not just to disabled, but all people.</p>
+    <dd data-md>
+     <ul>
+      <li data-md>
+       <p><a href="#bias">§ 6.1 Bias</a></p>
+     </ul>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#privacy">Security and privacy are essential</a>
+    <dd data-md>
+     <p>Client-side inference enhances privacy compared to cloud-based inference, since input data such as locally sourced images or video streams stay within the browser’s sandbox. Furthermore, transparency toward the user is increased when an explicit API is utilized compared to re-purposing e.g. the WebGL graphics API for inference.</p>
+    <dd data-md>
+     <ul>
+      <li data-md>
+       <p><a href="#privacy">§ 6.2 Privacy</a></p>
+     </ul>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#expression">The web must enable freedom of expression</a>
+    <dd data-md>
+     <p>Some use cases, such as face recognition, are known to be used in inappropriate ways e.g. for surveillance. While this is not a web-specific concern, the web has built-in affordances that help mitigate this concern by requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#verify">The web must make it possible for people to verify the information they see</a>
+    <dd data-md>
+     <p>The complexity of real-world model architectures means validating or verifying the output of a model is in feasible. However, Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of <a href="https://w3ctag.github.io/ethical-web-principles/#transparent">"view source"</a> principle. Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.</p>
+    <dd data-md>
+     <ul>
+      <li data-md>
+       <p><a href="#explainability-and-transparency">§ 6.3 Explainability and Transparency</a></p>
+     </ul>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#control">The web must enhance individuals' control and power</a>
+    <dd data-md>
+     <p>Client-side Web APIs such as <a href="https://www.w3.org/TR/webnn/">Web Neural Network API</a> enable local processing and enable decentralized web architecture democratizing development.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#sustainable">The web must be an environmentally sustainable platform</a>
+    <dd data-md>
+     <p>Machine learning algorithms consume significant amount of energy and the field of energy evaluation is still evolving, with both energy prediction modeling and power monitoring tools being developed <a data-link-type="biblio" href="#biblio-garcia2019energyconsumption">[garcia2019energyconsumption]</a>. This represents an opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed <a href="https://wicg.github.io/compute-pressure/">Compute Pressure API</a>.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#transparent">The web is transparent</a>
+    <dd data-md>
+     <p>Given the design of the Web Neural Network API, it is possible to integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#multi">The web is multi-browser, multi-OS and multi-device</a>
+    <dd data-md>
+     <p>The APIs in scope of this group will not be tied to any particular platform and will be implementable on top of existing major platform APIs, such as Android Neural Networks API, Windows DirectML, and macOS/iOS Metal Performance Shaders and Basic Neural Network Subroutines.</p>
+    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#render">People should be able to render web content as they want</a>
+    <dd data-md>
+     <p>This technology is agnostic with respect to presentational aspects. There is however a useful analog to other web content that impose substantial network and compute resource usage on load such as auto-played videos. Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.</p>
+   </dl>
+   <h2 class="heading settled" data-level="6" id="ethical-considerations-for-ml-enabling-web-technologies"><span class="secno">6. </span><span class="content">Ethical considerations for ML-enabling web technologies</span><a class="self-link" href="#ethical-considerations-for-ml-enabling-web-technologies"></a></h2>
+   <p class="issue" id="issue-3f9b5d28"><a class="self-link" href="#issue-3f9b5d28"></a> Discuss ethical considerations for ML-enabling web technologies and web-applicable mitigations in this section. Choose a subset of issues identified in <a href="#ethical-frameworks">§ 4 Ethical frameworks</a> based on popularity, applicability and/or severity in the web context and cross-link to <a href="#ethical-web-principles">§ 5 Ethical Web Principles</a>?</p>
+   <p>While the WebGL graphics API <a data-link-type="biblio" href="#biblio-webgl-2">[webgl-2]</a>, WebGPU API <a data-link-type="biblio" href="#biblio-webgpu">[webgpu]</a> and WebAssembly <a data-link-type="biblio" href="#biblio-wasm-core-1">[wasm-core-1]</a> enable certain ML use cases in constrained manner, while many latency-sensitive <a href="https://www.w3.org/TR/webnn/#usecases">real-world use cases</a> backed by bigger complex models in practice require a purpose-built <a href="https://www.w3.org/TR/webnn/">Web Neural Network API</a> <a data-link-type="biblio" href="#biblio-webnn">[webnn]</a> for good user experience. This emerging API makes use of platform capabilities beneficial for ML such as CPU parallelism, general-purpose GPU, or dedicated ML hardware accelerators, and allow browsers to better understand workloads being executed and implement adequate controls.</p>
+   <h3 class="heading settled" data-level="6.1" id="bias"><span class="secno">6.1. </span><span class="content">Bias</span><a class="self-link" href="#bias"></a></h3>
+   <blockquote>
+    <p><em>Decision-making systems may be unfair, or have harmful impacts to certain groups of people due to social differences.</em></p>
+   </blockquote>
+   <ul>
+    <li data-md>
+     <p>TODO</p>
+   </ul>
+   <h3 class="heading settled" data-level="6.2" id="privacy"><span class="secno">6.2. </span><span class="content">Privacy</span><a class="self-link" href="#privacy"></a></h3>
+   <blockquote>
+    <p><em>Models that involve sensitive human-centric data e.g. biometrics, medical information and facial recognition data can be used to exploit user’s privacy.</em></p>
+   </blockquote>
+   <div class="issue" id="issue-e1130a9e">
+    <a class="self-link" href="#issue-e1130a9e"></a>TODO: Review An Overview of Privacy in Machine Learning <a data-link-type="biblio" href="#biblio-decristofaro2020overview">[decristofaro2020overview]</a> and extract web-applicable considerations. 
+    <ul>
+     <li data-md>
+      <p>Attacks: Membership Inference Attack (realistic), Model Inversion (theoretical?), Property Inference (theoretical?), Model and Functionality Stealing (needs further work)</p>
+     <li data-md>
+      <p>Mitigations: Cryptography, Differential Privacy, Trusted Execution Environments, ML-Specific Approaches</p>
+    </ul>
+   </div>
+   <h3 class="heading settled" data-level="6.3" id="explainability-and-transparency"><span class="secno">6.3. </span><span class="content">Explainability and Transparency</span><a class="self-link" href="#explainability-and-transparency"></a></h3>
+   <blockquote>
+    <p><em>Complex relationships between model inputs and outputs make it impossible for users to infer how the process leads to a particular outcome.</em></p>
+   </blockquote>
+   <h4 class="heading settled" data-level="6.3.1" id="visualization-techniques"><span class="secno">6.3.1. </span><span class="content">Visualization techniques</span><a class="self-link" href="#visualization-techniques"></a></h4>
+   <p>Visualization of neural networks helps domain experts build intuition on how changes to the network structure and hyperparameters influence the output. An example of an educational visualizations that runs in a browser is <a href="https://playground.tensorflow.org/">TensorFlow Playground</a> <a data-link-type="biblio" href="#biblio-smilkov2017directmanipulation">[smilkov2017directmanipulation]</a>, particularly helpful for training. <a href="https://github.com/lutzroeder/netron">Netron</a> is a viewer for neural networks that supports popular model formats and runs in a browser, aimed as a tool for domain experts to analyze a model’s structure.</p>
+   <p>Feature visualization techniques such as <a href="https://en.wikipedia.org/wiki/Saliency_map">saliency map</a> help visualize what a neural network is paying attention to and offers a view into computer vision models that otherwise seem like black boxes to regular web users. <a href="https://github.com/MisaOgura/flashtorch">FlashTorch</a> is one toolkit using this technique to help understand how neural networks perceive images.</p>
+   <p>Integration of visualization techniques into browser developer tools and ML libraries as user-facing features is possible future work.</p>
+   <h4 class="heading settled" data-level="6.3.2" id="model-reporting"><span class="secno">6.3.2. </span><span class="content">Model reporting</span><a class="self-link" href="#model-reporting"></a></h4>
+   <p>Another approach to increasing transparency is to make visible information about what a trained machine learning model is and how well it works. Model Cards <a data-link-type="biblio" href="#biblio-mitchell2019modelcards">[mitchell2019modelcards]</a> is a framework for reporting such information in a human-readable manner and is accompanied by <a href="https://github.com/tensorflow/model-card-toolkit">Model Cards Toolkit</a> to automate Model Card creation. Exposing such information through browser UI in a consistent manner is possible future work, as discussed at the <a href="https://github.com/w3c/machine-learning-workshop/issues/108">W3C workshop</a>.</p>
+   <h2 class="heading settled" data-level="7" id="references-backlog"><span class="secno">7. </span><span class="content">References backlog</span><a class="self-link" href="#references-backlog"></a></h2>
+   <p class="issue" id="issue-09915d08"><a class="self-link" href="#issue-09915d08"></a> This section is where we park references and related thoughts that might be useful and need to be refined and looked into.</p>
+   <ul>
+    <li data-md>
+     <p>ABOUT ML Resources Library <a data-link-type="biblio" href="#biblio-about-ml">[about-ml]</a></p>
+     <ul>
+      <li data-md>
+       <p><a href="https://partnershiponai.org/paper/about-ml-reference-document/5/">Literature Review Current Recommendations on Documentation for Transparency in the ML Lifecycle</a></p>
+     </ul>
+    <li data-md>
+     <p>BBC ethics work (reuse requires prior written permission of BBC Research)</p>
+     <ul>
+      <li data-md>
+       <p><a href="https://www.bbc.co.uk/rd/topics/artificial-intelligence-machine-learning">Artificial Intelligence &amp; Machine Learning topics</a></p>
+      <li data-md>
+       <p><a href="https://www.bbc.co.uk/rd/publications/responsible-ai-at-the-bbc-our-machine-learning-engine-principles">Responsible AI at the BBC: Our Machine Learning Engine Principles</a></p>
+      <li data-md>
+       <p><a href="https://www.bbc.co.uk/rd/blog/2021-08-recommendations-ethics-public-service-media">Ethics of recommendation systems in public service media</a></p>
+      <li data-md>
+       <p><a href="https://www.bbc.co.uk/rd/blog/2021-09-explaining-artificial-intelligence-part-4-a-practical-toolkit">Explaining Artificial Intelligence Part 4: A Practical Toolkit</a></p>
+     </ul>
+    <li data-md>
+     <p><a href="https://www.adalovelaceinstitute.org/our-work/library/">Ada Lovelace Institute Library (content CC-BY 4.0 licensed)</a></p>
+    <li data-md>
+     <p>Law and ethics. Distributed processing and storage of data raise data protection and data ownership issues with implications in both regulatory field <a data-link-type="biblio" href="#biblio-europarl2020gdprai">[europarl2020gdprai]</a> and civil law <a data-link-type="biblio" href="#biblio-asbroeck2019dataownership">[asbroeck2019dataownership]</a> respectively. Identify more examples where regulation plays a role in ML to inform discussion, if deemed in scope of this document.</p>
+    <li data-md>
+     <p><a href="https://en.wikipedia.org/wiki/Machine_ethics#Ethical_frameworks_and_practices">Machine Ethics, Ethical frameworks and practices Wikipedia entry</a></p>
+   </ul>
+   <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
+<script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
+  </main>
+  <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
+  <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
+  <dl>
+   <dt id="biblio-about-ml">[ABOUT-ML]
+   <dd><a href="https://partnershiponai.org/about-ml-resources-library/"><cite>ABOUT ML Resources Library</cite></a>. URL: <a href="https://partnershiponai.org/about-ml-resources-library/">https://partnershiponai.org/about-ml-resources-library/</a>
+   <dt id="biblio-asbroeck2019dataownership">[ASBROECK2019DATAOWNERSHIP]
+   <dd><a href="https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership"><cite>Big Data &amp; Issues &amp; Opportunities: Data Ownership</cite></a>. 2019. URL: <a href="https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership">https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership</a>
+   <dt id="biblio-decristofaro2020overview">[DECRISTOFARO2020OVERVIEW]
+   <dd><a href="https://arxiv.org/abs/2005.08679"><cite>An Overview of Privacy in Machine Learning</cite></a>. URL: <a href="https://arxiv.org/abs/2005.08679">https://arxiv.org/abs/2005.08679</a>
+   <dt id="biblio-ethical-web">[ETHICAL-WEB]
+   <dd>Daniel Appelquist; Hadley Beeman. <a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/"><cite>W3C TAG Ethical Web Principles</cite></a>. 27 October 2020. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">https://www.w3.org/2001/tag/doc/ethical-web-principles/</a>
+   <dt id="biblio-ethzurich2019study">[ETHZURICH2019STUDY]
+   <dd><a href="https://arxiv.org/pdf/1906.11668.pdf"><cite>Artificial Intelligence: the global landscape of ethics guidelines (preprint)</cite></a>. 2019. URL: <a href="https://arxiv.org/pdf/1906.11668.pdf">https://arxiv.org/pdf/1906.11668.pdf</a>
+   <dt id="biblio-europarl2020gdprai">[EUROPARL2020GDPRAI]
+   <dd><a href="https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530"><cite>The impact of the General Data Protection Regulation (GDPR) on artificial intelligence</cite></a>. 2020. URL: <a href="https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530">https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530</a>
+   <dt id="biblio-garcia2019energyconsumption">[GARCIA2019ENERGYCONSUMPTION]
+   <dd><a href="https://doi.org/10.1016/j.jpdc.2019.07.007"><cite>Estimation of energy consumption in machine learning</cite></a>. 2019. URL: <a href="https://doi.org/10.1016/j.jpdc.2019.07.007">https://doi.org/10.1016/j.jpdc.2019.07.007</a>
+   <dt id="biblio-harvard2020study">[HARVARD2020STUDY]
+   <dd><a href="https://dash.harvard.edu/handle/1/42160420"><cite>Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI</cite></a>. 2020. URL: <a href="https://dash.harvard.edu/handle/1/42160420">https://dash.harvard.edu/handle/1/42160420</a>
+   <dt id="biblio-mitchell2019modelcards">[MITCHELL2019MODELCARDS]
+   <dd><a href="https://arxiv.org/abs/1810.03993"><cite>Model Cards for Model Reporting</cite></a>. 2019. URL: <a href="https://arxiv.org/abs/1810.03993">https://arxiv.org/abs/1810.03993</a>
+   <dt id="biblio-smilkov2017directmanipulation">[SMILKOV2017DIRECTMANIPULATION]
+   <dd><a href="https://arxiv.org/abs/1708.03788"><cite>Direct-Manipulation Visualization of Deep Networks</cite></a>. URL: <a href="https://arxiv.org/abs/1708.03788">https://arxiv.org/abs/1708.03788</a>
+   <dt id="biblio-wasm-core-1">[WASM-CORE-1]
+   <dd>Andreas Rossberg. <a href="https://www.w3.org/TR/wasm-core-1/"><cite>WebAssembly Core Specification</cite></a>. 5 December 2019. REC. URL: <a href="https://www.w3.org/TR/wasm-core-1/">https://www.w3.org/TR/wasm-core-1/</a>
+   <dt id="biblio-webgl-2">[WEBGL-2]
+   <dd>Dean Jackson; Jeff Gilbert. <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/"><cite>WebGL 2.0 Specification</cite></a>. 12 August 2017. URL: <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/">https://www.khronos.org/registry/webgl/specs/latest/2.0/</a>
+   <dt id="biblio-webgpu">[WEBGPU]
+   <dd>Dzmitry Malyshau; Kai Ninomiya; Justin Fan. <a href="https://www.w3.org/TR/webgpu/"><cite>WebGPU</cite></a>. 6 October 2021. WD. URL: <a href="https://www.w3.org/TR/webgpu/">https://www.w3.org/TR/webgpu/</a>
+   <dt id="biblio-webnn">[WEBNN]
+   <dd>Ningxin Hu; Chai Chaoweeraprasit. <a href="https://www.w3.org/TR/webnn/"><cite>Web Neural Network API</cite></a>. 30 September 2021. WD. URL: <a href="https://www.w3.org/TR/webnn/">https://www.w3.org/TR/webnn/</a>
+   <dt id="biblio-weforum2018study">[WEFORUM2018STUDY]
+   <dd><a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf"><cite>How to Prevent Discriminatory Outcomes in Machine Learning</cite></a>. 2018. URL: <a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf">https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf</a>
+   <dt id="biblio-weizenbaum1976cpahr">[WEIZENBAUM1976CPAHR]
+   <dd><cite>Computer Power and Human Reason: From Judgment to Calculation</cite>. 1976. 
+  </dl>
