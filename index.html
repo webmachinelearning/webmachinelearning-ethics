@@ -3,10 +3,12 @@
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>Ethical Web Machine Learning</title>
-  <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version a210b7d86, updated Thu Sep 16 13:45:19 2021 -0700" name="generator">
+  <meta content="ED" name="w3c-status">
+  <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
+  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
+  <meta content="Bikeshed version cace53f8c, updated Tue Dec 7 12:12:54 2021 -0800" name="generator">
   <link href="https://w3.org/TR/ethical-webmachinelearning" rel="canonical">
-  <meta content="76da2d8aa147589c2b7b2ffff32a996f70713671" name="document-revision">
+  <meta content="bfc4b24566a8a86364117200971593dffd1c3f04" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -207,6 +209,16 @@ figcaption {
 figcaption:not(.no-marker)::before {
     content: "Figure " counter(figure) " ";
 }</style>
+<style>/* style-issues */
+
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
 <style>/* style-md-lists */
 
 /* This is a weird hack for me not yet following the commonmark spec
@@ -392,21 +404,24 @@ dfn > a.self-link::before      { content: "#"; }
 </style>
  <body class="h-entry">
   <div class="head">
-   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
+   <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Ethical Web Machine Learning</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="profile-and-date"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-10-07">7 October 2021</time></span></h2>
-   <div data-fill-with="spec-metadata">
-    <dl>
-     <dt>This version:
-     <dd><a class="u-url" href="https://webmachinelearning.github.io/ethical-webmachinelearning">https://webmachinelearning.github.io/ethical-webmachinelearning</a>
-     <dt>Latest published version:
-     <dd><a href="https://w3.org/TR/ethical-webmachinelearning">https://w3.org/TR/ethical-webmachinelearning</a>
-     <dt>Issue Tracking:
-     <dd><a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/">GitHub</a>
-     <dt class="editor">Editor:
-     <dd class="editor p-author h-card vcard"><span class="p-name fn">Anssi Kostiainen</span> (<span class="p-org org">Intel Corporation</span>)
-    </dl>
-   </div>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2021-12-08">8 December 2021</time></p>
+   <details open>
+    <summary>More details about this document</summary>
+    <div data-fill-with="spec-metadata">
+     <dl>
+      <dt>This version:
+      <dd><a class="u-url" href="https://webmachinelearning.github.io/ethical-webmachinelearning">https://webmachinelearning.github.io/ethical-webmachinelearning</a>
+      <dt>Latest published version:
+      <dd><a href="https://w3.org/TR/ethical-webmachinelearning">https://w3.org/TR/ethical-webmachinelearning</a>
+      <dt>Feedback:
+      <dd><a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/">GitHub</a>
+      <dt class="editor">Editor:
+      <dd class="editor p-author h-card vcard"><span class="p-name fn">Anssi Kostiainen</span> (<span class="p-org org">Intel Corporation</span>)
+     </dl>
+    </div>
+   </details>
    <div data-fill-with="warning"></div>
    <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
@@ -415,17 +430,16 @@ dfn > a.self-link::before      { content: "#"; }
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
    <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases.</p>
   </div>
-  <h2 class="no-num no-toc no-ref heading settled" id="status"><span class="content">Status of this document</span></h2>
+  <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
-   <p> <em>This section describes the status of this document at the time of its publication. Other
-    documents may supersede this document. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this
+   <p> <em>This section describes the status of this document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this
     technical report can be found in the <a href="http://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical
     reports index</a> at http://www.w3.org/TR/.</em> </p>
-   <p> This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning/">Web Machine Learning Working Group</a> as an Editors' Draft. This document is intended to become a W3C Recommendation.
+   <p> This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Web Machine Learning Working Group</a> as an Editors' Draft. This document is intended to become a W3C Recommendation.
 
     Feedback and comments on this specification are welcome. Please use <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues">Github issues</a>.
     Discussions may also be found in the <a href="http://lists.w3.org/Archives/Public/public-webmachinelearning/">public-webmachinelearning@w3.org archives</a>. </p>
-   <p> Publication as an Editors' Draft does not imply endorsement by the <abbr title="World Wide Web Consortium">W3C</abbr> Membership. This is a draft document and may
+   <p> Publication as an Editors' Draft does not imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. This is a draft document and may
     be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
     this document as other than work in progress. </p>
    <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy/"> <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/webmachinelearning/ipr" rel="disclosure">public list of any
@@ -433,7 +447,7 @@ dfn > a.self-link::before      { content: "#"; }
     includes instructions for disclosing a patent. An individual who has actual knowledge of a
     patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
     Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision">2 November 2021 W3C Process Document</a>. </p>
    <p></p>
    <p>This document is published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.</p>
   </div>
@@ -680,9 +694,8 @@ dfn > a.self-link::before      { content: "#"; }
     <li data-md>
      <p><a href="https://en.wikipedia.org/wiki/Machine_ethics#Ethical_frameworks_and_practices">Machine Ethics, Ethical frameworks and practices Wikipedia entry</a></p>
    </ul>
-   <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
-<script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
   </main>
+<script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
@@ -711,9 +724,9 @@ dfn > a.self-link::before      { content: "#"; }
    <dt id="biblio-webgl-2">[WEBGL-2]
    <dd>Dean Jackson; Jeff Gilbert. <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/"><cite>WebGL 2.0 Specification</cite></a>. 12 August 2017. URL: <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/">https://www.khronos.org/registry/webgl/specs/latest/2.0/</a>
    <dt id="biblio-webgpu">[WEBGPU]
-   <dd>Dzmitry Malyshau; Kai Ninomiya; Justin Fan. <a href="https://www.w3.org/TR/webgpu/"><cite>WebGPU</cite></a>. 6 October 2021. WD. URL: <a href="https://www.w3.org/TR/webgpu/">https://www.w3.org/TR/webgpu/</a>
+   <dd>Dzmitry Malyshau; Kai Ninomiya. <a href="https://www.w3.org/TR/webgpu/"><cite>WebGPU</cite></a>. 8 December 2021. WD. URL: <a href="https://www.w3.org/TR/webgpu/">https://www.w3.org/TR/webgpu/</a>
    <dt id="biblio-webnn">[WEBNN]
-   <dd>Ningxin Hu; Chai Chaoweeraprasit. <a href="https://www.w3.org/TR/webnn/"><cite>Web Neural Network API</cite></a>. 30 September 2021. WD. URL: <a href="https://www.w3.org/TR/webnn/">https://www.w3.org/TR/webnn/</a>
+   <dd>Ningxin Hu; Chai Chaoweeraprasit. <a href="https://www.w3.org/TR/webnn/"><cite>Web Neural Network API</cite></a>. 25 November 2021. WD. URL: <a href="https://www.w3.org/TR/webnn/">https://www.w3.org/TR/webnn/</a>
    <dt id="biblio-weforum2018study">[WEFORUM2018STUDY]
    <dd><a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf"><cite>How to Prevent Discriminatory Outcomes in Machine Learning</cite></a>. 2018. URL: <a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf">https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf</a>
    <dt id="biblio-weizenbaum1976cpahr">[WEIZENBAUM1976CPAHR]
