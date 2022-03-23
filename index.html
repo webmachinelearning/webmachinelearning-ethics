@@ -2,13 +2,13 @@
  <head>
   <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-  <title>Ethical Web Machine Learning</title>
+  <title>Ethical Principles for Web Machine Learning</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version cace53f8c, updated Tue Dec 7 12:12:54 2021 -0800" name="generator">
+  <meta content="Bikeshed version fb1e763a4, updated Tue Mar 1 13:13:50 2022 -0800" name="generator">
   <link href="https://w3.org/TR/ethical-webmachinelearning" rel="canonical">
-  <meta content="bfc4b24566a8a86364117200971593dffd1c3f04" name="document-revision">
+  <meta content="99ae82d106c55075870ba59978f9016ad46e7413" name="document-revision">
 <style>/* style-autolinks */
 
 .css.css, .property.property, .descriptor.descriptor {
@@ -405,8 +405,8 @@ dfn > a.self-link::before      { content: "#"; }
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
-   <h1 class="p-name no-ref" id="title">Ethical Web Machine Learning</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2021-12-08">8 December 2021</time></p>
+   <h1 class="p-name no-ref" id="title">Ethical Principles for Web Machine Learning</h1>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-03-23">23 March 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -418,17 +418,17 @@ dfn > a.self-link::before      { content: "#"; }
       <dt>Feedback:
       <dd><a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/">GitHub</a>
       <dt class="editor">Editor:
-      <dd class="editor p-author h-card vcard"><span class="p-name fn">Anssi Kostiainen</span> (<span class="p-org org">Intel Corporation</span>)
+      <dd class="editor p-author h-card vcard"><span class="p-name fn">James Fletcher</span> (<span class="p-org org">BBC</span>)
      </dl>
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2021 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases.</p>
+   <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases. The whole document is open for comment and review, but input is particularly sought on Sections 3, 4 and 5.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -449,30 +449,79 @@ dfn > a.self-link::before      { content: "#"; }
     Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
    <p> This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision">2 November 2021 W3C Process Document</a>. </p>
    <p></p>
-   <p>This document is published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.</p>
+   <p>This is a document to enable consultation and stakeholder input into the Web Machine Learning Working Group’s Note on Ethical Principles for Web Machine Learning.  This document is aimed to be published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
    <h2 class="no-num no-toc no-ref" id="contents">Table of Contents</h2>
    <ol class="toc" role="directory">
     <li><a href="#introduction"><span class="secno">1</span> <span class="content">Introduction</span></a>
-    <li><a href="#the-branches-of-ethics"><span class="secno">2</span> <span class="content">The branches of ethics</span></a>
-    <li><a href="#machine-learning-and-the-web-platform"><span class="secno">3</span> <span class="content">Machine Learning and the Web Platform</span></a>
-    <li><a href="#ethical-frameworks"><span class="secno">4</span> <span class="content">Ethical frameworks</span></a>
-    <li><a href="#ethical-web-principles"><span class="secno">5</span> <span class="content">Ethical Web Principles</span></a>
+    <li><a href="#machine-learning-on-the-web"><span class="secno">2</span> <span class="content">Machine Learning on the Web</span></a>
     <li>
-     <a href="#ethical-considerations-for-ml-enabling-web-technologies"><span class="secno">6</span> <span class="content">Ethical considerations for ML-enabling web technologies</span></a>
+     <a href="#general-ethical-issues-in-machine-learning"><span class="secno">3</span> <span class="content">General ethical issues in Machine Learning</span></a>
      <ol class="toc">
-      <li><a href="#bias"><span class="secno">6.1</span> <span class="content">Bias</span></a>
-      <li><a href="#privacy"><span class="secno">6.2</span> <span class="content">Privacy</span></a>
+      <li><a href="#accuracy"><span class="secno">3.1</span> <span class="content">Accuracy</span></a>
+      <li><a href="#bias"><span class="secno">3.2</span> <span class="content">Bias</span></a>
+      <li><a href="#fairness"><span class="secno">3.3</span> <span class="content">Fairness</span></a>
+      <li><a href="#safety--security"><span class="secno">3.4</span> <span class="content">Safety &amp; Security</span></a>
+      <li><a href="#privacy"><span class="secno">3.5</span> <span class="content">Privacy</span></a>
+      <li><a href="#transparency"><span class="secno">3.6</span> <span class="content">Transparency</span></a>
+      <li><a href="#accountability"><span class="secno">3.7</span> <span class="content">Accountability</span></a>
+      <li><a href="#human-control-and-decision-making"><span class="secno">3.8</span> <span class="content">Human Control and Decision-making</span></a>
+      <li><a href="#environmental-impact--sustainability"><span class="secno">3.9</span> <span class="content">Environmental Impact &amp; Sustainability</span></a>
+      <li><a href="#types-of-harm"><span class="secno">3.10</span> <span class="content">Types of harm</span></a>
+     </ol>
+    <li>
+     <a href="#ethical-principles-for-web-ml"><span class="secno">4</span> <span class="content">Ethical Principles for Web ML</span></a>
+     <ol class="toc">
       <li>
-       <a href="#explainability-and-transparency"><span class="secno">6.3</span> <span class="content">Explainability and Transparency</span></a>
+       <a href="#unesco-values"><span class="secno">4.1</span> <span class="content">UNESCO Values</span></a>
        <ol class="toc">
-        <li><a href="#visualization-techniques"><span class="secno">6.3.1</span> <span class="content">Visualization techniques</span></a>
-        <li><a href="#model-reporting"><span class="secno">6.3.2</span> <span class="content">Model reporting</span></a>
+        <li><a href="#value-1-respect-protection-and-promotion-of-human-rights-and-fundamental-freedoms-and-human-dignity"><span class="secno"></span> <span class="content">VALUE 1) Respect, protection and promotion of human rights and fundamental freedoms and human dignity</span></a>
+        <li><a href="#value-2-environment-and-ecosystem-flourishing"><span class="secno"></span> <span class="content">VALUE 2) Environment and ecosystem flourishing</span></a>
+        <li><a href="#value-3-ensuring-diversity-and-inclusiveness"><span class="secno"></span> <span class="content">VALUE 3) Ensuring diversity and inclusiveness</span></a>
+        <li><a href="#value-4-living-in-peaceful-just-and-interconnected-societies"><span class="secno"></span> <span class="content">VALUE 4) Living in peaceful, just and interconnected societies</span></a>
+       </ol>
+      <li>
+       <a href="#unesco-principles"><span class="secno">4.2</span> <span class="content">UNESCO Principles</span></a>
+       <ol class="toc">
+        <li><a href="#principle-1-proportionality-and-do-no-harm"><span class="secno"></span> <span class="content">PRINCIPLE 1) Proportionality and Do No Harm</span></a>
+        <li><a href="#principle-2-fairness-and-non-discrimination"><span class="secno"></span> <span class="content">PRINCIPLE 2) Fairness and non-discrimination</span></a>
+        <li><a href="#principle-3-autonomy"><span class="secno"></span> <span class="content">PRINCIPLE 3) Autonomy</span></a>
+        <li><a href="#principle-4-right-to-privacy-and-data-protection"><span class="secno"></span> <span class="content">PRINCIPLE 4) Right to Privacy, and Data Protection</span></a>
+        <li><a href="#principle-5-safety-and-security"><span class="secno"></span> <span class="content">PRINCIPLE 5) Safety and security</span></a>
+        <li><a href="#principle-6-transparency-and-explainability"><span class="secno"></span> <span class="content">PRINCIPLE 6) Transparency and explainability</span></a>
+        <li><a href="#principle-7-responsibility-and-accountability"><span class="secno"></span> <span class="content">PRINCIPLE 7) Responsibility and accountability</span></a>
+        <li><a href="#principle-8-sustainability"><span class="secno"></span> <span class="content">PRINCIPLE 8) Sustainability</span></a>
+        <li><a href="#principle-9-human-oversight-and-determination"><span class="secno"></span> <span class="content">PRINCIPLE 9) Human oversight and determination</span></a>
+        <li><a href="#principle-10-awareness-and-literacy"><span class="secno"></span> <span class="content">PRINCIPLE 10) Awareness and literacy</span></a>
+        <li><a href="#principle-11-multi-stakeholder-and-adaptive-governance-and-collaboration"><span class="secno"></span> <span class="content">PRINCIPLE 11) Multi-stakeholder and adaptive governance and collaboration</span></a>
        </ol>
      </ol>
-    <li><a href="#references-backlog"><span class="secno">7</span> <span class="content">References backlog</span></a>
+    <li><a href="#operationalization-putting-the-principles-into-practice-wip"><span class="secno">5</span> <span class="content">Operationalization: Putting the Principles into Practice (WIP)</span></a>
+    <li>
+     <a href="#appendix-background"><span class="secno"></span> <span class="content">Appendix 1. Background: Ethics &amp; Machine Learning</span></a>
+     <ol class="toc">
+      <li><a href="#what-is-ethics"><span class="secno"></span> <span class="content">What is ethics?</span></a>
+      <li><a href="#12-why-and-how-does-ethics-apply-to-machine-learning"><span class="secno"></span> <span class="content">1.2 Why and how does ethics apply to machine learning?</span></a>
+      <li><a href="#13-the-universality-of-the-web-vs-the-specificity-of-ethics"><span class="secno"></span> <span class="content">1.3 The universality of the web vs the specificity of ethics</span></a>
+     </ol>
+    <li>
+     <a href="#appendix-unesco"><span class="secno"></span> <span class="content">Appendix 2. Why the UNESCO principles were chosen</span></a>
+     <ol class="toc">
+      <li><a href="#general-considerations-for-choosing-from-existing-ethical-ai-principles"><span class="secno"></span> <span class="content">General considerations for choosing from existing ethical AI principles</span></a>
+      <li><a href="#candidate-universal-ethical-ai-principles"><span class="secno"></span> <span class="content">Candidate universal ethical AI principles</span></a>
+      <li><a href="#unesco-values-and-principles"><span class="secno"></span> <span class="content">UNESCO Values and Principles</span></a>
+      <li><a href="#sense-checking-unesco-for-universality"><span class="secno"></span> <span class="content">Sense checking UNESCO for universality</span></a>
+      <li><a href="#sense-checking-unesco-for-appropriate-coverage"><span class="secno"></span> <span class="content">Sense checking UNESCO for appropriate coverage</span></a>
+      <li>
+       <a href="#alignment-with-w3c-principles-and-values"><span class="secno"></span> <span class="content">Alignment with W3C principles and values</span></a>
+       <ol class="toc">
+        <li><a href="#analysis-of-key-themes-from-w3c-documents"><span class="secno"></span> <span class="content">Analysis of key themes from W3C documents</span></a>
+        <li><a href="#summary-of-w3c-alignment"><span class="secno"></span> <span class="content">Summary of W3C alignment</span></a>
+       </ol>
+     </ol>
+    <li><a href="#appendix-comparison"><span class="secno"></span> <span class="content">Appendix 3. Comparison of Ethics Principles</span></a>
     <li>
      <a href="#references"><span class="secno"></span> <span class="content">References</span></a>
      <ol class="toc">
@@ -482,253 +531,513 @@ dfn > a.self-link::before      { content: "#"; }
   </nav>
   <main>
    <h2 class="heading settled" data-level="1" id="introduction"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#introduction"></a></h2>
-   <p>Machine Learning (ML) enables compelling new user experiences that affect individuals, society and shape the world. These experiences may feel magical, but there’s no magic. It is algorithms at play that are just invisible and opaque to the user, and sometimes their output is wrong. Such a powerful technology with broad influence should be developed together with an ethical set of guiding principles to ensure any ethical issues that arise are widely understood so they can be considered from the get-go when designing and applying this technology to solve real-world problems. The objective of this document is to advance understanding of ethical issues at the intersection of the and web technologies.</p>
-   <p>Joseph Weizenbaum, a pioneer of modern artificial intelligence, wrote a book in 1976 whose guidance on the limitations of computers and unique human qualities remains even more important and relevant today:</p>
-   <blockquote>
-    <p><small><em>"I want them [teachers of computer science] to have heard me affirm that the computer is a powerful new metaphor for helping us understand many aspects of the world, but that it enslaves the mind that has no other metaphors and few other resources to call on. The world is many things, and no single framework is large enough to contain them all, neither that of man’s science nor of his poetry, neither that of calculating reason nor that of pure intuition. And just as the love of music does not suffice to enable one to play the violin - one must also master the craft of the instrument and the music itself - so it is not enough to love humanity in order to help it survive. The teacher’s calling to his craft is therefore an honorable one. But he must do more than that: he must teach more than one metaphor, and he must teach more by the example of his conduct than by what he writes on the blackboard. He must teach the limitations of his tools as well as their power."</em></small> —Joseph Weizenbaum <a data-link-type="biblio" href="#biblio-weizenbaum1976cpahr">[weizenbaum1976cpahr]</a></p>
-   </blockquote>
-   <h2 class="heading settled" data-level="2" id="the-branches-of-ethics"><span class="secno">2. </span><span class="content">The branches of ethics</span><a class="self-link" href="#the-branches-of-ethics"></a></h2>
-   <p>The branches of ethics that inform this field include, but are not limited to <a data-link-type="biblio" href="#biblio-europarl2020gdprai">[europarl2020gdprai]</a>:</p>
+   <blockquote>That AI will have a major impact on society is no longer in question. Current debate turns instead on how far this impact will be positive or negative, for whom, in which ways, in which places, and on what timescale. <a data-link-type="biblio" href="#biblio-ai4people">[AI4People]</a></blockquote>
+   <blockquote>There is no 'silver bullet' here; creating technologies that will promote human flourishing and sustainable life on this planet is hard and uncertain work, involving difficult tradeoffs, some inevitable failures, and challenges that defy simple and stable solutions. But it is good work, work that can and must be done. <a data-link-type="biblio" href="#biblio-vallor">[Vallor]</a></blockquote>
+   <p>Machine Learning (ML) is a powerful technology, whose application to the web promises to bring benefits and enable compelling new user experiences. But there is also increasing awareness that ML applications can create harms, intentional and unintentional, that impact individual users, communities and society.</p>
+   <p>W3C’s mission is to “ensure the long-term growth of the web” and this is best achieved where the potential harms of new technologies like ML are considered and mitigated through a comprehensive ethical approach to the design and implementation of Web ML specifications.</p>
+   <p>As required by the charter of the <a href="https://www.w3.org/groups/wg/webmachinelearning">Web Machine Learning Working Group</a>, this document sets out such an ethical approach. It contains a set of ethical principles and guidance. It includes some general consideration of harms, risks and mitigations relevant to Web ML. And it offers a practical process for supplementing those general considerations with concrete risks and mitigations for specific use cases.</p>
+   <p class="note" role="note"><span>NOTE:</span> In broader debate, the terms Artificial Intelligence and Machine Learning, and their related ethical considerations (AI/ML Ethics) are often used interchangeably. Given the focus of the WG on Machine Learning, this document will generally use the terms Machine Learning or ML, and Machine Learning or ML Ethics, with the intent to refer to the broader set of issues and concerns encompassed by AI/ML.</p>
+   <h2 class="heading settled" data-level="2" id="machine-learning-on-the-web"><span class="secno">2. </span><span class="content">Machine Learning on the Web</span><a class="self-link" href="#machine-learning-on-the-web"></a></h2>
+   <p>In parallel to general advances in ML, the web platform is gaining <a href="https://github.com/webmachinelearning/webnn/blob/main/explainer.md">client-side Machine Learning capabilities</a>. Currently machine learning inference in the browser uses the WebGL graphics API, but the lack of access to platform capabilities beneficial for ML such as dedicated ML hardware accelerators constrains the scope of experiences and leads to inefficient implementations on modern hardware.</p>
+   <p>The <a href="https://www.w3.org/groups/wg/webmachinelearning">Web Machine Learning Working Group</a> aims to develop standards to enable access to these client-side capabilities. In web-based ML applications, the model may reside on the server or on the client, and the data processing, or inference, can be offloaded to the client.</p>
+   <p><a href="https://webmachinelearning.github.io/webnn/#usecases">Example use cases</a> include person detection, facial recognition, image captioning, machine translation and noise suppression.</p>
+   <p>Web machine learning has a number of potential benefits. It could make large-scale deployment of ML systems feasible without investment in cloud-based infrastructure. This opens the door to tens of millions of do-it-yourself web developers and aligns this technology with the <a href="https://w3ctag.github.io/ethical-web-principles/#control">decentralized web architecture</a> ideal that minimizes single points of failure and single points of control.</p>
+   <p>Local processing could also enable machine learning use cases that require low latency, such as object detection in immersive web experiences. By offloading computationally expensive tasks involving ML to on-device hardware, any web application could be enriched with ML capabilities, and existing web content progressively enhanced.</p>
+   <p>With appropriate safeguards, enabling machine learning inference in the browser (as opposed to in the cloud) <em>could</em> also enhance privacy, since input data such as locally sourced images or video streams stay within the browser’s sandbox.</p>
+   <h2 class="heading settled" data-level="3" id="general-ethical-issues-in-machine-learning"><span class="secno">3. </span><span class="content">General ethical issues in Machine Learning</span><a class="self-link" href="#general-ethical-issues-in-machine-learning"></a></h2>
+   <p>As well as potential benefits, there is increasing awareness that the application of machine learning poses risks and can lead to harms, raising a range ethical questions. This section presents a brief overview of some key concerns.</p>
+   <p>For a general background on ethics and its relevance to ML, see <a href="#appendix-background">Appendix 1. Background: Ethics &amp; Machine Learning</a>.</p>
+   <h3 class="heading settled" data-level="3.1" id="accuracy"><span class="secno">3.1. </span><span class="content">Accuracy</span><a class="self-link" href="#accuracy"></a></h3>
+   <p>The accuracy of an ML model is the proportion of examples for which it generates a correct output <a data-link-type="biblio" href="#biblio-leslie">[Leslie]</a>. In general high accuracy is a good thing, and low accuracy can lead to harms, for example where facial recognition systems are used in law enforcement. But highly accurate facial recognition systems can also pose risks to privacy and autonomy (e.g. mass surveillance).</p>
+   <p>In some areas such as credit-scoring or loan approval, increasing the accuracy of predictions might come at the cost of requiring access to too much personal data.</p>
+   <p>There is also concern about the <a href="https://www.cs.princeton.edu/~arvindn/talks/MIT-STS-AI-snakeoil.pdf">over-hyping of the ability of AI to accurately predict certain things at all</a>, particularly social outcomes such as job performance or criminal recidivism. Accuracy may be a useful measure where an area has a clear, objective ground truth (e.g. vehicle license-plate recognition) but many areas of human judgment are nuanced, messy and contextual, and simple accuracy risks being too reductive a measure.</p>
+   <h3 class="heading settled" data-level="3.2" id="bias"><span class="secno">3.2. </span><span class="content">Bias</span><a class="self-link" href="#bias"></a></h3>
+   <p>Bias has a number of meanings, including a systematic deviation from a true value. This can be positive or negative. Bias is a prominent concern in ML ethics, where the concern more specifically is ‘a systematic skew in decision-making that results in unfair outcomes’ <a data-link-type="biblio" href="#biblio-cdei">[CDEI]</a>.</p>
+   <p>Concerns about bias are particularly prominent where negative outcomes (such as inaccurate predictions and their consequences) disproportionately affect individuals or groups who are vulnerable or historically marginalised. Where the unfair treatment relates to protected characteristics such as race, gender, disability or sexuality, bias can constitute illegal discrimination, depending on relevant laws.</p>
+   <p>There are a number of causes of bias <a data-link-type="biblio" href="#biblio-mehrabi">[Mehrabi]</a>, ranging from issues with data to algorithmic design and human perception and decision-making. Perhaps the most prominent cause is that algorithms trained to make decisions based on past data will often replicate the historic biases in that data (<a data-link-type="biblio" href="#biblio-suresh">[Suresh]</a> also has a useful survey of causes of bias).</p>
+   <h3 class="heading settled" data-level="3.3" id="fairness"><span class="secno">3.3. </span><span class="content">Fairness</span><a class="self-link" href="#fairness"></a></h3>
+   <p>There is <a href="https://www.youtube.com/watch?v=jIXIuYdnyyk&amp;ab_channel=ArvindNarayanan">no single definition of fairness</a> (<a data-link-type="biblio" href="#biblio-mehrabi">[Mehrabi]</a> also has a good survey of definitions) - like ethics it is contextual and varies according to different values, perspectives and societies. But one core idea is that people should be treated equally unless there is a justified, relevant reason not to.</p>
+   <p>Fairness is often a lens through which to make sense of other ethical concerns. As noted above, bias can be positive or negative - it’s when it leads to ‘unfair’ outcomes that it is problematic. Where ethical principles or concerns need to be balanced against each other, considering fairness often provides a guide to how to do that.</p>
+   <p>Fairness is about both outcomes and process. Outcomes should involve the fair distribution of benefits and costs, and the avoidance of unfair bias or arbitrary decisions. Procedural elements of fairness include involving communities that will be affected by ML outputs in decisions about how the systems are designed and used, and ensuring there is the ability to contest and seek redress for decisions made by ML.</p>
+   <p>Fairness could also arguably justify bias - for example biasing a system to favour people who have been historically marginalised, in order to achieve an outcome which is in some sense equal or fair.</p>
+   <p>Another important aspect of fairness is the distribution of access to computationally complex ML approaches, and the benefits that come from access. People living in countries with less powerful or functioning infrastructure, or who cannot access sufficient computing power, may be unfairly disadvantaged.</p>
+   <h3 class="heading settled" data-level="3.4" id="safety--security"><span class="secno">3.4. </span><span class="content">Safety &amp; Security</span><a class="self-link" href="#safety--security"></a></h3>
+   <p>Safety includes that an ML system should be accurate, but also that it should be reliable (perform as intended, and continue to do so over time), secure (against adversarial attacks), and robust enough to do these things in real-world, unpredictable and sometimes challenging conditions (<a data-link-type="biblio" href="#biblio-leslie">[Leslie]</a>)</p>
+   <p>Safety is a broad concern, but is particularly relevant where the failure of ML systems could result in real-world harm - for example with medical diagnosis or self-driving cars.</p>
+   <p>There are a number of security risks to machine learning, including training data poisoning, adversarial inputs, or model inversion and adversarial inference attacks which can expose model parameters or training data (<a data-link-type="biblio" href="#biblio-xue">[Xue]</a>).</p>
+   <p>Machine learning can also increase the effectiveness of other types of security attacks, for example by enabling more effective impersonation for social engineering and phishing attacks.</p>
+   <h3 class="heading settled" data-level="3.5" id="privacy"><span class="secno">3.5. </span><span class="content">Privacy</span><a class="self-link" href="#privacy"></a></h3>
+   <p>There are a number of ways in which ML systems can pose risks to privacy.</p>
+   <p>One is where systems that undermine privacy operate without a user’s knowledge or explicit, informed consent. This is true of systems that undermine privacy explicitly (surveillance systems), but also where undermining privacy is a potential byproduct of intended, legitimate use (e.g. if an ML system which has access to a user’s video camera).</p>
+   <p>There are also privacy concerns about the data used to train models. Data may be collected in a way which violates privacy, such as without consent from users (e.g. scraping personal information). Models may ‘leak’ personal data (e.g. large language models <a data-link-type="biblio" href="#biblio-weidinger">[Weidinger]</a>). Legitimately collected data may also be compromised, for example through reverse engineering or inference style attacks which can de-anonymise model training data.</p>
+   <p>The accuracy of the predictions of ML systems may also present risks. Just as the outputs of sensor APIs could be used to identify, fingerprint or correlate user activity (e.g. if the output is too precise), it is possible that the outputs of ML systems could pose similar risks.</p>
+   <p>And use of ML systems to infer sensitive, personal data about users based on non-sensitive data (e.g. inferring sexuality from content preferences) may also violate privacy.</p>
+   <p>Some jurisdictions (e.g. EU/GDPR) also provide a ‘right to be forgotten’, which arguably could include being removed from ML training data. So a privacy-protecting approach would need to ensure that appropriate processes and technical capabilities are in place for this to happen (see e.g. <a data-link-type="biblio" href="#biblio-bourtoule">[Bourtoule]</a>).</p>
+   <h3 class="heading settled" data-level="3.6" id="transparency"><span class="secno">3.6. </span><span class="content">Transparency</span><a class="self-link" href="#transparency"></a></h3>
+   <p>Very broadly, transparency is about users and stakeholders having access to the information they need to make informed decisions about ML. It’s a holistic concept, covering both ML models themselves and the process or pipeline by which they go from inception to use. <a data-link-type="biblio" href="#biblio-vaughan">[Vaughan]</a> (following the <a data-link-type="biblio" href="#biblio-egtai">[EGTAI]</a>) propose 3 key components:</p>
    <ul>
     <li data-md>
-     <p><dfn data-dfn-type="dfn" data-noexport id="information-ethic">Information ethic<a class="self-link" href="#information-ethic"></a></dfn> <a href="https://en.wikipedia.org/wiki/Information_ethics">defined</a> as "the branch of ethics that focuses on the relationship between the creation, organization, dissemination, and use of information, and the ethical standards and moral codes governing human conduct in society";</p>
+     <p><strong>Traceability</strong>: Those who develop or deploy machine learning systems should clearly document their goals, definitions, design choices, and assumptions.</p>
     <li data-md>
-     <p><dfn data-dfn-type="dfn" data-noexport id="computer-ethics">Computer ethics<a class="self-link" href="#computer-ethics"></a></dfn> <a href="https://en.wikipedia.org/wiki/Computer_ethics">concerned</a> with "how computing professionals should make decisions regarding professional and social conduct";</p>
+     <p><strong>Communication</strong>: Those who develop or deploy machine learning systems should be open about the ways they use machine learning technology and about its limitations.</p>
     <li data-md>
-     <p><dfn data-dfn-type="dfn" data-noexport id="machine-ethics">Machine ethics<a class="self-link" href="#machine-ethics"></a></dfn> <a href="https://en.wikipedia.org/wiki/Machine_ethics">concerned</a> with "adding or ensuring moral behaviors of man-made machines that use artificial intelligence [...]".</p>
+     <p><strong>Intelligibility</strong>: Stakeholders of machine learning systems should be able to understand and monitor the behavior of those systems to the extent necessary to achieve their goals.</p>
    </ul>
-   <p>Today, ML algorithms are commonly used in decision-making processes in modern applications across domains e.g. in chatbots, fraud detection systems and recommendation engines. ML is also increasingly used in applications that directly deal with personal data e.g. in facial recognition and speech recognition systems. ML-assisted decision-making processes that involve personal data are susceptible to ethical issues such as bias, transparency and privacy.</p>
-   <p>This document identifies and discusses key ethical issues in machine learning in particular from the perspective of the web as a development and deployment platform. The web community has accumulated expertise in <a href="https://www.w3.org/Privacy/">privacy-by-design web standards</a>, <a href="https://www.w3.org/standards/webdesign/accessibility">accessibility techniques to support social inclusion</a> and more recently has also distilled <a href="https://w3ctag.github.io/ethical-web-principles/">ethical web principles</a> to steer web technologies to consider general ethical issues. The aim of this document is to build on this foundation and focus on ethical issues at the Web and Machine Learning intersection, for example, to help identify mitigation techniques and best practices for normative web specifications.</p>
-   <h2 class="heading settled" data-level="3" id="machine-learning-and-the-web-platform"><span class="secno">3. </span><span class="content">Machine Learning and the Web Platform</span><a class="self-link" href="#machine-learning-and-the-web-platform"></a></h2>
-   <p>In parallel to general advances in ML, the web platform is gaining <a href="https://github.com/webmachinelearning/webnn/blob/main/explainer.md">client-side Machine Learning capabilities</a> that makes large-scale deployment of ML systems feasible without investment in cloud-based infrastructure by moving this process to the client, mediated by the browser. This development opens the door to tens of millions of do-it-yourself web developers and aligns this technology with the <a href="https://w3ctag.github.io/ethical-web-principles/#control">decentralized web architecture</a> ideal that minimizes single points of failure and single points of control, democratizing the technology’s use.</p>
-   <p>At its core, an application that makes use of ML employs a model trained to infer understanding from data in order to solve a domain-specific problem. These models used to solve real-world problems are complex input-output functions that attempt to uncover statistical correlations mapping inputs to expected outputs learning from past relationships. It is in practice impossible for humans without domain-specific expertise to understand and evaluate the predictions or decisions made by such systems. In web-based ML applications, the model may reside on the server or on the client, and similarly the data processing, or inference, can be offloaded to the client.</p>
-   <p>By offloading computationally expensive tasks involving ML to on-device hardware, any web application could be enriched with ML capabilities, and existing web content progressively enhanced. The web browser, also known as the user agent, acts on behalf of a user and is well-positioned to help the user make ethical decisions, e.g. by improving transparency and explainability of machine learning models.</p>
-   <p class="issue" id="issue-b574996f"><a class="self-link" href="#issue-b574996f"></a> James H. Moor <a href="https://en.wikipedia.org/wiki/James_H._Moor#Work">defines</a> four kinds of ethical robots: ethical impact agent, implicit ethical agents, explicit ethical agents, and full ethical agents. Using Moor’s definition, expand the user agent’s role as a good ethical decision-maker.</p>
-   <p>Solving all ethical issues identified in this space by means of web specifications and Web API design alone is not realistic. However, that does not mean substantial improvements could not be made or set in motion. Raising the awareness of ethical issues in this context is important and the group’s long-term aspiration is to see ethical issues elevated to the level of other web platform horizontal considerations — internationalization, accessibility, privacy and security — to ensure this evolving technology with all its flaws and uncertainties, remains a force for good when combined with the reach of the Web.</p>
-   <h2 class="heading settled" data-level="4" id="ethical-frameworks"><span class="secno">4. </span><span class="content">Ethical frameworks</span><a class="self-link" href="#ethical-frameworks"></a></h2>
-   <p>This section aims to build understanding of the still evolving landscape of ethical frameworks through review of existing literature studies and recast the most prominent principles extracted from these studies relevant in web context in <a href="#ethical-considerations-for-ml-enabling-web-technologies">§ 6 Ethical considerations for ML-enabling web technologies</a>.</p>
+   <p>Understanding ML systems involves two key related concepts <a data-link-type="biblio" href="#biblio-gall">[Gall]</a>:</p>
    <ul>
     <li data-md>
-     <p><a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf">How to Prevent Discriminatory Outcomes in Machine Learning</a> <a data-link-type="biblio" href="#biblio-weforum2018study">[weforum2018study]</a> by The World Economic Forum made four recommendations:</p>
-     <ul>
-      <li data-md>
-       <p>Active Inclusion</p>
-      <li data-md>
-       <p>Fairness</p>
-      <li data-md>
-       <p>Right to understanding</p>
-      <li data-md>
-       <p>Access to redress</p>
-     </ul>
+     <p><strong>Interpretability</strong>: is about the extent to which a cause and effect can be observed within a system.</p>
     <li data-md>
-     <p><a href="https://dash.harvard.edu/handle/1/42160420">Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI</a> <a data-link-type="biblio" href="#biblio-harvard2020study">[harvard2020study]</a> by Harvard University’s Berkman Klein Center for Internet and Society identified eight key themes from a meta-study of 36 prominent sets of principles for AI :</p>
-     <ul>
-      <li data-md>
-       <p>Privacy</p>
-      <li data-md>
-       <p>Accountability</p>
-      <li data-md>
-       <p>Safety and security</p>
-      <li data-md>
-       <p>Transparency and explainability</p>
-      <li data-md>
-       <p>Fairness and non-discrimination</p>
-      <li data-md>
-       <p>Human control of technology</p>
-      <li data-md>
-       <p>Professional responsibility</p>
-      <li data-md>
-       <p>Promotion of human values</p>
-      <li data-md>
-       <p>See also: A Map of Ethical and Rights-Based Approaches to Principles for AI (p18)</p>
-     </ul>
-    <li data-md>
-     <p><a href="https://arxiv.org/pdf/1906.11668.pdf">The global landscape of AI ethics guidelines</a> <a data-link-type="biblio" href="#biblio-ethzurich2019study">[ethzurich2019study]</a> by ETH Zurich identified 84 documents containing ethical principles or guidelines, extracting the following 11 key ethical principles:</p>
-     <ul>
-      <li data-md>
-       <p>In >50% of documents:</p>
-       <ul>
-        <li data-md>
-         <p>Transparency</p>
-        <li data-md>
-         <p>Justice, fairness and equity</p>
-        <li data-md>
-         <p>Non-maleficence</p>
-        <li data-md>
-         <p>Responsibility</p>
-        <li data-md>
-         <p>Privacy</p>
-       </ul>
-      <li data-md>
-       <p>In &lt;50% of documents:</p>
-       <ul>
-        <li data-md>
-         <p>Beneficence</p>
-        <li data-md>
-         <p>Freedom and autonomy</p>
-        <li data-md>
-         <p>Trust</p>
-        <li data-md>
-         <p>Sustainability</p>
-        <li data-md>
-         <p>Dignity</p>
-        <li data-md>
-         <p>Solidarity</p>
-       </ul>
-     </ul>
+     <p><strong>Explainability</strong>: the extent to which the internal mechanics of a machine or deep learning system can be explained in human terms.</p>
    </ul>
-   <h2 class="heading settled" data-level="5" id="ethical-web-principles"><span class="secno">5. </span><span class="content">Ethical Web Principles</span><a class="self-link" href="#ethical-web-principles"></a></h2>
-   <p>This section discusses the <a href="https://w3ctag.github.io/ethical-web-principles/">W3C TAG Ethical Web Principles</a> <a data-link-type="biblio" href="#biblio-ethical-web">[ETHICAL-WEB]</a> and highlights issues and opportunities applying these principles to web technologies that enable new web user experiences with ML. Where applicable, these principles are mapped to <a href="#ethical-considerations-for-ml-enabling-web-technologies">§ 6 Ethical considerations for ML-enabling web technologies</a>.</p>
-   <dl>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#oneweb">There is one web</a>
-    <dd data-md>
-     <p>Differences in <a href="https://en.wikipedia.org/wiki/List_of_countries_by_Internet_connection_speeds">Internet connection speeds</a> across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations. This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models. This network condition-based adaptation is possible if network characteristics are exposed to the client, as proposed by the <a href="https://wicg.github.io/netinfo/">Network Information API</a>. This concern generalizes to distribution of other large assets such as video and image assets that can adapt on demand.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#noharm">The web should not cause harm to society</a>
-    <dd data-md>
-     <p>The group is committed to <a href="https://www.w3.org/TR/design-principles/#priority-of-constituencies">priority of constituencies</a> as demonstrated by API design driven by <a href="https://webmachinelearning.github.io/webnn/#usecases">use cases</a> that prioritize privacy-enhancing and accessibility-improving features. The work is governed by the open W3C Process and W3C Code of Ethics and Professional Conduct to ensure the requirements and views of marginalized communities are respected.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#community">The web must support healthy community and debate</a>
-    <dd data-md>
-     <p>The group encourages submission of use cases that apply this technology in ways that mitigate ethical issues on the web. For example, <a href="https://webmachinelearning.github.io/webnn/#usecase-detecting-fake-video">detecting fake video</a> use case enables mitigation of misinformation by means of identifying fake videos and images in real-time using this technology.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#allpeople">The web is for all people</a>
-    <dd data-md>
-     <p>Machine Learning can improve web accessibility of people with a wide range of disabilities. People with visual disabilities benefit, for example, from <a href="https://webmachinelearning.github.io/webnn/#usecase-person-detection">person detection</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-face-recognition">face recognition</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-super-resolution">super resolution</a>, <a href="https://webmachinelearning.github.io/webnn/#usecase-image-captioning">image captioning</a>, and <a href="https://webmachinelearning.github.io/webnn/#usecase-video-summalization">video summarization</a> capabilities. Furthermore, web user experience for people with auditory disabilities is improved with <a href="https://webmachinelearning.github.io/webnn/#usecase-noise-suppression">noise suppression</a> and language disabilities are addressed by <a href="https://webmachinelearning.github.io/webnn/#usecase-translation">machine translation</a> capabilities. Many of these capabilities are beneficial not just to disabled, but all people.</p>
-    <dd data-md>
-     <ul>
-      <li data-md>
-       <p><a href="#bias">§ 6.1 Bias</a></p>
-     </ul>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#privacy">Security and privacy are essential</a>
-    <dd data-md>
-     <p>Client-side inference enhances privacy compared to cloud-based inference, since input data such as locally sourced images or video streams stay within the browser’s sandbox. Furthermore, transparency toward the user is increased when an explicit API is utilized compared to re-purposing e.g. the WebGL graphics API for inference.</p>
-    <dd data-md>
-     <ul>
-      <li data-md>
-       <p><a href="#privacy">§ 6.2 Privacy</a></p>
-     </ul>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#expression">The web must enable freedom of expression</a>
-    <dd data-md>
-     <p>Some use cases, such as face recognition, are known to be used in inappropriate ways e.g. for surveillance. While this is not a web-specific concern, the web has built-in affordances that help mitigate this concern by requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#verify">The web must make it possible for people to verify the information they see</a>
-    <dd data-md>
-     <p>The complexity of real-world model architectures means validating or verifying the output of a model is in feasible. However, Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of <a href="https://w3ctag.github.io/ethical-web-principles/#transparent">"view source"</a> principle. Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.</p>
-    <dd data-md>
-     <ul>
-      <li data-md>
-       <p><a href="#explainability-and-transparency">§ 6.3 Explainability and Transparency</a></p>
-     </ul>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#control">The web must enhance individuals' control and power</a>
-    <dd data-md>
-     <p>Client-side Web APIs such as <a href="https://www.w3.org/TR/webnn/">Web Neural Network API</a> enable local processing and enable decentralized web architecture democratizing development.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#sustainable">The web must be an environmentally sustainable platform</a>
-    <dd data-md>
-     <p>Machine learning algorithms consume significant amount of energy and the field of energy evaluation is still evolving, with both energy prediction modeling and power monitoring tools being developed <a data-link-type="biblio" href="#biblio-garcia2019energyconsumption">[garcia2019energyconsumption]</a>. This represents an opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed <a href="https://wicg.github.io/compute-pressure/">Compute Pressure API</a>.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#transparent">The web is transparent</a>
-    <dd data-md>
-     <p>Given the design of the Web Neural Network API, it is possible to integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#multi">The web is multi-browser, multi-OS and multi-device</a>
-    <dd data-md>
-     <p>The APIs in scope of this group will not be tied to any particular platform and will be implementable on top of existing major platform APIs, such as Android Neural Networks API, Windows DirectML, and macOS/iOS Metal Performance Shaders and Basic Neural Network Subroutines.</p>
-    <dt data-md><a href="https://w3ctag.github.io/ethical-web-principles/#render">People should be able to render web content as they want</a>
-    <dd data-md>
-     <p>This technology is agnostic with respect to presentational aspects. There is however a useful analog to other web content that impose substantial network and compute resource usage on load such as auto-played videos. Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.</p>
-   </dl>
-   <h2 class="heading settled" data-level="6" id="ethical-considerations-for-ml-enabling-web-technologies"><span class="secno">6. </span><span class="content">Ethical considerations for ML-enabling web technologies</span><a class="self-link" href="#ethical-considerations-for-ml-enabling-web-technologies"></a></h2>
-   <p class="issue" id="issue-3f9b5d28"><a class="self-link" href="#issue-3f9b5d28"></a> Discuss ethical considerations for ML-enabling web technologies and web-applicable mitigations in this section. Choose a subset of issues identified in <a href="#ethical-frameworks">§ 4 Ethical frameworks</a> based on popularity, applicability and/or severity in the web context and cross-link to <a href="#ethical-web-principles">§ 5 Ethical Web Principles</a>?</p>
-   <p>While the WebGL graphics API <a data-link-type="biblio" href="#biblio-webgl-2">[webgl-2]</a>, WebGPU API <a data-link-type="biblio" href="#biblio-webgpu">[webgpu]</a> and WebAssembly <a data-link-type="biblio" href="#biblio-wasm-core-1">[wasm-core-1]</a> enable certain ML use cases in constrained manner, while many latency-sensitive <a href="https://www.w3.org/TR/webnn/#usecases">real-world use cases</a> backed by bigger complex models in practice require a purpose-built <a href="https://www.w3.org/TR/webnn/">Web Neural Network API</a> <a data-link-type="biblio" href="#biblio-webnn">[webnn]</a> for good user experience. This emerging API makes use of platform capabilities beneficial for ML such as CPU parallelism, general-purpose GPU, or dedicated ML hardware accelerators, and allow browsers to better understand workloads being executed and implement adequate controls.</p>
-   <h3 class="heading settled" data-level="6.1" id="bias"><span class="secno">6.1. </span><span class="content">Bias</span><a class="self-link" href="#bias"></a></h3>
-   <blockquote>
-    <p><em>Decision-making systems may be unfair, or have harmful impacts to certain groups of people due to social differences.</em></p>
-   </blockquote>
+   <p>Lack of interpretability and explainability is known as the black-box problem, which is particularly prevalent with more complex ML approaches such as neural networks.</p>
+   <h3 class="heading settled" data-level="3.7" id="accountability"><span class="secno">3.7. </span><span class="content">Accountability</span><a class="self-link" href="#accountability"></a></h3>
+   <p>Given that ML systems are increasingly being used in high impact areas (healthcare, welfare, criminal justice) and that harms can be large when they go wrong, and that actors in the ML pipeline take responsibility for considering the impact of ML systems, and accountability for when things go wrong.</p>
+   <p>“Algorithms and the data that drive them are designed and created by people – there is always a human ultimately responsible for decisions made or informed by an algorithm. "The algorithm did it" is not an acceptable excuse if algorithmic systems make mistakes or have undesired consequences, including from machine-learning processes.” <a data-link-type="biblio" href="#biblio-fatml">[FATML]</a></p>
+   <p>Transparency is an enabler for accountability (we need to be able to see what is going wrong and where to be able to determine responsibility). It also requires proper processes for the consideration of risks to be in place, documentation of policies and processes, and the means for those who are harmed to seek redress. The developers of ML systems should also take responsibility for any 3rd party ML they use in their system.</p>
+   <p>Increasingly in some jurisdictions, there are formal legal mechanisms for accountability and seeking redress.</p>
+   <h3 class="heading settled" data-level="3.8" id="human-control-and-decision-making"><span class="secno">3.8. </span><span class="content">Human Control and Decision-making</span><a class="self-link" href="#human-control-and-decision-making"></a></h3>
+   <p>The need for accountability, as well as other concerns above such as accuracy and fairness,  have led to the assertion of the importance of humans making in the final decision in high stakes applications. More broadly, ML applications should always be under ultimate human control.</p>
+   <p>But there are pitfalls too where ML approaches support human decision-making - problems with explainability can inhibit the full exercise of human capabilities, or humans may exhibit “automation bias” where they place too much trust in information or recommendations provided by an ML system.</p>
+   <h3 class="heading settled" data-level="3.9" id="environmental-impact--sustainability"><span class="secno">3.9. </span><span class="content">Environmental Impact &amp; Sustainability</span><a class="self-link" href="#environmental-impact--sustainability"></a></h3>
+   <p>There is increasing awareness that computationally complex ML approaches trained on very large data sets can have a large environmental impact, given the amount of energy required to power the training phase.</p>
+   <p>The broader concern with sustainability suggests that ML applications and systems should not undermine the sustainability of the physical, social and political ecosystems in which they’re deployed. This might include the impact on jobs, employment and the economy, or on the quality of and access to information necessary for a functioning democratic system.</p>
+   <h3 class="heading settled" data-level="3.10" id="types-of-harm"><span class="secno">3.10. </span><span class="content">Types of harm</span><a class="self-link" href="#types-of-harm"></a></h3>
+   <p>The above list contains some potential sources or causes of harm from machine learning. It is also important to be aware that harm can take a number of different forms, all of which should be considered.</p>
+   <p>As noted above, harms can impact individuals, groups and society. To take the example of a biased facial recognition system <a data-link-type="biblio" href="#biblio-smuha">[Smuha]</a>:</p>
    <ul>
     <li data-md>
-     <p>TODO</p>
+     <p>this may lead to wrongful discrimination against an <strong>individual</strong> (e.g. wrongful arrest).</p>
+    <li data-md>
+     <p>where a number of individuals who belong to a <strong>group or collective</strong> suffer this discimination (e.g. because of shared ethnicity), there is a group harm. This could be the sum of the individual harms, as well as harms such as an increase in prejudice towards that group caused by the perpetuation of historic bias.</p>
+    <li data-md>
+     <p>here could be a harm to the interests of <strong>society</strong>, such as being able to ‘live in a society that does not discriminate against people based on their skin colour and that treats its citizens equally.’ <a data-link-type="biblio" href="#biblio-smuha">[Smuha]</a></p>
    </ul>
-   <h3 class="heading settled" data-level="6.2" id="privacy"><span class="secno">6.2. </span><span class="content">Privacy</span><a class="self-link" href="#privacy"></a></h3>
-   <blockquote>
-    <p><em>Models that involve sensitive human-centric data e.g. biometrics, medical information and facial recognition data can be used to exploit user’s privacy.</em></p>
-   </blockquote>
-   <div class="issue" id="issue-e1130a9e">
-    <a class="self-link" href="#issue-e1130a9e"></a>TODO: Review An Overview of Privacy in Machine Learning <a data-link-type="biblio" href="#biblio-decristofaro2020overview">[decristofaro2020overview]</a> and extract web-applicable considerations. 
-    <ul>
-     <li data-md>
-      <p>Attacks: Membership Inference Attack (realistic), Model Inversion (theoretical?), Property Inference (theoretical?), Model and Functionality Stealing (needs further work)</p>
-     <li data-md>
-      <p>Mitigations: Cryptography, Differential Privacy, Trusted Execution Environments, ML-Specific Approaches</p>
-    </ul>
+   <p>Harms can also take a number of forms. These can include:</p>
+   <ul>
+    <li data-md>
+     <p><strong>physical</strong>, either directly (e.g. the failure of driver-less cars), or indirectly (e.g. flaws in a system leading to incorrect medical diagnosis).</p>
+    <li data-md>
+     <p><strong>allocative</strong>, when a system unfairly allocates or withholds from certain individuals or groups an opportunity or a resource (e.g. benefits or loans) <a data-link-type="biblio" href="#biblio-crawford">[Crawford]</a>.</p>
+    <li data-md>
+     <p><strong>representational,</strong> when systems “reinforce the subordination of some groups along the lines of identity.” <a data-link-type="biblio" href="#biblio-crawford">[Crawford]</a> e.g. when a Google search for ‘CEO’ returns mostly pictures of white men, or image recognition systems generate offensive labels for people of colour.</p>
+   </ul>
+   <h2 class="heading settled" data-level="4" id="ethical-principles-for-web-ml"><span class="secno">4. </span><span class="content">Ethical Principles for Web ML</span><a class="self-link" href="#ethical-principles-for-web-ml"></a></h2>
+   <p>The following ethical values and principles are taken from the UNESCO <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455">Recommendation on the Ethics of Artificial Intelligence</a> <a data-link-type="biblio" href="#biblio-unesco">[UNESCO]</a>. They were developed through a global, multi-stakeholder process, and have been ratified by 193 countries. An additional principle of ‘Autonomy’ has been added, and the principles have been re-ordered. For more on why these have been adopted, see <a href="#appendix-unesco">Appendix 2. Why the UNESCO principles were chosen</a>.</p>
+   <p>These values and principles should drive the development, implementation and adoption of specifications for Web Machine Learning. They include guidance (adapted from UNESCO and W3C sources) which provides further detail on how the values and principles should be interpreted in the W3C web machine learning context.</p>
+   <p>The following terms are used:</p>
+   <ul>
+    <li data-md>
+     <p>‘ML actors’ refers to stakeholders involved in web ML: specification writers, implementers and web developers</p>
+    <li data-md>
+     <p>‘ML systems’ refers to the ML model or application that is making use of web ML capabilities</p>
+   </ul>
+   <p>The next section (S.5) provides further guidance on how to operationalize the principles and turn them into specific risks and mitigations.</p>
+   <h3 class="heading settled" data-level="4.1" id="unesco-values"><span class="secno">4.1. </span><span class="content">UNESCO Values</span><a class="self-link" href="#unesco-values"></a></h3>
+   <p>These indicate desirable behavior and represent the foundation of the principles</p>
+   <h4 class="no-num heading settled" id="value-1-respect-protection-and-promotion-of-human-rights-and-fundamental-freedoms-and-human-dignity"><span class="content">VALUE 1) Respect, protection and promotion of human rights and fundamental freedoms and human dignity</span><a class="self-link" href="#value-1-respect-protection-and-promotion-of-human-rights-and-fundamental-freedoms-and-human-dignity"></a></h4>
+   <p>ML actors and systems should treat all human beings as being of equal worth, and no individual, group or society should be harmed. ML systems should be designed in a human-centric way, to promote human flourishing, and should respect and enhance human autonomy. This includes enabling meaningful agency, control and choice.</p>
+   <p>ML actors should not enable state censorship, surveillance or other practices that seek to limit these freedoms. Nor should they enable manipulation, misinformation, harassment or persecution.</p>
+   <h4 class="no-num heading settled" id="value-2-environment-and-ecosystem-flourishing"><span class="content">VALUE 2) Environment and ecosystem flourishing</span><a class="self-link" href="#value-2-environment-and-ecosystem-flourishing"></a></h4>
+   <p>Environmental and ecosystem flourishing should be recognized, protected and promoted through the life cycle of ML systems. ML actors should reduce the environmental impact of ML systems,  including  but  not  limited  to  their  carbon footprint,  to  ensure  the  minimization  of  climate  change  and environmental  risk  factors,  and  prevent  the  unsustainable  exploitation,  use  and  transformation  of  natural resources contributing to the deterioration of the environment and the degradation of ecosystems.</p>
+   <h4 class="no-num heading settled" id="value-3-ensuring-diversity-and-inclusiveness"><span class="content">VALUE 3) Ensuring diversity and inclusiveness</span><a class="self-link" href="#value-3-ensuring-diversity-and-inclusiveness"></a></h4>
+   <p>Respect, protection and promotion of diversity and inclusiveness should be ensured throughout the life cycle of ML systems. This may be done by enabling the active participation of all individuals or groups, regardless of lifestyle choices, beliefs, opinions, expressions or personal  experiences.This should include the meaningful option not to use ML systems. ML users should not be disadvantaged because they lack necessary technological  infrastructure,  education  or  skills.</p>
+   <h4 class="no-num heading settled" id="value-4-living-in-peaceful-just-and-interconnected-societies"><span class="content">VALUE 4) Living in peaceful, just and interconnected societies</span><a class="self-link" href="#value-4-living-in-peaceful-just-and-interconnected-societies"></a></h4>
+   <p>ML systems should not segregate, objectify or undermine freedom and autonomous decision-making or the safety of human beings and communities. They should not divide and turn individuals and groups against each other, or threaten coexistence between humans, other living beings and the natural environment. ML systems should be built to cross regional and national boundaries.</p>
+   <h3 class="heading settled" data-level="4.2" id="unesco-principles"><span class="secno">4.2. </span><span class="content">UNESCO Principles</span><a class="self-link" href="#unesco-principles"></a></h3>
+   <p>These unpack the values underlying them more concretely so that the values can be more easily operationalized.</p>
+   <h4 class="no-num heading settled" id="principle-1-proportionality-and-do-no-harm"><span class="content">PRINCIPLE 1) Proportionality and Do No Harm</span><a class="self-link" href="#principle-1-proportionality-and-do-no-harm"></a></h4>
+   <p>When developing ML systems, developers should consider what harm the application could do to individuals, groups and society, especially to vulnerable people. They should seek to eliminate or minimise those harms.</p>
+   <p>The use of ML and any data gathered to enable it must be proportional to achieve a given legitimate aim. It should not violate human rights, or be used for social scoring or mass surveillance purposes.</p>
+   <p>ML actors should prioritize potential benefits for users over potential benefits to developers, content providers, user agents, advertisers or others in the ecosystem, in line with the priority of constituencies.</p>
+   <h4 class="no-num heading settled" id="principle-2-fairness-and-non-discrimination"><span class="content">PRINCIPLE 2) Fairness and non-discrimination</span><a class="self-link" href="#principle-2-fairness-and-non-discrimination"></a></h4>
+   <p>The benefits of ML systems should be available and accessible to all.</p>
+   <p>ML actors should minimize and avoid reinforcing or perpetuating bias and discrimination, particularly against vulnerable and historically marginalised groups.They should ensure that the outcomes of ML applications are fair, and that effective remedy is available against discrimination and biased algorithmic determination.</p>
+   <p>This principle also applies to access to web ML systems: they should be fully accessible to people with disabilities, appropriately localized, and accommodate people on low bandwidth networks and with low specification equipment.</p>
+   <p>For further guidance on accessibility, see  the draft checklist to support Framework for Accessibility in the Specification of Technologies <a data-link-type="biblio" href="#biblio-fast">[FAST]</a>.</p>
+   <h4 class="no-num heading settled" id="principle-3-autonomy"><span class="content">PRINCIPLE 3) Autonomy</span><a class="self-link" href="#principle-3-autonomy"></a></h4>
+   <p>ML systems should respect and enhance human autonomy. This includes enabling meaningful agency, control and choice. Users should give informed consent before Web ML is used.</p>
+   <h4 class="no-num heading settled" id="principle-4-right-to-privacy-and-data-protection"><span class="content">PRINCIPLE 4) Right to Privacy, and Data Protection</span><a class="self-link" href="#principle-4-right-to-privacy-and-data-protection"></a></h4>
+   <p>ML systems should be designed and implemented to ensure that privacy and personal information is protected throughout the life cycle of the application. ML actors ensure they are accountable for this, and should conduct adequate privacy impact assessments, and implement privacy by design approaches.</p>
+   <p>Data should be collected, used, shared, archived and deleted in ways that are consistent with local and international law.</p>
+   <p>For further guidance on privacy, see <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a>.</p>
+   <h4 class="no-num heading settled" id="principle-5-safety-and-security"><span class="content">PRINCIPLE 5) Safety and security</span><a class="self-link" href="#principle-5-safety-and-security"></a></h4>
+   <p>Unwanted harms (safety risks), as well as vulnerabilities to attack (security risks) should be avoided and should be addressed, prevented and eliminated throughout the life cycle of ML systems to ensure human, environmental and ecosystem safety and security. ML actors should ensure that systems are reliable and robust, and should make sure that users understand any risks they are taking when using an application.</p>
+   <p>See also <a data-link-type="biblio" href="#biblio-security-privacy-questionnaire">[security-privacy-questionnaire]</a>.</p>
+   <h4 class="no-num heading settled" id="principle-6-transparency-and-explainability"><span class="content">PRINCIPLE 6) Transparency and explainability</span><a class="self-link" href="#principle-6-transparency-and-explainability"></a></h4>
+   <p>ML actors and systems should support transparency and explainability. It should always be possible to determine how a web ML application was built and how the code works.</p>
+   <p>Users and third-parties such as civil society groups and researchers should be able to audit and inspect ML systems for security, privacy, bias, fairness and other ethical concerns outlined in these principles.</p>
+   <p>ML actors should inform users when a product or service is provided directly or with the assistance of ML, and users should be fully informed when a significant decision is informed by or is made on the basis of ML. They should be able to access the reasons for a decision affecting their rights and freedoms, and ML actors should provide means for users to request review and correction of these decisions.</p>
+   <p>ML systems and outcomes should be explainable. ML actors should promote tools and approaches that enhance explainability and meaningful user control.</p>
+   <p>ML actors should also be transparent about the steps they have taken to consider and implement these ethical principles.</p>
+   <h4 class="no-num heading settled" id="principle-7-responsibility-and-accountability"><span class="content">PRINCIPLE 7) Responsibility and accountability</span><a class="self-link" href="#principle-7-responsibility-and-accountability"></a></h4>
+   <p>Appropriate oversight, impact assessment, audit and due diligence mechanisms should be developed to ensure accountability for ML systems and their impact throughout their life cycle.</p>
+   <p>It should always be possible to attribute ethical responsibility and liability for the outcomes of ML systems, and decisions and actions based on them, to people or organisations corresponding to their role in the life cycle of the ML system.</p>
+   <p>ML actors should take responsibility for third-party ML models and approaches used in their systems.</p>
+   <h4 class="no-num heading settled" id="principle-8-sustainability"><span class="content">PRINCIPLE 8) Sustainability</span><a class="self-link" href="#principle-8-sustainability"></a></h4>
+   <p>ML actors should ensure that the human, social, cultural, economic and environmental impact of ML applications is sustainable.</p>
+   <p>They should develop and favour approaches which minimise power consumption, data storage and processing requirements, and maxmimise the lifespan of physical devices through maintaining compatibility.</p>
+   <h4 class="no-num heading settled" id="principle-9-human-oversight-and-determination"><span class="content">PRINCIPLE 9) Human oversight and determination</span><a class="self-link" href="#principle-9-human-oversight-and-determination"></a></h4>
+   <p>In scenarios where decisions are understood to have a high impact or one that is irreversible or difficult to reverse, or may involve life and death decisions, final human determination should apply.</p>
+   <p>The decision by users to cede control and decision-making power to an ML system should be explicit, fully informed and limited to a specific context.</p>
+   <h4 class="no-num heading settled" id="principle-10-awareness-and-literacy"><span class="content">PRINCIPLE 10) Awareness and literacy</span><a class="self-link" href="#principle-10-awareness-and-literacy"></a></h4>
+   <p>ML actors should ensure that all members of society have access to the information they need to make informed decisions about their use of ML systems.</p>
+   <h4 class="no-num heading settled" id="principle-11-multi-stakeholder-and-adaptive-governance-and-collaboration"><span class="content">PRINCIPLE 11) Multi-stakeholder and adaptive governance and collaboration</span><a class="self-link" href="#principle-11-multi-stakeholder-and-adaptive-governance-and-collaboration"></a></h4>
+   <p>The participation of different stakeholders throughout the life cycle of ML projects is necessary to enable the benefits to be shared by all, and to mitigate risks.</p>
+   <p>Where tensions arise between the principles above, they should be resolved through democratic stakeholder engagement and participation.</p>
+   <p>Web ML specifications and systems should support open standards and interoperability.</p>
+   <h2 class="heading settled" data-level="5" id="operationalization-putting-the-principles-into-practice-wip"><span class="secno">5. </span><span class="content">Operationalization: Putting the Principles into Practice (WIP)</span><a class="self-link" href="#operationalization-putting-the-principles-into-practice-wip"></a></h2>
+    This section will offer practical guidance on how to operationalize the values and principles above. 
+   <p>It will outline a process that ML actors can follow to use the principles to think through specific risks and mitigations relevant to their specific use case.</p>
+   <p>It will also start to gather general, high-level risks and mitigations that can be a starting point and guide for operationalizing the principles.</p>
+   <div class="note" role="note">The table below makes a start on this … Reviewers / commenters are also invited to add to the table from their own knowledge and expertise. This will be further supplemented with some group brainstorming sessions.</div>
+   <table class="data">
+    <thead>
+     <tr>
+      <th>Principle
+      <th>Risks
+      <th>Possible Mitigations
+    <tbody>
+     <tr>
+      <th>Proportionality and Do No Harm
+      <td>
+      <td>
+     <tr>
+      <th rowspan="2">Fairness and non-discrimination
+      <td>
+       <p>Scaling up ML via browsers creates risks of scaling up bias issues linked to ML training.</p>
+       <p></p>
+       <p>ML approaches optimize for the majority, leaving minorities and underrepresented groups at risk of harm or sub-optimal service (see e.g. <a data-link-type="biblio" href="#biblio-treviranus">[Treviranus]</a>)</p>
+       <p></p>
+       <p></p>
+       <p></p>
+      <td>Browser-assisted mechanisms to find out about the limitations and performance characteristics of ML models used in a Web app. This would build on an approach published in Model Cards for Model Reporting where making this report machine-discoverable would allow for the web browser to offer a more integrated user experience.
+      <td>
+     <tr>
+      <td>Differences in Internet connection speeds across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations.
+      <td>This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models. 
+     <tr>
+      <th>Autonomy
+      <td>
+      <td>Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.
+     <tr>
+      <th>Right to Privacy, and Data Protection
+      <td>
+      <td>requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.
+     <tr>
+      <th>Safety and security
+      <td>
+      <td>
+     <tr>
+      <th rowspan="2">Transparency and explainability
+      <td>
+      <td>
+       <p>Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of "view source" principle.</p>
+       <p></p>
+       <p>Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.</p>
+     <tr>
+      <td>
+      <td>Integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.
+     <tr>
+      <th>Responsibility and accountability
+      <td>
+      <td>
+     <tr>
+      <th>Sustainability
+      <td>Web ML applications are compute / energy intensive, and widespread adoption exacerbates environmental problems.
+      <td>Opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed Compute Pressure API.
+     <tr>
+      <th>Human oversight and determination
+      <td>
+      <td>
+     <tr>
+      <th>Awareness and literacy
+      <td>
+      <td>
+     <tr>
+      <th>Multi-stakeholder and adaptive governance and collaboration
+      <td>
+      <td>
+   </table>
+   <p><strong>What happens if principles are in conflict or tension with each other?</strong> From UNESCO:</p>
+   <blockquote>While all the values and principles … are desirable per se, in any practical contexts, there may be tensions between these values and principles. In any given situation, a contextual assessment will be necessary to manage potential tensions, taking into account the principle of proportionality and in compliance with human rights and fundamental freedoms … To navigate such scenarios judiciously will typically require engagement with a broad range of appropriate stakeholders, making use of social dialogue, as well as ethical deliberation, due diligence and impact assessment.</blockquote>
+   <h2 class="heading settled" id="appendix-background"><span class="content">Appendix 1. Background: Ethics &amp; Machine Learning</span><a class="self-link" href="#appendix-background"></a></h2>
+   <h3 class="heading settled" id="what-is-ethics"><span class="content">What is ethics?</span><a class="self-link" href="#what-is-ethics"></a></h3>
+   <p>Ethics is about what is right and wrong, good and bad. All of us think about ethics  all the time as we think about what’s right and wrong and make decisions about how to act accordingly.</p>
+   <p>Philosophical discussions around ethics seek to ground those thoughts about right and wrong in a rational context. They generally consider ethical issues at three levels, from the abstract to the concrete:</p>
+   <ul>
+    <li data-md>
+     <p><strong>Meta-ethics</strong> is the most abstract, concerned with questions like whether concepts of right and wrong are objective facts or subjective values</p>
+    <li data-md>
+     <p><strong>Normative ethics</strong> is the more practical consideration of how we should act, both in terms of broad principles (e.g. treat others as you would want to be treated yourself) and more specific rules (e.g. do not steal)</p>
+    <li data-md>
+     <p><strong>Applied ethics</strong> goes even further, considering how normative considerations should be applied in specific situations or domains, such as medical ethics, bio-ethics or AI ethics.</p>
+   </ul>
+   <p>So ethical systems or frameworks are concerned with both broad principles to guide ethical thinking, and providing more specific answers to or guidance on a range of ethical questions.</p>
+   <p>The following is <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-practice/">a useful sense of what ethics is/isn’t from the Markkula Center for Applied Ethics</a></p>
+   <p>Ethics isn’t​:</p>
+   <ul>
+    <li data-md>
+     <p>Legal/Corporate <a class="property css" data-link-type="property">Compliance</a> (Legal ≠ Ethical; Ethical ≠ Legal)</p>
+    <li data-md>
+     <p>A Set of Fixed Rules to Follow (No fixed set of rules can cover all ethical cases/contexts)</p>
+    <li data-md>
+     <p>A Purely Negative Frame: (“Don’t do that! Or That! Or THAT!”)</p>
+    <li data-md>
+     <p>Subjective Sense of Right/Wrong ("You have your ethics, I have mine")</p>
+    <li data-md>
+     <p>Religious Belief ("It’s right/wrong simply because my religion says so")</p>
+    <li data-md>
+     <p>Non-moral Customs of Etiquette ("That is just Not Done here")</p>
+    <li data-md>
+     <p>Uncritical Obedience to Authority (“Good Germans'/'Good Americans”)</p>
+   </ul>
+   <p>Ethics ​Is​:</p>
+   <ul>
+    <li data-md>
+     <p>Promoting objective (but context &amp; culture-dependent) conditions of human flourishing</p>
+    <li data-md>
+     <p>Respecting the dignity of others and the duties created in our relationships to them</p>
+    <li data-md>
+     <p>Living as a person of integrity and principle</p>
+    <li data-md>
+     <p>Promoting beneficial and just outcomes, avoiding and minimizing harm to others</p>
+    <li data-md>
+     <p>Cultivating one’s own character to become increasingly more noble and excellent</p>
+    <li data-md>
+     <p>A skillful practice of moral perception, sensitivity, and flexible, discerning judgment</p>
+    <li data-md>
+     <p>Learning to more expertly see and navigate the moral world and its features</p>
+   </ul>
+   <p>The idea of ethics as a practice is important. Ethical principles are valuable, but by themselves achieve little - they are often abstract and not directly actionable. They must be turned into concrete outcomes to have an effect. Although there may be pre-existing approaches and best practices to draw on to do this, in a fast-moving area like ML it is often necessary to think through new ethical challenges to come up with appropriate solutions.</p>
+   <p>Thankfully, applied ethics also concerns itself with the development of tools to support this type of thinking. In ML ethics, these tools help people facing ethical questions to work them through, moving from principles, to thinking about the impact of particular approaches or technologies, their benefits and potential risks and harms, and how those might be mitigated to ensure the overall ethical and beneficial impact of the approach.</p>
+   <p>This note will do the same - it will propose a set of ethical principles for Web ML, and offer guidance on how to turn those principles into practice.</p>
+   <p>For those interested to explore further:</p>
+   <ul>
+    <li data-md>
+     <p>the Markkula Center has a <a href="https://www.scu.edu/ethics-in-technology-practice/">useful and comprehensive set of resources</a> devoted to technology ethics and translating principles into practice.</p>
+    <li data-md>
+     <p>The University of Helsinki has a free MOOC on <a href="https://ethics-of-ai.mooc.fi/">Ethics of AI</a></p>
+    <li data-md>
+     <p>Another good MOOC is the University of Edinburgh / EdX course <a href="https://www.edx.org/course/Data-Ethics-AI-and-Responsible-Innovation">Data Ethics, AI and Responsible Innovation</a></p>
+   </ul>
+   <h3 class="heading settled" id="12-why-and-how-does-ethics-apply-to-machine-learning"><span class="content">1.2 Why and how does ethics apply to machine learning?</span><a class="self-link" href="#12-why-and-how-does-ethics-apply-to-machine-learning"></a></h3>
+   <p>It’s clear that ML can have a big impact on people’s lives and experience. So we could ask whether that impact is good or bad, and also how we might act to try to ensure that the impact is good rather than bad. Ethics could help us answer those questions.</p>
+   <p>Why should we take an ethical approach? Firstly, <a href="https://www.w3.org/2021/04/web-machine-learning-charter.html">it is a deliverable required in the working group’s charter</a>.</p>
+   <p>But as ethics is the active consideration of what’s good and bad, rather than the uncritical acceptance of rules, it’s worth considering why it should be a deliverable. There are a number of reasons:</p>
+   <ul>
+    <li data-md>
+     <p>Technology is never neutral - it will always have social and ethical implications. The question is whether these are actively considered and addressed, or not.</p>
+    <li data-md>
+     <p>Given the scale and depth of the impact that AI/ML is anticipated to have, failure to consider the ethical implications could cause (and indeed is already causing) great harm. If technologies are not aligned with the values of the societies they operate in, they risk undermining them.</p>
+    <li data-md>
+     <p>There is clear demand for an ethical approach to ML, seen through activism from civil society, the emergence of >100 sets of ethical AI principles globally, and government moves all around the world to regulate AI.</p>
+    <li data-md>
+     <p>It aligns with the <a href="https://www.w3.org/Consortium/mission">W3C’s mission and design principles</a>:</p>
+    <li data-md>
+     <p>W3C’s mission is to “ensure the long-term growth of the web” - this is unlikely if web technologies create more harm than good</p>
+    <li data-md>
+     <p>W3C design principles include “Web for all” and “Web of trust” which suggest that W3C’s approach to web standards is values-based</p>
+    <li data-md>
+     <p>W3C TAG is developing <a href="https://w3ctag.github.io/ethical-web-principles/">Ethical Web Principles</a>. These are not normative, but provide a more explicit signal that W3C supports an ethical approach to web technologies.</p>
+   </ul>
+   <h3 class="heading settled" id="13-the-universality-of-the-web-vs-the-specificity-of-ethics"><span class="content">1.3 The universality of the web vs the specificity of ethics</span><a class="self-link" href="#13-the-universality-of-the-web-vs-the-specificity-of-ethics"></a></h3>
+   <p>The web is a universal technology, used around the world by people of all different nationalities, races, religions and beliefs.</p>
+   <p>By contrast, ethical systems are often specific to particular groups or societies - for example religions, professional groups or regions and countries.</p>
+   <p>Some beliefs may be universal across systems (e.g. a prohibition on murder), but ethical practice may also vary between different systems, cultures and contexts. Ethical principles are sometimes in tension with each other, and different societies might agree different trade-offs and balances. For example they might vary in how they balance the rights of individuals, communities and society, or security and safety and individual privacy.</p>
+   <p>Negotiating this tension is important when choosing ethical principles for something with global application like web ML standards. Several considerations are important.</p>
+   <p>Firstly, in common with other fields, ethical ML principles generally operate at a high level of abstraction, allowing them to be more universal. For example, “fairness” is a common principle, but not a specific definition of fairness, leaving that to be negotiated within any particular socio-political context.</p>
+   <p>In choosing principles, we should take an approach which supports universality. One way to do this is by choosing principles which have evidence of global relevance and support, both through the process of developing them, and their subsequent adoption.</p>
+   <p>We can also foreground principles which empower users and support their agency and autonomy, so that they can make decisions for themselves, based on their own context and values.</p>
+   <p>Also, the W3C’s role is as a promoter of open standards, rather than specific technologies or implementations. While standards are not values-neutral, in practice some of the harder ethical questions (where specific values may vary) are more relevant to specific implementations or approaches than to the broader standards. This note offers principles and guidance for implementers and authors to make use of these standards according to their context.</p>
+   <h2 class="heading settled" id="appendix-unesco"><span class="content">Appendix 2. Why the UNESCO principles were chosen</span><a class="self-link" href="#appendix-unesco"></a></h2>
+   <p>In response to ethical concerns and cases where ML has caused or contributed to harm, there has been an explosion in recent years of AI Ethical principles - there are now more than a hundred globally (<a href="https://arxiv.org/abs/1812.04814">Linking Artificial Intelligence Principles</a> provides links to around 90 of them).</p>
+   <p>They have been developed by actors of all types, from trans-national bodies like the EU, OECD and UNESCO, to large companies, public-sector organizations, academia, private philanthropic concerns, and campaigning and activist groups.</p>
+   <p>For the W3C Web ML working group, the first question is whether we should develop our own principles from scratch or adopt some already existing ones. Given the scope of the current remit, the resources required for proper stakeholder consultation and management around developing principles from scratch, and the existence of good candidates amongst already published principles, it is proposed to adopt and adapt existing principles. This does not preclude the development of more bespoke principles from scratch in the future.</p>
+   <h3 class="heading settled" id="general-considerations-for-choosing-from-existing-ethical-ai-principles"><span class="content">General considerations for choosing from existing ethical AI principles</span><a class="self-link" href="#general-considerations-for-choosing-from-existing-ethical-ai-principles"></a></h3>
+   <p>Given the number of existing sets of principles, how should we choose amongst them?</p>
+   <p>Some key criteria are:</p>
+   <ul>
+    <li data-md>
+     <p>They should be as universal as possible, as evidenced by:</p>
+    <li data-md>
+     <p>A diverse, global range of stakeholders involved in their development</p>
+    <li data-md>
+     <p>Broad acceptance of the final result</p>
+    <li data-md>
+     <p>They should have good coverage (be as complete as possible, while not unnecessarily broad) as evidenced by:</p>
+    <li data-md>
+     <p>Alignment with key principles found in meta-analyses of AI ethical principles, which investigate a number of sets of principles to look for convergence on common themes.</p>
+    <li data-md>
+     <p>They should align with relevant existing W3C principles and guidance in this space</p>
+   </ul>
+   <h3 class="heading settled" id="candidate-universal-ethical-ai-principles"><span class="content">Candidate universal ethical AI principles</span><a class="self-link" href="#candidate-universal-ethical-ai-principles"></a></h3>
+   <p>For the following evaluations, see our <a href="#appendix-comparison">comparison of the various principles</a>.</p>
+   <p>Given the requirement for universality, the most likely source is transnational organizations, either governmental or non-governmental.</p>
+   <p>Some candidates:</p>
+   <ul>
+    <li data-md>
+     <p><a data-link-type="biblio" href="#biblio-unesco">[UNESCO]</a></p>
+    <li data-md>
+     <p><a data-link-type="biblio" href="#biblio-egtai">[EGTAI]</a></p>
+    <li data-md>
+     <p><a href="https://oecd.ai/en/ai-principles">OECD AI Principles</a> / <a href="https://www.meti.go.jp/press/2019/06/20190610010/20190610010-1.pdf">G20 AI Principles</a></p>
+   </ul>
+   <p>Of these, the UNESCO Recommendation stands out as the best candidate because:</p>
+   <ul>
+    <li data-md>
+     <p>It is the product of an <a href="https://en.unesco.org/artificial-intelligence/ethics#recommendation">inclusive, multi-disciplinary, global consultation and development process</a>, as part of a global institution with non-Western participants (unlike EU)</p>
+    <li data-md>
+     <p>It has been <a href="https://news.un.org/en/story/2021/11/1106612">adopted by all 193 UNESCO member countries</a> (NB: The US is not part of UNESCO and not a signatory of the new recommendations. But the UNESCO principles align with many developed in the US)</p>
+    <li data-md>
+     <p>It has a good breadth of principles (vs OECD/G20). Compared with the EU principles, it lacks an explicit statement about “Respect for Human Autonomy”. It could be argued that this is implicitly covered by the other values and principles, such as Value 1: <strong>“</strong>Respect, protection and promotion of human rights and fundamental freedoms and human dignity”. But while the other UNESCO Values are made more concrete by the principles that follow, Value 1 is less so, and hence there is less of an explicit commitment to Autonomy.</p>
+    <li data-md>
+     <p>Although UNESCO members are states, the principles are framed broadly enough that they can apply to anyone involved in the AI lifecycle, and the UNESCO guidance refers to ‘AI actors’ as well as states.</p>
+   </ul>
+   <h3 class="heading settled" id="unesco-values-and-principles"><span class="content">UNESCO Values and Principles</span><a class="self-link" href="#unesco-values-and-principles"></a></h3>
+   <p>The UNESCO Recommendation consists of 4 values and 10 principles. According to the recommendation:</p>
+   <blockquote>Values play a powerful role as motivating ideals in shaping policy measures and legal norms. While the set of values outlined below thus inspires desirable behaviour and represents the foundations of principles, the principles unpack the values underlying them more concretely so that the values can be more easily operationalized in policy statements and actions.</blockquote>
+   <p>The UNESCO Values are:</p>
+   <ul>
+    <li data-md>
+     <p>Respect, protection and promotion of human rights and fundamental freedoms and human dignity</p>
+    <li data-md>
+     <p>Environment and ecosystem flourishing</p>
+    <li data-md>
+     <p>Ensuring diversity and inclusiveness</p>
+    <li data-md>
+     <p>Living in peaceful, just and interconnected societies</p>
+   </ul>
+   <p>The UNESCO Principles are:</p>
+   <ul>
+    <li data-md>
+     <p>Proportionality and Do No Harm</p>
+    <li data-md>
+     <p>Safety and security</p>
+    <li data-md>
+     <p>Fairness and non-discrimination</p>
+    <li data-md>
+     <p>Sustainability</p>
+    <li data-md>
+     <p>Right to Privacy, and Data Protection</p>
+    <li data-md>
+     <p>Human oversight and determination</p>
+    <li data-md>
+     <p>Transparency and explainability</p>
+    <li data-md>
+     <p>Responsibility and accountability</p>
+    <li data-md>
+     <p>Awareness and literacy</p>
+    <li data-md>
+     <p>Multi-stakeholder and adaptive governance and collaboration</p>
+   </ul>
+   <h3 class="heading settled" id="sense-checking-unesco-for-universality"><span class="content">Sense checking UNESCO for universality</span><a class="self-link" href="#sense-checking-unesco-for-universality"></a></h3>
+   <p>One of the main concerns in terms of universality is that many AI principles are developed from a Western perspective. So the UNESCO principles can be further sense-checked for against a set of non-Western country/region specific principles</p>
+   <ul>
+    <li data-md>
+     <p>China <a href="http://www.chinadaily.com.cn/a/201906/17/WS5d07486ba3103dbf14328ab7.html">Governance Principles for the New Generation Artificial Intelligence--Developing Responsible Artificial Intelligence</a></p>
+    <li data-md>
+     <p><a href="https://www.digitaldubai.ae/initiatives/ai-prin">Dubai AI Principles</a></p>
+    <li data-md>
+     <p><a href="https://www.cas.go.jp/jp/seisaku/jinkouchinou/pdf/humancentricai.pdf">Japan: Social Principles of Human-centric AI</a></p>
+   </ul>
+   <p><a href="#appendix-comparison">Comparing these principles</a> (UNESCO with the ones highlighted in orange), we see good general alignment across almost all the principles and values. This is truest for the principles at their highest-level, simplest formulations. The more detailed explanation of some principles reveals particular countries’ more specific policy concerns and emphases which occasionally diverge. This is not a major concern, but suggests we should exercise some caution to avoid being over-specific in fleshing out the principles.</p>
+   <p>UNESCO also continues to actively consider issues of universality and cultural diversity, and has a number of useful resources including this video on <a href="https://www.youtube.com/watch?v=AiK0iYZuNS0">Shaping AI through Cultural Diversity</a>.</p>
+   <h3 class="heading settled" id="sense-checking-unesco-for-appropriate-coverage"><span class="content">Sense checking UNESCO for appropriate coverage</span><a class="self-link" href="#sense-checking-unesco-for-appropriate-coverage"></a></h3>
+   <p>To check for completeness and appropriate breadth, we can compare with meta-analyses of AI Principles. There are a number of these, often referring to each other, but the following two provide a good level of coverage and depth.</p>
+   <ul>
+    <li data-md>
+     <p><a href="https://dash.harvard.edu/bitstream/handle/1/42160420/HLS%20White%20Paper%20Final_v3.pdf?sequence=1&amp;isAllowed=y">Principled Artificial Intelligence Mapping Consensus in Ethical and Rights - based Approaches to Principles for AI</a> by Harvard Berkman Klein Centre</p>
+    <li data-md>
+     <p><a href="https://link.springer.com/content/pdf/10.1007/s11023-020-09517-8.pdf">The Ethics of AI: Evaluation of Guidelines</a> by Thilo Hagendorf</p>
+   </ul>
+   <p>Here again <a href="#appendix-comparison">we can see</a> (comparing UNESCO with the ones highlighted in pink) that there is good alignment of the UNESCO principles with the most popular principles that emerge from the meta-analyses. UNESCO covers them all, but is not going too far beyond them - the main differences are that “awareness and literacy” is not among the top principles in either meta-analysis, and “sustainability” does not appear in the Harvard one.</p>
+   <div class="advisement no-marker">
+    <div class="marker">RECOMMENDATION</div>
+    Given the universality and appropriate coverage of the UNESCO recommendation, it is proposed to adopt the principles and values as the basis for this document.
    </div>
-   <h3 class="heading settled" data-level="6.3" id="explainability-and-transparency"><span class="secno">6.3. </span><span class="content">Explainability and Transparency</span><a class="self-link" href="#explainability-and-transparency"></a></h3>
-   <blockquote>
-    <p><em>Complex relationships between model inputs and outputs make it impossible for users to infer how the process leads to a particular outcome.</em></p>
-   </blockquote>
-   <h4 class="heading settled" data-level="6.3.1" id="visualization-techniques"><span class="secno">6.3.1. </span><span class="content">Visualization techniques</span><a class="self-link" href="#visualization-techniques"></a></h4>
-   <p>Visualization of neural networks helps domain experts build intuition on how changes to the network structure and hyperparameters influence the output. An example of an educational visualizations that runs in a browser is <a href="https://playground.tensorflow.org/">TensorFlow Playground</a> <a data-link-type="biblio" href="#biblio-smilkov2017directmanipulation">[smilkov2017directmanipulation]</a>, particularly helpful for training. <a href="https://github.com/lutzroeder/netron">Netron</a> is a viewer for neural networks that supports popular model formats and runs in a browser, aimed as a tool for domain experts to analyze a model’s structure.</p>
-   <p>Feature visualization techniques such as <a href="https://en.wikipedia.org/wiki/Saliency_map">saliency map</a> help visualize what a neural network is paying attention to and offers a view into computer vision models that otherwise seem like black boxes to regular web users. <a href="https://github.com/MisaOgura/flashtorch">FlashTorch</a> is one toolkit using this technique to help understand how neural networks perceive images.</p>
-   <p>Integration of visualization techniques into browser developer tools and ML libraries as user-facing features is possible future work.</p>
-   <h4 class="heading settled" data-level="6.3.2" id="model-reporting"><span class="secno">6.3.2. </span><span class="content">Model reporting</span><a class="self-link" href="#model-reporting"></a></h4>
-   <p>Another approach to increasing transparency is to make visible information about what a trained machine learning model is and how well it works. Model Cards <a data-link-type="biblio" href="#biblio-mitchell2019modelcards">[mitchell2019modelcards]</a> is a framework for reporting such information in a human-readable manner and is accompanied by <a href="https://github.com/tensorflow/model-card-toolkit">Model Cards Toolkit</a> to automate Model Card creation. Exposing such information through browser UI in a consistent manner is possible future work, as discussed at the <a href="https://github.com/w3c/machine-learning-workshop/issues/108">W3C workshop</a>.</p>
-   <h2 class="heading settled" data-level="7" id="references-backlog"><span class="secno">7. </span><span class="content">References backlog</span><a class="self-link" href="#references-backlog"></a></h2>
-   <p class="issue" id="issue-09915d08"><a class="self-link" href="#issue-09915d08"></a> This section is where we park references and related thoughts that might be useful and need to be refined and looked into.</p>
-   <ul>
-    <li data-md>
-     <p>ABOUT ML Resources Library <a data-link-type="biblio" href="#biblio-about-ml">[about-ml]</a></p>
-     <ul>
-      <li data-md>
-       <p><a href="https://partnershiponai.org/paper/about-ml-reference-document/5/">Literature Review Current Recommendations on Documentation for Transparency in the ML Lifecycle</a></p>
-     </ul>
-    <li data-md>
-     <p>BBC ethics work (reuse requires prior written permission of BBC Research)</p>
-     <ul>
-      <li data-md>
-       <p><a href="https://www.bbc.co.uk/rd/topics/artificial-intelligence-machine-learning">Artificial Intelligence &amp; Machine Learning topics</a></p>
-      <li data-md>
-       <p><a href="https://www.bbc.co.uk/rd/publications/responsible-ai-at-the-bbc-our-machine-learning-engine-principles">Responsible AI at the BBC: Our Machine Learning Engine Principles</a></p>
-      <li data-md>
-       <p><a href="https://www.bbc.co.uk/rd/blog/2021-08-recommendations-ethics-public-service-media">Ethics of recommendation systems in public service media</a></p>
-      <li data-md>
-       <p><a href="https://www.bbc.co.uk/rd/blog/2021-09-explaining-artificial-intelligence-part-4-a-practical-toolkit">Explaining Artificial Intelligence Part 4: A Practical Toolkit</a></p>
-     </ul>
-    <li data-md>
-     <p><a href="https://www.adalovelaceinstitute.org/our-work/library/">Ada Lovelace Institute Library (content CC-BY 4.0 licensed)</a></p>
-    <li data-md>
-     <p>Law and ethics. Distributed processing and storage of data raise data protection and data ownership issues with implications in both regulatory field <a data-link-type="biblio" href="#biblio-europarl2020gdprai">[europarl2020gdprai]</a> and civil law <a data-link-type="biblio" href="#biblio-asbroeck2019dataownership">[asbroeck2019dataownership]</a> respectively. Identify more examples where regulation plays a role in ML to inform discussion, if deemed in scope of this document.</p>
-    <li data-md>
-     <p><a href="https://en.wikipedia.org/wiki/Machine_ethics#Ethical_frameworks_and_practices">Machine Ethics, Ethical frameworks and practices Wikipedia entry</a></p>
-   </ul>
-  </main>
+   <h3 class="heading settled" id="alignment-with-w3c-principles-and-values"><span class="content">Alignment with W3C principles and values</span><a class="self-link" href="#alignment-with-w3c-principles-and-values"></a></h3>
+   <p>The final consideration is how the UNESCO principles align with various relevant W3C statements of principles, values and areas of interest, and whether they need to be augmented at all.</p>
+   <h4 class="heading settled" id="analysis-of-key-themes-from-w3c-documents"><span class="content">Analysis of key themes from W3C documents</span><a class="self-link" href="#analysis-of-key-themes-from-w3c-documents"></a></h4>
+   <p>There are a number of different places we can look for guidance on W3C values which are relevant to ethical ML. They range from established vision to non-normative works in progress, and are reviewed in roughly that order:</p>
+   <dl>
+    <dt><a href="https://www.w3.org/Consortium/mission">W3C Vision, Mission and Design Principles</a> 
+    <dd>
+     <p>Relevant for consideration here is W3C’s vision of “One web”, the focus on “web for all” including accessibility and internationalization, and “web of trust”, including security, privacy and trust more broadly. </p>
+     <p>These all map well to the UNESCO Recommendation. Trust is both enhanced by specific principles such as privacy and security, but also as the supporting text of the UNESCO Recommendation points out, by the effective operationalisation of the Recommendation as a whole. </p>
+    <dt><a href="https://www.w3.org/Guide/documentreview/#how_to_get_horizontal_review">W3C Horizontal Review Working/Interest Groups</a> 
+    <dd>
+     <p>Relevant here are the areas of activity of the horizontal review groups, as this is an indication that W3C places a high priority on the values they represent. The key ones are: accessibility, internationalization, privacy and security. </p>
+     <p>As above, these all map well to the UNESCO Recommendation. </p>
+    <dt><a href="https://w3ctag.github.io/ethical-web-principles/#principles">W3C TAG Ethical Web Principles</a> 
+    <dd>
+     <p>Architecture is not considered relevant above as an ethical value in itself, but clearly the output of the TAG, especially their Ethical Web Principles, has strong relevance. This is a non-normative document, representing the consensus view of TAG around principles to guide their work, and that of others. </p>
+     <p><a href="#appendix-comparison">Mapping these principles against the UNESCO recommendations</a>, we can see a good level of overlap. There are two that map less well (The web is multi-browser, multi-OS and multi-device; People should be able to render web content as they want) but this is because of their quite specific technical focus on consumption of the web, so is not considered a problem. </p>
+     <p>Less clear is “the web must enhance individuals control and power” - which seems most aligned with a principle of autonomy, but as noted above the UNESCO recommendation has only an implicit focus on that, with no explicit statement of it as a principle. </p>
+    <dt><a href="https://www.w3.org/TR/design-principles/">Web platform design principles</a> 
+    <dd>
+     <p>This is another TAG document which builds on the Ethical Web Principles. Relevant for consideration here are the principles in section 1: put user needs first; safety (including security and privacy and informed decision-making); trust; and meaningful consent. </p>
+     <p>Again these mostly map well to the UNESCO recommendation, with a similar note as above that informed decision-making and consent might sit most comfortably with an explicit principle of user autonomy, but can be accommodated within the other principles. </p>
+    <dt><a href="https://github.com/WebStandardsFuture/Vision">A New Focus for the W3C: Improving the Web’s Integrity</a> 
+    <dd>
+     <p>According to this document, it is “intended to be a stronger vision statement for the W3C. This is currently exposed as a work item of the W3C Advisory Board, on the AB wiki” and “builds on the basis of the Technical Architecture Group’s excellent Ethical Web Principles.” </p>
+     <p>The values and principles include many of the themes above (accessibility, security, trust), as well as some additional ones which echo the central concerns of ethical ML (transparency, equity, fairness). They generally map well to the UNESCO Recommendation. </p>
+     <p>UNESCO’s principle of “Multi-stakeholder and adaptive governance and collaboration” also aligns well with the articulation of the W3C’s purpose and identity. </p>
+     <p>The area which perhaps maps least directly is W3C’s concern with an interoperable, de-centralized web. </p>
+   </dl>
+   <h4 class="heading settled" id="summary-of-w3c-alignment"><span class="content">Summary of W3C alignment</span><a class="self-link" href="#summary-of-w3c-alignment"></a></h4>
+   <p>From the above, we can see that there is generally good alignment between the UNESCO recommendation, and the values and principles which W3C has expressed in various places. There is certainly no conflict where UNESCO is proposing anything counter to W3C’s values.</p>
+   <p>As noted, there are some areas where values expressed by W3C are not articulated directly as UNESCO principles, mainly things related to “Autonomy” and the concern with an interoperable, de-centralized web. The lack of Autonomy as a principle was also noted earlier in comparison with the EU Principles.</p>
+   <p>Given this …</p>
+   <div class="advisement no-marker">
+    <div class="marker">RECOMMENDATION</div>
+    It is proposed to supplement the UNESCO principles with an additional principle of “Autonomy”, to make more concrete the commitment in Value 1 to “Respect, protection and promotion of human rights and fundamental freedoms and human dignity”
+   </div>
+   <h2 class="heading settled" id="appendix-comparison"><span class="content">Appendix 3. Comparison of Ethics Principles</span><a class="self-link" href="#appendix-comparison"></a></h2>
+   <p>See: <a href="https://docs.google.com/spreadsheets/d/1hzOHVYlC4OfE2-UE6942LnYEgP_kJmyF3u4JJwwcNpA/edit?usp=sharing">spreadsheet</a></p>
+   <table>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
+   </table>
+  </main>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
   <h3 class="no-num no-ref heading settled" id="informative"><span class="content">Informative References</span><a class="self-link" href="#informative"></a></h3>
   <dl>
-   <dt id="biblio-about-ml">[ABOUT-ML]
-   <dd><a href="https://partnershiponai.org/about-ml-resources-library/"><cite>ABOUT ML Resources Library</cite></a>. URL: <a href="https://partnershiponai.org/about-ml-resources-library/">https://partnershiponai.org/about-ml-resources-library/</a>
-   <dt id="biblio-asbroeck2019dataownership">[ASBROECK2019DATAOWNERSHIP]
-   <dd><a href="https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership"><cite>Big Data &amp; Issues &amp; Opportunities: Data Ownership</cite></a>. 2019. URL: <a href="https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership">https://www.twobirds.com/en/news/articles/2019/global/big-data-and-issues-and-opportunities-data-ownership</a>
-   <dt id="biblio-decristofaro2020overview">[DECRISTOFARO2020OVERVIEW]
-   <dd><a href="https://arxiv.org/abs/2005.08679"><cite>An Overview of Privacy in Machine Learning</cite></a>. URL: <a href="https://arxiv.org/abs/2005.08679">https://arxiv.org/abs/2005.08679</a>
-   <dt id="biblio-ethical-web">[ETHICAL-WEB]
-   <dd>Daniel Appelquist; Hadley Beeman. <a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/"><cite>W3C TAG Ethical Web Principles</cite></a>. 27 October 2020. TAG Finding. URL: <a href="https://www.w3.org/2001/tag/doc/ethical-web-principles/">https://www.w3.org/2001/tag/doc/ethical-web-principles/</a>
-   <dt id="biblio-ethzurich2019study">[ETHZURICH2019STUDY]
-   <dd><a href="https://arxiv.org/pdf/1906.11668.pdf"><cite>Artificial Intelligence: the global landscape of ethics guidelines (preprint)</cite></a>. 2019. URL: <a href="https://arxiv.org/pdf/1906.11668.pdf">https://arxiv.org/pdf/1906.11668.pdf</a>
-   <dt id="biblio-europarl2020gdprai">[EUROPARL2020GDPRAI]
-   <dd><a href="https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530"><cite>The impact of the General Data Protection Regulation (GDPR) on artificial intelligence</cite></a>. 2020. URL: <a href="https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530">https://www.europarl.europa.eu/stoa/en/document/EPRS_STU(2020)641530</a>
-   <dt id="biblio-garcia2019energyconsumption">[GARCIA2019ENERGYCONSUMPTION]
-   <dd><a href="https://doi.org/10.1016/j.jpdc.2019.07.007"><cite>Estimation of energy consumption in machine learning</cite></a>. 2019. URL: <a href="https://doi.org/10.1016/j.jpdc.2019.07.007">https://doi.org/10.1016/j.jpdc.2019.07.007</a>
-   <dt id="biblio-harvard2020study">[HARVARD2020STUDY]
-   <dd><a href="https://dash.harvard.edu/handle/1/42160420"><cite>Principled Artificial Intelligence: Mapping Consensus in Ethical and Rights-based Approaches to Principles for AI</cite></a>. 2020. URL: <a href="https://dash.harvard.edu/handle/1/42160420">https://dash.harvard.edu/handle/1/42160420</a>
-   <dt id="biblio-mitchell2019modelcards">[MITCHELL2019MODELCARDS]
-   <dd><a href="https://arxiv.org/abs/1810.03993"><cite>Model Cards for Model Reporting</cite></a>. 2019. URL: <a href="https://arxiv.org/abs/1810.03993">https://arxiv.org/abs/1810.03993</a>
-   <dt id="biblio-smilkov2017directmanipulation">[SMILKOV2017DIRECTMANIPULATION]
-   <dd><a href="https://arxiv.org/abs/1708.03788"><cite>Direct-Manipulation Visualization of Deep Networks</cite></a>. URL: <a href="https://arxiv.org/abs/1708.03788">https://arxiv.org/abs/1708.03788</a>
-   <dt id="biblio-wasm-core-1">[WASM-CORE-1]
-   <dd>Andreas Rossberg. <a href="https://www.w3.org/TR/wasm-core-1/"><cite>WebAssembly Core Specification</cite></a>. 5 December 2019. REC. URL: <a href="https://www.w3.org/TR/wasm-core-1/">https://www.w3.org/TR/wasm-core-1/</a>
-   <dt id="biblio-webgl-2">[WEBGL-2]
-   <dd>Dean Jackson; Jeff Gilbert. <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/"><cite>WebGL 2.0 Specification</cite></a>. 12 August 2017. URL: <a href="https://www.khronos.org/registry/webgl/specs/latest/2.0/">https://www.khronos.org/registry/webgl/specs/latest/2.0/</a>
-   <dt id="biblio-webgpu">[WEBGPU]
-   <dd>Dzmitry Malyshau; Kai Ninomiya. <a href="https://www.w3.org/TR/webgpu/"><cite>WebGPU</cite></a>. 8 December 2021. WD. URL: <a href="https://www.w3.org/TR/webgpu/">https://www.w3.org/TR/webgpu/</a>
-   <dt id="biblio-webnn">[WEBNN]
-   <dd>Ningxin Hu; Chai Chaoweeraprasit. <a href="https://www.w3.org/TR/webnn/"><cite>Web Neural Network API</cite></a>. 25 November 2021. WD. URL: <a href="https://www.w3.org/TR/webnn/">https://www.w3.org/TR/webnn/</a>
-   <dt id="biblio-weforum2018study">[WEFORUM2018STUDY]
-   <dd><a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf"><cite>How to Prevent Discriminatory Outcomes in Machine Learning</cite></a>. 2018. URL: <a href="https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf">https://www3.weforum.org/docs/WEF_40065_White_Paper_How_to_Prevent_Discriminatory_Outcomes_in_Machine_Learning.pdf</a>
-   <dt id="biblio-weizenbaum1976cpahr">[WEIZENBAUM1976CPAHR]
-   <dd><cite>Computer Power and Human Reason: From Judgment to Calculation</cite>. 1976. 
+   <dt id="biblio-ai4people">[AI4People]
+   <dd>Floridi et al. <a href="https://link.springer.com/article/10.1007/s11023-018-9482-5"><cite>AI4People - An Ethical Framework for a Good AI Society: Opportunities, Risks, Principles, and Recommendations</cite></a>. URL: <a href="https://link.springer.com/article/10.1007/s11023-018-9482-5">https://link.springer.com/article/10.1007/s11023-018-9482-5</a>
+   <dt id="biblio-bourtoule">[Bourtoule]
+   <dd>Bourtoule, L. et al. <a href="https://arxiv.org/pdf/1912.03817.pdf"><cite>Machine Unlearning</cite></a>. URL: <a href="https://arxiv.org/pdf/1912.03817.pdf">https://arxiv.org/pdf/1912.03817.pdf</a>
+   <dt id="biblio-cdei">[CDEI]
+   <dd><a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/938857/Summary_Slide_Deck_-_CDEI_review_into_bias_in_algorithmic_decision-making.pdf"><cite>Review into Bias in Algorithmic Decision-Making</cite></a>. URL: <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/938857/Summary_Slide_Deck_-_CDEI_review_into_bias_in_algorithmic_decision-making.pdf">https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/938857/Summary_Slide_Deck_-_CDEI_review_into_bias_in_algorithmic_decision-making.pdf</a>
+   <dt id="biblio-crawford">[Crawford]
+   <dd>Crawford, K. <a href="https://www.youtube.com/watch?v=fMym_BKWQzk"><cite>The trouble with bias</cite></a>. URL: <a href="https://www.youtube.com/watch?v=fMym_BKWQzk">https://www.youtube.com/watch?v=fMym_BKWQzk</a>
+   <dt id="biblio-egtai">[EGTAI]
+   <dd><a href="https://www.aepd.es/sites/default/files/2019-12/ai-ethics-guidelines.pdf"><cite>Ethics Guidelines for Trustworthy AI</cite></a>. URL: <a href="https://www.aepd.es/sites/default/files/2019-12/ai-ethics-guidelines.pdf">https://www.aepd.es/sites/default/files/2019-12/ai-ethics-guidelines.pdf</a>
+   <dt id="biblio-fast">[FAST]
+   <dd><a href="https://w3c.github.io/apa/fast/checklist.html"><cite>Framework for Accessibility in the Specification of Technologies</cite></a>. URL: <a href="https://w3c.github.io/apa/fast/checklist.html">https://w3c.github.io/apa/fast/checklist.html</a>
+   <dt id="biblio-fatml">[FATML]
+   <dd><a href="https://www.fatml.org/resources/principles-for-accountable-algorithms"><cite>Principles for Accountable Algorithms</cite></a>. URL: <a href="https://www.fatml.org/resources/principles-for-accountable-algorithms">https://www.fatml.org/resources/principles-for-accountable-algorithms</a>
+   <dt id="biblio-gall">[Gall]
+   <dd>Gall, R.. <a href="https://www.kdnuggets.com/2018/12/machine-learning-explainability-interpretability-ai.html#:~:text=Interpretability%20is%20about%20the%20extent,be%20observed%20within%20a%20system.&amp;text=Explainability%2C%20meanwhile%2C%20is%20the%20extent,be%20explained%20in%20human%20terms."><cite>Machine Learning Explainability vs Interpretability: Two concepts that could help restore trust in AI</cite></a>. URL: <a href="https://www.kdnuggets.com/2018/12/machine-learning-explainability-interpretability-ai.html#:~:text=Interpretability%20is%20about%20the%20extent,be%20observed%20within%20a%20system.&amp;text=Explainability%2C%20meanwhile%2C%20is%20the%20extent,be%20explained%20in%20human%20terms.">https://www.kdnuggets.com/2018/12/machine-learning-explainability-interpretability-ai.html#:~:text=Interpretability%20is%20about%20the%20extent,be%20observed%20within%20a%20system.&amp;text=Explainability%2C%20meanwhile%2C%20is%20the%20extent,be%20explained%20in%20human%20terms.</a>
+   <dt id="biblio-leslie">[Leslie]
+   <dd>Leslie D.. <a href="https://www.turing.ac.uk/sites/default/files/2019-08/understanding_artificial_intelligence_ethics_and_safety.pdf"><cite>Understanding artificial intelligence ethics and safety</cite></a>. URL: <a href="https://www.turing.ac.uk/sites/default/files/2019-08/understanding_artificial_intelligence_ethics_and_safety.pdf">https://www.turing.ac.uk/sites/default/files/2019-08/understanding_artificial_intelligence_ethics_and_safety.pdf</a>
+   <dt id="biblio-mehrabi">[Mehrabi]
+   <dd>Ninareh Mehrabi; et al. <a href="https://arxiv.org/pdf/1908.09635.pdf"><cite>A Survey on Bias and Fairness in Machine Learning</cite></a>. URL: <a href="https://arxiv.org/pdf/1908.09635.pdf">https://arxiv.org/pdf/1908.09635.pdf</a>
+   <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
+   <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. 16 December 2021. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
+   <dt id="biblio-smuha">[Smuha]
+   <dd>Smuha, N.. <a href="https://policyreview.info/pdf/policyreview-2021-3-1574.pdf"><cite>Beyond the individual: governing AI’s societal harm</cite></a>. URL: <a href="https://policyreview.info/pdf/policyreview-2021-3-1574.pdf">https://policyreview.info/pdf/policyreview-2021-3-1574.pdf</a>
+   <dt id="biblio-suresh">[Suresh]
+   <dd>Suresh. <a href="https://arxiv.org/pdf/1901.10002.pdf"><cite>A Framework for Understanding Sources of Harm throughout the Machine Learning Life Cycle</cite></a>. URL: <a href="https://arxiv.org/pdf/1901.10002.pdf">https://arxiv.org/pdf/1901.10002.pdf</a>
+   <dt id="biblio-treviranus">[Treviranus]
+   <dd>Jutta Treviranus. <a href="https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html"><cite>We Count: Fair Treatment, Disability and Machine Learning</cite></a>. URL: <a href="https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html">https://www.w3.org/2020/06/machine-learning-workshop/talks/we_count_fair_treatment_disability_and_machine_learning.html</a>
+   <dt id="biblio-unesco">[UNESCO]
+   <dd><a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455"><cite>Recommendation on the Ethics of Artificial Intelligence</cite></a>. URL: <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455">https://unesdoc.unesco.org/ark:/48223/pf0000380455</a>
+   <dt id="biblio-vallor">[Vallor]
+   <dd>Vallor; Green; Raicu. <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac"><cite>Overview of Ethics in Tech Practice</cite></a>. URL: <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac">https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac</a>
+   <dt id="biblio-vaughan">[Vaughan]
+   <dd>Wortman; Vaughan; Wallach. <a href="http://www.jennwv.com/papers/intel-chapter.pdf"><cite>A Human-Centered Agenda for Intelligible Machine Learning</cite></a>. URL: <a href="http://www.jennwv.com/papers/intel-chapter.pdf">http://www.jennwv.com/papers/intel-chapter.pdf</a>
+   <dt id="biblio-weidinger">[Weidinger]
+   <dd>Weidinger et al. <a href="https://arxiv.org/pdf/2112.04359.pdf"><cite>Ethical and social risks of harm from Language Models</cite></a>. URL: <a href="https://arxiv.org/pdf/2112.04359.pdf">https://arxiv.org/pdf/2112.04359.pdf</a>
+   <dt id="biblio-xue">[Xue]
+   <dd>M. Xue; et al. <a href="https://ieeexplore.ieee.org/document/9064510"><cite>Machine Learning Security: Threats, Countermeasures, and Evaluations</cite></a>. URL: <a href="https://ieeexplore.ieee.org/document/9064510">https://ieeexplore.ieee.org/document/9064510</a>
   </dl>
