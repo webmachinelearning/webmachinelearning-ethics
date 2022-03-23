@@ -510,11 +510,11 @@ Thankfully, applied ethics also concerns itself with the development of tools to
 
 This note will do the same - it will propose a set of ethical principles for Web ML, and offer guidance on how to turn those principles into practice.
 
-(For those interested to explore further, 
+For those interested to explore further:
 
 - the Markkula Center has a [useful and comprehensive set of resources](https://www.scu.edu/ethics-in-technology-practice/) devoted to technology ethics and translating principles into practice.
 - The University of Helsinki has a free MOOC on [Ethics of AI](https://ethics-of-ai.mooc.fi/) 
-- Another good MOOC is the University of Edinburgh / EdX course [Data Ethics, AI and Responsible Innovation(https://www.edx.org/course/Data-Ethics-AI-and-Responsible-Innovation)
+- Another good MOOC is the University of Edinburgh / EdX course [Data Ethics, AI and Responsible Innovation](https://www.edx.org/course/Data-Ethics-AI-and-Responsible-Innovation)
 
 
 ## 1.2 Why and how does ethics apply to machine learning?
