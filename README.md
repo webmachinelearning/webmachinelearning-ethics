@@ -1,4 +1,4 @@
-# Ethical Web Machine Learning
+# Ethical Principles for Web Machine Learning
 
 This repository hosts the Editor's Draft that documents ethical issues associated with using Machine Learning on the Web, to help identify what mitigations its normative specifications should take into account.
 
