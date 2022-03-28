@@ -207,7 +207,7 @@ Fairness is often a lens through which to make sense of other ethical concerns. 
 
 Fairness is about both outcomes and process. Outcomes should involve the fair distribution of benefits and costs, and the avoidance of unfair bias or arbitrary decisions. Procedural elements of fairness include involving communities that will be affected by ML outputs in decisions about how the systems are designed and used, and ensuring there is the ability to contest and seek redress for decisions made by ML.
 
-Fairness could also arguably justify bias - for example biasing a system to favour people who have been historically marginalised, in order to achieve an outcome which is in some sense equal or fair.
+Fairness (or equity, which is the quality of being fair) could also arguably justify bias - for example biasing a system to favour people who have been historically marginalised, in order to achieve an outcome which is in some sense equal or fair.
 
 Another important aspect of fairness is the distribution of access to computationally complex ML approaches, and the benefits that come from access. People living in countries with less powerful or functioning infrastructure, or who cannot access sufficient computing power, may be unfairly disadvantaged. 
 
