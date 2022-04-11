@@ -8,6 +8,7 @@ Repository: webmachinelearning/ethical-webmachinelearning
 TR: https://w3.org/TR/ethical-webmachinelearning
 URL: https://webmachinelearning.github.io/ethical-webmachinelearning
 Editor: James Fletcher, BBC
+Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Boilerplate: conformance no, index no, issues-index no
 Abstract: This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases. The whole document is open for comment and review, but input is particularly sought on Sections 3, 4 and 5. 
 Status Text: This is a document to enable consultation and stakeholder input into the Web Machine Learning Working Group’s Note on Ethical Principles for Web Machine Learning.  This document is aimed to be published by the [Machine Learning Working Group](https://www.w3.org/groups/wg/webmachinelearning) as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.
