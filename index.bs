@@ -387,7 +387,7 @@ See also [[security-privacy-questionnaire]].
 
 <h4 class=no-num>PRINCIPLE 6) Transparency and explainability</h4>
 
-ML actors and systems should support transparency and explainability. It should always be possible to determine how a web ML application was built and how the code works. 
+ML actors and systems should support transparency and explainability. It should always be possible to determine how a web ML application was built and how the code works, in line with the "view source" ethos of the web. 
 
 Users and third-parties such as civil society groups and researchers should be able to audit and inspect ML systems for security, privacy, bias, fairness and other ethical concerns outlined in these principles.
 
