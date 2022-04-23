@@ -366,6 +366,8 @@ For further guidance on accessibility, see  the draft checklist to support Frame
 
 ML systems should respect and enhance human autonomy. This includes enabling meaningful agency, control and choice. Users should give informed consent before Web ML is used.
 
+ML systems could be used to manipulate and deceive people, complicate isolation, and encourage addictive behaviors. ML actors should mitigate against these potential abuses and patterns when creating ML systems, and avoid introducing technologies that increase the chance of people being harmed in this way.
+
 
 <h4 class=no-num>PRINCIPLE 4) Right to Privacy, and Data Protection</h4>
 
