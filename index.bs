@@ -380,7 +380,7 @@ For further guidance on privacy, see [[security-privacy-questionnaire]].
 
 <h4 class=no-num>PRINCIPLE 5) Safety and security</h4>
 
-Unwanted harms (safety risks), as well as vulnerabilities to attack (security risks) should be avoided and should be addressed, prevented and eliminated throughout the life cycle of ML systems to ensure human, environmental and ecosystem safety and security. ML actors should ensure that systems are reliable and robust, and should make sure that users understand any risks they are taking when using an application.
+Unwanted harms (safety risks), as well as vulnerabilities to attack (security risks) should be avoided and should be addressed, prevented and eliminated throughout the life cycle of ML systems to ensure human, environmental and ecosystem safety and security. ML actors should ensure that systems are accurate, reliable and robust over their entire life-cycle, and should make sure that users understand any risks they are taking when using an application.
 
 See also [[security-privacy-questionnaire]].
 
