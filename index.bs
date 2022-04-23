@@ -26,6 +26,11 @@ Markup Shorthands: markdown yes
     "title": "Framework for Accessibility in the Specification of Technologies",
     "publisher": "W3C Accessible Platform Architectures Working Group"
 },
+  "WCAG": {
+    "href": "https://www.w3.org/TR/WCAG21",
+    "title": "Web Content Accessibility Guidelines (WCAG) 2.1",
+    "publisher": "W3C Accessible Platform Architectures Working Group"
+},
   "CDEI": {
      "href":
      "https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/938857/Summary_Slide_Deck_-_CDEI_review_into_bias_in_algorithmic_decision-making.pdf",
@@ -359,7 +364,7 @@ ML actors should minimize and avoid reinforcing or perpetuating bias and discrim
 
 This principle also applies to access to web ML systems: they should be fully accessible to people with disabilities, appropriately localized, and accommodate people on low bandwidth networks and with low specification equipment. 
 
-For further guidance on accessibility, see  the draft checklist to support Framework for Accessibility in the Specification of Technologies [[FAST]].
+For further guidance on accessibility, see the Web Content Accessibility Guidelines (WCAG) 2.1 [[WCAG]], or consult the Accessible Platform Architectures (APA) Working Group.
 
 
 <h4 class=no-num>PRINCIPLE 3) Autonomy</h4>
