@@ -298,7 +298,7 @@ Harms can also take a number of forms. These can include:
 
 # Ethical Principles for Web ML
 
-The following ethical values and principles are taken from the UNESCO [Recommendation on the Ethics of Artificial Intelligence](https://unesdoc.unesco.org/ark:/48223/pf0000380455) [[UNESCO]]. They were developed through a global, multi-stakeholder process, and have been ratified by 193 countries. An additional principle of ‘Autonomy’ has been added, and the principles have been re-ordered. For more on why these have been adopted, see [[#appendix-unesco]].
+The following ethical values and principles are taken from the UNESCO [Recommendation on the Ethics of Artificial Intelligence](https://unesdoc.unesco.org/ark:/48223/pf0000380455) [[UNESCO]]. They were developed through a global, multi-stakeholder process, and have been ratified by 193 countries. There are four high level values, and ten more detailed principles, to which we've added an additional, explicit principle of ‘Autonomy’. For more on why these have been adopted, see [[#appendix-unesco]].
 
 These values and principles should drive the development, implementation and adoption of specifications for Web Machine Learning. They include guidance (adapted from UNESCO and W3C sources) which provides further detail on how the values and principles should be interpreted in the W3C web machine learning context. 
 
