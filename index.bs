@@ -393,7 +393,7 @@ Users and third-parties such as civil society groups and researchers should be a
 
 ML actors should inform users when a product or service is provided directly or with the assistance of ML, and users should be fully informed when a significant decision is informed by or is made on the basis of ML. They should be able to access the reasons for a decision affecting their rights and freedoms, and ML actors should provide means for users to request review and correction of these decisions.
 
-ML systems and outcomes should be explainable. ML actors should promote tools and approaches that enhance explainability and meaningful user control.
+ML systems and outcomes should be explainable. ML actors should also provide clear explantions of the benefits and risks of different ways of accessing ML capabilities (e.g. client vs server-side inference). ML actors should promote tools and approaches that enhance explainability and meaningful user control.
 
 ML actors should also be transparent about the steps they have taken to consider and implement these ethical principles. 
 
