@@ -371,7 +371,7 @@ ML systems could be used to manipulate and deceive people, complicate isolation,
 
 <h4 class=no-num>PRINCIPLE 4) Right to Privacy, and Data Protection</h4>
 
-ML systems should be designed and implemented to ensure that privacy and personal information is protected throughout the life cycle of the application. ML actors ensure they are accountable for this, and should conduct adequate privacy impact assessments, and implement privacy by design approaches. 
+ML systems should be designed and implemented to ensure that privacy and personal information is protected throughout the life cycle of the application. This includes training data - ML models should not be used if their training data has violated privacy. ML actors should ensure they are accountable for this, and should conduct adequate privacy impact assessments, and implement privacy by design approaches. 
 
 Data should be collected, used, shared, archived and deleted in ways that are consistent with local and international law.
 
