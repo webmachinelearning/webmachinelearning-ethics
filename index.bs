@@ -687,3 +687,28 @@ Given this …
 # Appendix 3. Comparison of Ethics Principles # {#appendix-comparison}
 
 See: [spreadsheet](https://docs.google.com/spreadsheets/d/1hzOHVYlC4OfE2-UE6942LnYEgP_kJmyF3u4JJwwcNpA/edit?usp=sharing)
+
+# Acknowledgments
+
+A diverse group of experts have contributed to this document. Thanks to
+Ada Rose Cannon,
+Angel Li,
+Anssi Kostiainen,
+Christine Runnegar,
+Dan Appelquist,
+Dominique Hazael-Massieux,
+Hadley Beeman,
+Humera Minhas,
+James Fletcher,
+Janina Sajka,
+Jason White
+Joey Lee,
+Jonathan Bingham,
+Matthew Atkinson,
+Michael Cooper,
+Ningxin Hu,
+Rafael Cintron,
+Robin Berjon,
+Stephen Beckett,
+Tzviya Siegman,
+and many others for their feedback and comments.
