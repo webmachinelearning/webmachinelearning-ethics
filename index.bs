@@ -331,7 +331,7 @@ Environmental and ecosystem flourishing should be recognized, protected and prom
 
 <h4 class=no-num>VALUE 3) Ensuring diversity and inclusiveness</h4>
 
-Respect, protection and promotion of diversity and inclusiveness should be ensured throughout the life cycle of ML systems. This may be done by enabling the active participation of all individuals or groups, regardless of lifestyle choices, beliefs, opinions, expressions or personal  experiences.This should include the meaningful option not to use ML systems. ML users should not be disadvantaged because they lack necessary technological  infrastructure,  education  or  skills.
+Respect, protection and promotion of diversity and inclusiveness should be ensured throughout the life cycle of ML systems. This may be done by enabling the active participation of all individuals or groups, regardless of identity, lifestyle choices, beliefs, opinions, expressions or personal experiences. This should include the meaningful option not to use ML systems. ML users should not be disadvantaged because they lack necessary technological infrastructure, education or skills.
 
 <h4 class=no-num>VALUE 4) Living in peaceful, just and interconnected societies</h4>
 
@@ -355,7 +355,9 @@ ML actors should prioritize potential benefits for users over potential benefits
 
 The benefits of ML systems should be available and accessible to all.
 
-ML actors should minimize and avoid reinforcing or perpetuating bias and discrimination, particularly against vulnerable and historically marginalised groups.They should ensure that the outcomes of ML applications are fair, and that effective remedy is available against discrimination and biased algorithmic determination. ML systems should work equally well for all users, and where this is not true for 'outliers', fallback solutions should be provided.
+ML actors should minimize and avoid reinforcing or perpetuating bias and discrimination, particularly against vulnerable and historically marginalised groups. This includes but is not limited to bias based on gender, gender identity and gender expression, sexual orientation, disability (both visible and invisible), mental health, neurotype, physical appearance, body, age, race, socio-economic status, ethnicity, caste, nationality, language, or religion.
+
+ML actors should ensure that the outcomes of ML applications are fair, and that effective remedy is available against discrimination and biased algorithmic determination. ML systems should work equally well for all users, and where this is not true for 'outliers', fallback solutions should be provided.
 
 This principle also applies to access to web ML systems: they should be fully accessible to people with disabilities, appropriately localized, and accommodate people on low bandwidth networks and with low specification equipment. 
 
