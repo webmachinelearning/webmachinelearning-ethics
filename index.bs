@@ -331,7 +331,7 @@ Environmental and ecosystem flourishing should be recognized, protected and prom
 
 <h4 class=no-num>VALUE 3) Ensuring diversity and inclusiveness</h4>
 
-Respect, protection and promotion of diversity and inclusiveness should be ensured throughout the life cycle of ML systems. This may be done by enabling the active participation of all individuals or groups, regardless of identity, lifestyle choices, beliefs, opinions, expressions or personal  experiences.This should include the meaningful option not to use ML systems. ML users should not be disadvantaged because they lack necessary technological  infrastructure,  education  or  skills.
+Respect, protection and promotion of diversity and inclusiveness should be ensured throughout the life cycle of ML systems. This may be done by enabling the active participation of all individuals or groups, regardless of identity, lifestyle choices, beliefs, opinions, expressions or personal experiences. This should include the meaningful option not to use ML systems. ML users should not be disadvantaged because they lack necessary technological infrastructure, education or skills.
 
 <h4 class=no-num>VALUE 4) Living in peaceful, just and interconnected societies</h4>
 
