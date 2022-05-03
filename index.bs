@@ -29,7 +29,7 @@ Markup Shorthands: markdown yes
   "WCAG": {
     "href": "https://www.w3.org/TR/WCAG21",
     "title": "Web Content Accessibility Guidelines (WCAG) 2.1",
-    "publisher": "W3C Accessible Platform Architectures Working Group"
+    "publisher": "W3C Accessibility Guidelines Working Group"
 },
   "CDEI": {
      "href":
