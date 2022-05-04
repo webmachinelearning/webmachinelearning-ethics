@@ -442,40 +442,474 @@ Where tensions arise between the principles above, they should be resolved throu
 Web ML specifications and systems should support open standards and interoperability.
 
 
-# Operationalization: Putting the Principles into Practice (WIP)
-This section will offer practical guidance on how to operationalize the values and principles above.
+# Operationalization: Putting the Principles into Practice
 
-It will outline a process that ML actors can follow to use the principles to think through specific risks and mitigations relevant to their specific use case. 
+The principles outlined above help map out the major areas of ethical concern, and the guidance starts to fill in some detail. But by themselves, the principles and guidance risk being too abstract and achieving nothing concrete.
 
-It will also start to gather general, high-level risks and mitigations that can be a starting point and guide for operationalizing the principles.
+What matters most for making any approach to ML ethical is to operationalize the principles - to turn them into concrete actions. This section offers practical guidance on how to do that.
 
-<div class=note>The table below makes a start on this … Reviewers / commenters are also invited to add to the table from their own knowledge and expertise. This will be further supplemented with some group brainstorming sessions.</div>
+One way to make an ethical approach concrete is through process. This often takes the form of checklists to consider and apply throughout the life-cycle of developing an ML system, and covers aspects such as ensuring diversity on teams and consultation with stakeholders as well as areas more specific to the technical development of the ML system.
 
-<table class=data>
-<thead>
-<tr><th>Principle</th><th>Risks</th><th>Possible Mitigations</th></tr>
-</thead>
-<tbody>
-<tr><th>Proportionality and Do No Harm</th><td></td><td></td>
-<tr><th rowspan=2>Fairness and non-discrimination</th><td><p>Scaling up ML via browsers creates risks of scaling up bias issues linked to ML training.</p><p></p><p>ML approaches optimize for the majority, leaving minorities and underrepresented groups at risk of harm or sub-optimal service (see e.g. [[Treviranus]])</p><p></p><p></p><p></p></td><td>Browser-assisted mechanisms to find out about the limitations and performance characteristics of ML models used in a Web app. This would build on an approach published in Model Cards for Model Reporting where making this report machine-discoverable would allow for the web browser to offer a more integrated user experience.<td>
-<tr><td>Differences in Internet connection speeds across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations.</td><td>This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models. </td>
-<tr><th>Autonomy</th><td></td><td>Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.</td>
-<tr><th>Right to Privacy, and Data Protection</th><td></td><td>requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.</td>
-<tr><th>Safety and security</th><td></td><td></td>
-<tr><th rowspan=2>Transparency and explainability</th><td></td><td><p>Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of "view source" principle.</p><p></p><p>Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.</p></td>
-<tr><td></td><td>Integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.</td>
-<tr><th>Responsibility and accountability</th><td></td><td></td>
-<tr><th>Sustainability</th><td>Web ML applications are compute / energy intensive, and widespread adoption exacerbates environmental problems.</td><td>Opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed Compute Pressure API.</td>
-<tr><th>Human oversight and determination</th><td></td><td></td>
-<tr><th>Awareness and literacy</th><td></td><td></td>
-<tr><th>Multi-stakeholder and adaptive governance and collaboration</th><td></td><td></td>
-</tbody>
-<table>
+In time this document may evolve to become a checklist for ML actors to work through. For now, those looking for an example of this sort of process guidance could find numerous examples on the web - one worth looking at is the [ICO AI and data protection risk toolkit](https://ico.org.uk/for-organisations/guide-to-data-protection/key-dp-themes/guidance-on-ai-and-data-protection/ai-and-data-protection-risk-toolkit/). The ICO is the UK’s information rights and data privacy regulator. Their toolkit aims to help actors comply with UK Data protection law (similar to GDPR) when building AI. It contains a useful checklist of practical steps to mitigate risk.
 
-**What happens if principles are in conflict or tension with each other?** From UNESCO:
+As well as the full-cycle process, perhaps the most important single activity in developing ML systems ethically is thinking through the specific risks and mitigations for any proposed approach. There are a number of different ways to do this, including [Consequence Scanning](https://doteveryone.org.uk/project/consequence-scanning/), [Harms Modelling](https://docs.microsoft.com/en-us/azure/architecture/guide/responsible-innovation/harms-modeling/) and Algorithmic Impact Assessments (e.g. [this Candian government AIA](https://www.canada.ca/en/government/system/digital-government/digital-government-innovations/responsible-use-ai/algorithmic-impact-assessment.html)).
 
-<blockquote>While all the values and principles … are desirable per se, in any practical contexts, there may be tensions between these values and principles. In any given situation, a contextual assessment will be necessary to manage potential tensions, taking into account the principle of proportionality and in compliance with human rights and fundamental freedoms … To navigate such scenarios judiciously will typically require engagement with a broad range of appropriate stakeholders, making use of social dialogue, as well as ethical deliberation, due diligence and impact assessment.</blockquote>
+At its simplest, the core approach is to take known areas of concern - as laid out by the principles and guidance - and for each of them think through what could go wrong (consequences/risks/harms), and what measures could be put in place to prevent that or minimise impact (mitigations).
 
+So for example, if we consider the principle of “Fairness and non-dicrimination”, a risk might be that biases in training data lead to model predictions that are less accurate for particular groups, resulting in real-world harms (e.g. denial of services). A mitigation might be to test the training data and model properly for bias, or indeed it might be to not make access to essential services dependent on ML systems.
+
+To provide a more structured approach to this, we have developed a workshop format which you can adapt and use.
+
+The workshop is in two parts (please make a copies for your own use):
+
+Part One - [Ethical thinking workshop](https://docs.google.com/document/d/1f_PcByjW8-zXbYWeEyOl-RpZ3SKapm_MWSaNZ9ZOi4c/edit?usp=sharing) - is about using the principles to generate and prioritize potential risks
+
+Part Two - [Ethical Risk Canvas](https://docs.google.com/document/d/1hTQnpWC5KC4qIJB9-Kkd46yMVgDuTCQlA3MffqtUbCI/edit?usp=sharing) - is about digging deeper into specific risks and thinking about who they might impact and how best to mitigate them.
+
+The linked documents contain full instructions for how to use and facilitate the workshop. The format can be used in a number of ways:
+
+- SINGLE WORKSHOP: Follow the timings for a single workshop to generate a broad overview of risks across all principles. You won’t get a lot of time to dive into mitigations for more than a couple of risks.
+
+- MULTIPLE WORKSHOPS: If you want to spend more time thinking about risks and ensure that you identify mitigations for more risks, consider running a longer version of this workshop. For example the workshop could be run as 2 x 1h 30min sessions each around one of the activities. If you do have more time, give slightly more time to the activities and even more time to discussions. Be generous with breaks to help everyone stay fresh and engaged.
+
+- DEEP DIVE: The activities in this workshop could also be used as a part of a longer term process by a team to thoroughly evaluate and consider the ethical risks and impacts of their project. For example, you might start by running a series of workshops to quickly gather high level thoughts about risks using the main workshop. Then, over a longer period, use workshops focused on just one or two principles to methodically build out the risks for each principle, prioritize them and explore mitigations for all prioritized risks using the Risk Canvas.
+
+It’s worth noting that the best tools for operationalization might depend on an actor’s role in the ML eco-system - for standards writers, specific thinking about risks and mitigations will be most useful. For developers, responsible ML checklists covering the product life-cycle will also be important.
+
+## What about when there’s conflict between principles or the interests of stakeholders?
+
+In ethics there are often no easy answers. Ethical problems often don’t have neat, permanent solutions. Principles may be in conflict or tension with each other - for example having more data about non-typical users to tailor solutions to them (for fairness purposes) might come at the expense of privacy. The views of different stakeholders affected by any ML system will need to be balanced. And those views and wider values will change and evolve over time.
+
+On balancing all these things, UNESCO says:
+
+>In any given situation, a contextual assessment will be necessary to manage potential tensions, taking into account the principle of proportionality and in compliance with human rights and fundamental freedoms … To navigate such scenarios judiciously will typically require engagement with a broad range of appropriate stakeholders, making use of social dialogue, as well as ethical deliberation, due diligence and impact assessment.
+
+As this suggests, referring to the higher level values such as fundamental human rights and freedoms might help. Fairness is often a useful guide to balancing competing interests and values. Bear in mind W3C’s [priority of constituencies](https://www.w3.org/TR/design-principles/#priority-of-constituencies).
+
+And process is often as important as outcome. The principles in this document don’t just cover what issues you should think about (such as bias) but also importantly suggest how an ethical process should be run - ideally it should involve diverse participants, consult affected stakeholders, be open, democratic and transparent (so keep a record of the process and ideally make the results publicly available) and open to contestation.
+
+# Register of Risks and Mitigations
+
+Note: The risk register is work in progress and welcomes further review and tidying up.
+
+ML actors are encouraged to go through their own process of thinking through the risks and mitigations for any ML system they are developing. The wide range of possible use-cases, and the rapid pace of development of ML technology, mean that any pre-existing list of risks and migitations will never be complete. Mitigations will also vary according to an ML actor’s position in the ecosystem - developers will have different responsibilities and influence than specification writers.
+
+However, such a list is useful for a number of reasons. It can save time and re-inventing the wheel, and also allow for best practice to be captured and shared.
+
+So this section is for gathering risks and mitigations as they are identified, and in time should develop into a register of key Web-ML risks and mitigations.
+
+
+## Proportionality and Do No Harm
+
+### Risks
+
+1. Malicious apps are easier to accidentally launch on the Web (trying to think about how ML on the Web is different from ML in Android/iOS apps or installed Windows/MacOS apps or via remote API calls.)
+
+1. Might be used by malicious actors to hijack CPU.
+
+1. Might be used for more sophisticated manipulation of people and their attention.
+
+### Possible Mitigations
+
+1.
+
+1.
+
+1.
+
+
+## Fairness and non-discrimination
+
+### Risks
+
+1. Scaling up ML via browsers creates risks of scaling up bias issues linked to ML training.
+
+1. ML approaches optimize for the majority, leaving minorities and underrepresented groups at risk of harm or sub-optimal service (see e.g. Treviranus)
+
+1. Differences in Internet connection speeds across geographical locations and large size of production-grade models means the user experience of on-device inference is not equal in all locations.
+
+1. Speech recognition must recognize different accents, including regional, ethnic, and “accents” arising from a person’s disability - a focus on “mostly fair but left out the edges” will result in massive discrimination
+
+1. Bias in ML training can a) make ML non-useful to some people by effectively not recognizing their personhood, or b) interfere with ability to conduct tasks efficiently, effectively, or at all, or c) create a new digital divide of ML haves and have-nots
+
+1. That the WebML Working Group has very little control over models … is it able to influence those who do build them enough to ensure this principle is operationalised
+
+1. Imagine doing ML-based captions: this raises issues about accuracy, efficiency, but also burden-shifting: if the captioning is happening on the local device, it may create burdens for the people that are the least able to change it while being the typical target.
+
+1. One cannot rely on simple classifications of individuals into homogeneous social groups (e.g., binary gender ca categorizations that exclude non-binary individuals). In particular, disability is characterized by diversity, and not by any property that distinguishes people who have from those who do not have disabilities.
+
+1. There are also important issues of “proxy discrimination” that have been brought out in the literature, and which should be considered (i.e., machine learning systems that discover protected classes of persons even in cases in which such classifications and obvious proxies for them are excluded from the data used in training).
+
+1. One example is how geographic pricing is employed by companies like Amazon – e.g. depending on where your IP address is located to or depending on your device type, different prices are presented to shoppers – it’s a question if this is unethical or unlawful, but it is something that is happening and also begs to question whether or not this is something we want to speak to → taken further you can also imagine reducing service based on geography or hardware or other factors in a way that is automated through ML systems
+
+### Possible Mitigations
+
+1. Browser-assisted mechanisms to find out about the limitations and performance characteristics of ML models used in a Web app. This could build on an approach published in Model Cards for Model Reporting where making this report machine-discoverable would allow for the web browser to offer a more integrated user experience. Another transparency tool is the [Open Ethics Transparency Protocol](https://github.com/webmachinelearning/ethical-webmachinelearning/issues/6).
+
+1. ML actors should  provide fallback solutions for these inevitabilities.
+
+1. This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+
+## Autonomy
+
+### Risks
+
+1.
+
+1. That browsers will cease to be *user agents*. Autonomy is a key differentiator for the web vs. alternative content and app platforms.
+
+1. Users have lesser and lesser control on what we see and who sees us. We’re tracked by 1st and 3rd parties and we see what others want us to see (e.g. ads). Hence, based on the the principle: people should be able to render content as they want, not only should ML systems take care of that, but also help in countering this global problem
+
+1. Black boxes of ML models might negatively impact the ability of Web Extensions to bring more control (and thus autonomy) to end-users for their experience on the Web
+
+1. Web accessibility can enhance individual autonomy, by making more aspects of life “self-serve”. It can also destroy autonomy, by designing only for the middle and “leaving others out in the cold” as society adopts the ML over other ways of accomplishing objectives.
+
+1. ML in the Web could very well be used to enhance user’s capabilities by acting as an assistant in a privacy preserving way. I.e. generating calendar events from emails or websites without sending information back up to the servers. <p>It could erase their autonomy by being used against them by the website using the ML as a gatekeeper before providing human access. I.e. How chatbots are used today. <p>Users would be wary to give consent when something which can help them can be equally used to control them or restrict access.
+
+1. Cannot fully enforce informed consent requirement for the web for ML. E.g. inference with generic WebGL/Wasm capabilities possible without consent, even if purpose-built APIs would require informed consent.
+
+1. Web ML systems are used without informed user consent
+
+1. Browser standards like MV3 makes the implementation harder
+
+1. Example: ML / IOT devices will be used with the intention of increasing autonomy of e.g., aging people, people with disabilities, etc., but have the risk of instead reducing autonomy if it’s not usable as designed to some users due to bias etc.
+
+1. Corporate priorities will constantly be against user choice (autonomy), things like making it very difficult to choose a different option than the corporation wants users to make could easily become worse in ML scenarios
+
+1. Function creep - that a user consents to data / access / use of ML in one context, but then the use is extended beyond that context without explicit consent.
+
+1. Permission / Decision fatigue is another risk, if we ask people to explicitly allow every new web feature that could be abused. It’s a hard tradeoff. By asking for explicit decisions, we might actually reduce the chance that people are making informed decisions, because they are cognitively overloaded and don’t have the time or mental energy to really understand the implications.<p>Browsers today do not ask user consent for things like JavaScript usage, Wasm, WebGL, WebGPU, web workers, etc. All of those can be used to perform “ML”.
+
+1. Permission/consent should definitely be sought from users when accessing sensitive information about their computer or environment. Cameras, Bluetooth devices, microphones, location, controllers, gamepads, and XR devices should all be under permission prompts.
+
+1. Does this include informing users about the capabilities and limitations of the system, as well as the associated risks? Informed choice needs to be guided by an understanding of capabilities, limitations, and how the system should fit into the social context in which it is intended to be used.
+
+1. People might feel that their trust is betrayed if they don’t know what a web app is doing with their data. This isn’t specific to Web ML, perhaps, but it’s more salient, or more in the news.<p>It can be hard to explain why someone might want to enable Web ML. Eg, it’s actually safer, because your personal data will remain on your device and won’t be sent to remote servers. You’ll have a better experience or new features in the web app.
+
+### Possible Mitigations
+
+1. Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1. See <a href="#user-consent-mitigations">user consent mitigations</a>
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+#### User consent mitigations
+
+Things that *end users* could be asked to do…
+- Growing awareness about the risks (like phishing)
+- Surfacing the value of data that users share for ML can be re-used in different contexts (e.g. legal, commercial)
+
+Things that *developers* could be asked to do…
+- Develop guidance for ethical ML that includes bringing user awareness
+- Open source ML algo - auditability / certification
+
+Things that *implementers* could be asked to do…
+- Upstream frequent ML-built features into browser features where they can be used in a clearer/less UX intrusive framework (as an incentive towards the safest approach)
+- For a purpose-built APIs, the browser could make the usage detectable (e.g. via a web extension)
+ - Linked to incentive
+- If ML has been certified as quality and privacy good. Or rated (A-F?) users could choose to only enable ML features at a certain level.
+
+Things that *regulators* could be asked to do…
+- Quality Assurance certificates for the algos,
+
+Things that *standard makers* could be asked to do…
+- Develop best practice guidelines for devs
+
+Things that *no one* can fix or control…
+- Developers giving users trivial incentives to load a data leaking ML model. Silly hats for all of your data.
+
+
+## Right to Privacy, and Data Protection
+
+### Risks
+
+1.
+
+1. Fingerprinting of various kinds: disability
+
+1. One area we came across recently related to ML is in the context of the WebXR raw camera access API. The API could allow raw access to the camera image (vs the regular AR API that only exposes room geometry). This allows for more functionality but puts the user at risk - for example camera image could be piped to a ML subsystem which is doing facial recognition outside of user’s consent. Documented in [our TAG issue](https://github.com/w3ctag/design-reviews/issues/406).<p>The wider issue is that ML as a 1st class feature on the Web creates additional risks for existing APIs (such as camera access)
+
+1. Addition of ML creates additional risks for use of existing APIs that were not present previously.
+
+1. Different jurisdictions have different regulations for data protection and rights to privacy. Demonstrating that your model is consistent with one or another could be confusing.
+
+1. ML models may be  based on training data that abused privacy
+
+1. It will be necessary to obtain data from marginalized individuals (including those who are unable to give informed consent themselves) in order to ensure they are not discriminated against and that they are included in the product, but their data need to be treated carefully and respectfully, and there are issues of consent involved. Under what circumstances can others give consent on their behalf? Consider, for example, people with certain cognitive disabilities who cannot give voluntary, informed consent to a particular data collection activity.
+
+1. Sites could claim compliance with relevant laws and principles without actually being compliant. (Transparency and third-party auditing are important here.)
+
+1. Fingerprinting systems uses hardware accelerated ML APis to improve their tracking capabilities
+
+1. Doing processing on user’s device could be good for privacy, but could also be excuse to shift cost of computation to the end user
+
+1. Another risk is that people distrust and turn off Web ML, and the alternative is worse, from a privacy perspective. The web app can still use ML, but may do so by sending private data to remote servers that are less secure than the local device.
+
+### Possible Mitigations
+
+1. Requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+1.
+
+
+## Safety and security
+
+### Risks
+
+1. Possible to leak the locally stored data, even sensitive data such as biosignature？<p>What kind of capabilities would the ML system get and thus leak sensitive local data?
+
+1. Model drift - that a model stops performing as well as real world data diverges from training data over time
+
+1. Censorship requirements of governments and other actors, if operationalized into ML, create massive risks for individuals  as well as societal evolution - ranging from being unable to accomplish objectives that our principles say they should, to “being tattled on” to the autocrats and suffering real-world retaliation
+
+1. A model can produce results that are blindly trusted. If the model is open to compromise, it will produce inaccurate results, which can be influential.<p>An example could be of an app that is intended to “help you cross the street” as a visually limited person - but if that application fails to detect a cyclist or car, then you could create physical harm to the user of that application
+
+1.
+
+### Possible Mitigations
+
+1.
+
+1.
+
+1.
+
+1.
+
+1. Can be at least partially mitigated by transparency and third-party auditing
+
+
+## Transparency and explainability
+
+### Risks
+
+1.
+
+1. Complexity is the enemy of transparency. ML models are complex and getting more complex over time.
+
+1. ML “closed boxes” doing something out side of users’ control and understanding and the browser not able to audit or control or otherwise warn the user.
+
+1. Transparency may be operationalised in a way which doesn’t make sense to users and doesn’t respect autonomy and allow them to make informed decisions.
+
+1. The difficulty of explaining Web ML’s benefits and drawbacks may lead people to make choices that are worse for them. Eg, they might turn off Web ML, not understanding that it’s better for privacy to keep the data local. (I’m thinking here about the transparency and explainability of the API, not the ML model.)
+
+### Possible Mitigations
+
+1. Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of "view source" principle.
+
+1. Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.<p>Integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.<p>The ML model could be viewed by an integrated tool and in a visual way such [Netron](https://netron.app/) does today.
+
+1.
+
+1.
+
+1.
+
+
+## Responsibility and accountability
+
+### Risks
+
+1. During the discussion around DRM on the Web via Encrypted Media Extensions, a lot of focus was on whether security researchers would get protected in case they reverse-engineered DRM systems on the Web (which was seen as a net good for the Web, but a legal risk for researchers); a similar challenge may arise for ML models as they get reviewed against e.g. bias
+
+1. Assuming long-tail web developers will prefer to use 3rd party ML models due to cost of training your own (similarly to JS frameworks in general). This means the ethical responsibility and liability is deferred (in part?) to the 3rd party.
+
+1. The use of 3rd party models introduces an external dependency to a possibly critical component of the web (app) experience.
+
+1. We can't force developers to follow these principles and guidelines
+
+1. That the WebML Working Group has very little control over models … is it able to influence those who do build them enough to ensure these principles are operationalised
+
+1.
+
+1. ML models can operate as black boxes, and when integrated in a platform that already mixes and matches content and code from very many parties, this may make the accountability of a how an app uses ML that much harder to track
+
+### Possible Mitigations
+
+1.
+
+1.
+
+1.
+
+1. But they should get incentives (e.g. better performance) to use the purpose-built approach with more guarantees baked-in
+
+1. See <a href="#model-control-mitigations">model control mitigations</a>
+
+1. Wonder if something like model cards could include (or maybe they do) accountability details, or even any details at all, so that models are linked back to actual people / companies
+
+1.
+
+#### Model control mitigations
+
+Things that *end users* could be asked to do…
+- …something something permissions requests - though these are clicked away by most users.
+- End users could choose to use a different model (if a browser implements a mechanism to use an alternative model, e.g. a model shipped with the browser/OS/platform locally?).
+
+Things that *developers* could be asked to do…
+- Developers could develop “model filtering” approaches, a block/accept approach for models (although places the burden on users)
+
+Things that *implementers* could be asked to do…
+- Knowing the provenance of models could help to develop a allow/block list of allowable sources for models
+- Ensure / enable meaningful transparency around models, e.g. like privacy report
+
+Things that *regulators* could be asked to do…
+- Set operational requirements for characteristics of models in regulated contexts, ideally based on a neutral set of guidelines
+
+Things that *standard makers* could be asked to do…
+- Ensure Web ML guidelines are evaluatable or certifiable
+
+
+## Sustainability
+
+### Risks
+
+1. Web ML applications are compute / energy intensive, and widespread adoption exacerbates environmental problems.
+
+1. Multiplying the value and use of ML models may create a rush to create more of them, when the environmental cost of building a model is probably high.
+
+1. Distributing large ML models across the networks to each and every client may raise the environmental cost of running Web applications
+
+1. Moving ML to browsers means people have to have more powerful computers, which can be financially unachievable as well as more costly environmentally compared to a model of stronger servers and lighter clients
+
+1.
+
+1.
+
+1. Because inference is happening client-side, what happens to incentives for developers to make that energy efficient - i.e. if they’re not paying for the compute, do they  care? It would be easy to cut corners.
+
+1. Web developers have Web APIs at their disposal to help adapt the experience to be more energy efficient, see Compute Pressure API or Battery Status API. This requires balancing between enough information to satisfy the use case and not disclosing too much information to become a fingerprinting vector
+
+### Possible Mitigations
+
+1. Opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed Compute Pressure API.
+
+1.
+
+1.
+
+1.
+
+1. There is probably room to improve in-browser energy impact reporting: “this tab is using significant amount of energy” – wondering if there’s room for an explicit web developer-facing API to surface energy impact more explicitly?
+
+1. Web experiences should not depend solely on ML capabilities but enable graceful degradation path should the user or user agent wish to minimize the environmental impact.
+
+1.
+
+1.
+
+
+## Human oversight and determination
+
+### Risks
+
+1. that ML models determining things like of access to welfare / insurance / healthcare etc. could rely on client-side inference?
+
+### Possible Mitigations
+
+1.
+
+
+## Awareness and literacy
+
+### Risks
+
+1. The boundaries and effectiveness of ML (and its grand-sounding umbrella of artificial intelligence) may lead end users to either put more trust than they should in how well they operate, or not feel empowered to understand the impact of its use in a given web app. With the Web reaching 4bn+ users, mitigations that rely on end-users awareness are likely challenging
+
+1.
+
+1. That even the designers/developers do not know of the affordances that their ML systems can provide so it can create a broader need to be able to provide feedback when something is not going well/causing harm
+
+1. From a dev perspective: there can be an assumption that “ML will solve the problem” w/out realizing the limitations of the models/data they are employing (e.g. let’s say someone builds an app that is meant to understand facial expressions to do some action, but if people have limited facial mobility or if their models do not register their expressions as fitting into their expected classification, then the entire experience is designed around a flawed and problematic assumption that all people emote the same way)
+
+1. That without literacy and awareness users will be unable to identify the uncanny valley which can be important for privacy and security (e.g. the use of conversational bots that might be used to deceive you to gain access to your login credentials etc)
+
+### Possible Mitigations
+
+1.
+
+1. Perhaps specs could enable innovative use cases for developers to come up with good ways to help people be informed and aware of what’s going on under the hood with ML
+
+1.
+
+1.
+
+1.
+
+
+## Multi-stakeholder and adaptive governance and collaboration
+
+### Risks
+
+1. That the people who are *affected* by the outcomes of the system aren't involved in its design and development? (E.g. in a system determining eligibility for social security/benefits for people with disabilities, are people with disabilities considered as stakeholders?)
+
+1. "Big players" – global corporations/EU/governments – can make unilateral decisions that affect billions of people. What decision making process will they participate in?
+
+### Possible Mitigations
+
+1.
+
+1. It feels like the secret sauce in thinking about governance is trying to do as much as possible to build bridges across the many/various stakeholders to try to motivate maintaining and applying the principles set out in this doc
 
 
 # Appendix 1. Background: Ethics & Machine Learning # {#appendix-background}
@@ -719,3 +1153,15 @@ Robin Berjon,
 Stephen Beckett,
 Tzviya Siegman,
 and many others for their feedback and comments.
+
+<style>
+h4[id*="risks"] {
+  padding: 1em;
+  border: solid 4px red;
+}
+
+h4[id*="mitigations"] {
+  padding: 1em;
+  border: solid 4px green;
+}
+</style>
