@@ -1,1 +1,1 @@
-Note: Contributions welcome via GitHub.
+Note: Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.
