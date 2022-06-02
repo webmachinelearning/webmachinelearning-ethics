@@ -458,21 +458,7 @@ At its simplest, the core approach is to take known areas of concern - as laid o
 
 So for example, if we consider the principle of “Fairness and non-dicrimination”, a risk might be that biases in training data lead to model predictions that are less accurate for particular groups, resulting in real-world harms (e.g. denial of services). A mitigation might be to test the training data and model properly for bias, or indeed it might be to not make access to essential services dependent on ML systems.
 
-To provide a more structured approach to this, we have developed a workshop format which you can adapt and use.
-
-The workshop is in two parts (please make a copies for your own use):
-
-Part One - [Ethical thinking workshop](https://docs.google.com/document/d/1f_PcByjW8-zXbYWeEyOl-RpZ3SKapm_MWSaNZ9ZOi4c/edit?usp=sharing) - is about using the principles to generate and prioritize potential risks
-
-Part Two - [Ethical Risk Canvas](https://docs.google.com/document/d/1hTQnpWC5KC4qIJB9-Kkd46yMVgDuTCQlA3MffqtUbCI/edit?usp=sharing) - is about digging deeper into specific risks and thinking about who they might impact and how best to mitigate them.
-
-The linked documents contain full instructions for how to use and facilitate the workshop. The format can be used in a number of ways:
-
-- SINGLE WORKSHOP: Follow the timings for a single workshop to generate a broad overview of risks across all principles. You won’t get a lot of time to dive into mitigations for more than a couple of risks.
-
-- MULTIPLE WORKSHOPS: If you want to spend more time thinking about risks and ensure that you identify mitigations for more risks, consider running a longer version of this workshop. For example the workshop could be run as 2 x 1h 30min sessions each around one of the activities. If you do have more time, give slightly more time to the activities and even more time to discussions. Be generous with breaks to help everyone stay fresh and engaged.
-
-- DEEP DIVE: The activities in this workshop could also be used as a part of a longer term process by a team to thoroughly evaluate and consider the ethical risks and impacts of their project. For example, you might start by running a series of workshops to quickly gather high level thoughts about risks using the main workshop. Then, over a longer period, use workshops focused on just one or two principles to methodically build out the risks for each principle, prioritize them and explore mitigations for all prioritized risks using the Risk Canvas.
+Note: To provide a more structured approach to operationalization, we have developed a [workshop format](#appendix-workshop) that can be adapted and used to help identify such risks & mitigations.
 
 It’s worth noting that the best tools for operationalization might depend on an actor’s role in the ML eco-system - for standards writers, specific thinking about risks and mitigations will be most useful. For developers, responsible ML checklists covering the product life-cycle will also be important.
 
@@ -1128,6 +1114,24 @@ Given this …
 # Appendix 3. Comparison of Ethics Principles # {#appendix-comparison}
 
 See: [spreadsheet](https://docs.google.com/spreadsheets/d/1hzOHVYlC4OfE2-UE6942LnYEgP_kJmyF3u4JJwwcNpA/edit?usp=sharing)
+
+# Appendix 4. Workshop Format and Templates # {#appendix-workshop}
+
+The workshop is articulated around two documents that are expected to be completed interactively by participants:
+
+Part One - [Ethical thinking workshop](https://docs.google.com/document/d/1f_PcByjW8-zXbYWeEyOl-RpZ3SKapm_MWSaNZ9ZOi4c/edit?usp=sharing) - is about using the principles to generate and prioritize potential risks
+
+Part Two - [Ethical Risk Canvas](https://docs.google.com/document/d/1hTQnpWC5KC4qIJB9-Kkd46yMVgDuTCQlA3MffqtUbCI/edit?usp=sharing) - is about digging deeper into specific risks and thinking about who they might impact and how best to mitigate them.
+
+The linked documents contain full instructions for how to use and facilitate the workshop. The format can be used in a number of ways:
+
+- SINGLE WORKSHOP: Follow the timings for a single workshop to generate a broad overview of risks across all principles. You won’t get a lot of time to dive into mitigations for more than a couple of risks.
+
+- MULTIPLE WORKSHOPS: If you want to spend more time thinking about risks and ensure that you identify mitigations for more risks, consider running a longer version of this workshop. For example the workshop could be run as 2 x 1h 30min sessions each around one of the activities. If you do have more time, give slightly more time to the activities and even more time to discussions. Be generous with breaks to help everyone stay fresh and engaged.
+
+- DEEP DIVE: The activities in this workshop could also be used as a part of a longer term process by a team to thoroughly evaluate and consider the ethical risks and impacts of their project. For example, you might start by running a series of workshops to quickly gather high level thoughts about risks using the main workshop. Then, over a longer period, use workshops focused on just one or two principles to methodically build out the risks for each principle, prioritize them and explore mitigations for all prioritized risks using the Risk Canvas.
+
+
 
 # Acknowledgments
 
