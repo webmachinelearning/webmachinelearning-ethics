@@ -4,9 +4,9 @@ Shortname: webmachinelearning-ethics
 Level: none
 Status: ED
 Group: webmlwg
-Repository: webmachinelearning/ethical-webmachinelearning
-TR: https://www.w3.org/TR/webmachinelearning-ethics
-URL: https://webmachinelearning.github.io/ethical-webmachinelearning
+Repository: webmachinelearning/webmachinelearning-ethics
+TR: https://www.w3.org/TR/webmachinelearning-ethics/
+URL: https://webmachinelearning.github.io/webmachinelearning-ethics/
 Editor: James Fletcher 135366, BBC, https://bbc.co.uk
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Boilerplate: conformance no, index no, issues-index no
