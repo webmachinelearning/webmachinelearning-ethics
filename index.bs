@@ -102,7 +102,7 @@ Markup Shorthands: markdown yes
 "Vallor": {
   "authors": ["Vallor", "Green", "Raicu"],
   "title": "Overview of Ethics in Tech Practice",
-  "href": "https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac"
+  "href": "https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-practice/"
 },
 "Zeng": {
   "authors": ["Yi Zeng", "Enmeng Lu", "Cunqing Huangfu"],
