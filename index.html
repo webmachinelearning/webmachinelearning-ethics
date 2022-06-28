@@ -7,8 +7,8 @@
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
-  <link href="https://w3.org/TR/ethical-webmachinelearning" rel="canonical">
-  <meta content="a023c87976306e5d39673f4573cd198ba75dac26" name="document-revision">
+  <link href="https://www.w3.org/TR/webmachinelearning-ethics/" rel="canonical">
+  <meta content="5717f64d5a8f1ef725b03ffe91712d5c9ec21a84" name="document-revision">
 <style>
 h4[id*="risks"] {
   padding: 1em;
@@ -462,19 +462,19 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Ethical Principles for Web Machine Learning</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-06-09">9 June 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-06-28">28 June 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
      <dl>
       <dt>This version:
-      <dd><a class="u-url" href="https://webmachinelearning.github.io/ethical-webmachinelearning">https://webmachinelearning.github.io/ethical-webmachinelearning</a>
+      <dd><a class="u-url" href="https://webmachinelearning.github.io/webmachinelearning-ethics/">https://webmachinelearning.github.io/webmachinelearning-ethics/</a>
       <dt>Latest published version:
-      <dd><a href="https://w3.org/TR/ethical-webmachinelearning">https://w3.org/TR/ethical-webmachinelearning</a>
+      <dd><a href="https://www.w3.org/TR/webmachinelearning-ethics/">https://www.w3.org/TR/webmachinelearning-ethics/</a>
       <dt>Feedback:
-      <dd><a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/">GitHub</a>
+      <dd><a href="https://github.com/webmachinelearning/webmachinelearning-ethics/issues/">GitHub</a>
       <dt class="editor">Editors:
-      <dd class="editor p-author h-card vcard"><a class="p-name fn u-url url" href="https://bbc.co.uk">James Fletcher</a> (<span class="p-org org">BBC</span>)
+      <dd class="editor p-author h-card vcard" data-editor-id="135366"><a class="p-name fn u-url url" href="https://bbc.co.uk">James Fletcher</a> (<span class="p-org org">BBC</span>)
       <dd class="editor p-author h-card vcard" data-editor-id="41974"><a class="p-name fn u-url url" href="https://intel.com/">Anssi Kostiainen</a> (<span class="p-org org">Intel Corporation</span>)
      </dl>
     </div>
@@ -485,7 +485,7 @@ dfn > a.self-link::before      { content: "#"; }
   </div>
   <div class="p-summary" data-fill-with="abstract">
    <h2 class="no-num no-toc no-ref heading settled" id="abstract"><span class="content">Abstract</span></h2>
-   <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases. The whole document is open for comment and review, but input is particularly sought on Sections 3, 4 and 5.</p>
+   <p>This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases.</p>
   </div>
   <h2 class="no-num no-toc no-ref heading settled" id="sotd"><span class="content">Status of this document</span></h2>
   <div data-fill-with="status">
@@ -494,7 +494,7 @@ dfn > a.self-link::before      { content: "#"; }
     reports index</a> at http://www.w3.org/TR/.</em> </p>
    <p> This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Web Machine Learning Working Group</a> as an Editors' Draft. This document is intended to become a W3C Recommendation.
 
-    Feedback and comments on this specification are welcome. Please use <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues">Github issues</a>.
+    Feedback and comments on this specification are welcome. Please use <a href="https://github.com/webmachinelearning/webmachinelearning-ethics/issues">Github issues</a>.
     Discussions may also be found in the <a href="http://lists.w3.org/Archives/Public/public-webmachinelearning/">public-webmachinelearning@w3.org archives</a>. </p>
    <p> Publication as an Editors' Draft does not imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. This is a draft document and may
     be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
@@ -506,7 +506,13 @@ dfn > a.self-link::before      { content: "#"; }
     Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
    <p> This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision">2 November 2021 W3C Process Document</a>. </p>
    <p></p>
-   <p>This is a document to enable consultation and stakeholder input into the Web Machine Learning Working Group’s Note on Ethical Principles for Web Machine Learning.  This document is aimed to be published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Working Group Note and does not contain any normative content. This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed.</p>
+   <p><em>This section describes the status of this document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
+   <p>This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Group Draft Note using the <a href="https://www.w3.org/2021/Process-20211102/#recs-and-notes">Note track</a>.</p>
+   <p>This document is for guidance only and does not constitute legal or professional advice. The document will evolve and receives updates as often as needed. The whole document is open for comment and review, but input is particularly sought on Sections 3, 4 and 5.</p>
+   <p>Group Draft Notes are not endorsed by <abbr title="World Wide Web Consortium">W3C</abbr> nor its Members. </p>
+   <p>This is a draft document and may be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite this document as other than work in progress.</p>
+   <p data-deliverer="130674">The <a href="https://www.w3.org/Consortium/Patent-Policy/"><abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a> does not carry any licensing requirements or commitments on this document.</p>
+   <p>This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision①">2 November 2021 <abbr title="World Wide Web Consortium">W3C</abbr> Process Document</a>.</p>
   </div>
   <div data-fill-with="at-risk"></div>
   <nav data-fill-with="table-of-contents" id="toc">
@@ -1547,7 +1553,7 @@ and many others for their feedback and comments.</p>
    <dt id="biblio-unesco">[UNESCO]
    <dd><a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455"><cite>Recommendation on the Ethics of Artificial Intelligence</cite></a>. URL: <a href="https://unesdoc.unesco.org/ark:/48223/pf0000380455">https://unesdoc.unesco.org/ark:/48223/pf0000380455</a>
    <dt id="biblio-vallor">[Vallor]
-   <dd>Vallor; Green; Raicu. <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac"><cite>Overview of Ethics in Tech Practice</cite></a>. URL: <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac">https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-prac</a>
+   <dd>Vallor; Green; Raicu. <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-practice/"><cite>Overview of Ethics in Tech Practice</cite></a>. URL: <a href="https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-practice/">https://www.scu.edu/ethics-in-technology-practice/overview-of-ethics-in-tech-practice/</a>
    <dt id="biblio-vaughan">[Vaughan]
    <dd>Wortman; Vaughan; Wallach. <a href="http://www.jennwv.com/papers/intel-chapter.pdf"><cite>A Human-Centered Agenda for Intelligible Machine Learning</cite></a>. URL: <a href="http://www.jennwv.com/papers/intel-chapter.pdf">http://www.jennwv.com/papers/intel-chapter.pdf</a>
    <dt id="biblio-wcag">[WCAG]
