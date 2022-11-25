@@ -6,9 +6,9 @@
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version 37b7e7e68, updated Fri May 27 15:08:11 2022 -0700" name="generator">
+  <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://www.w3.org/TR/webmachinelearning-ethics/" rel="canonical">
-  <meta content="a1b039e7defdcde2bec44f290a1d3b7b11084bc8" name="document-revision">
+  <meta content="70dd2cce6096f115095df2ce0cf22b8e228d99f4" name="document-revision">
 <style>
 h4[id*="risks"] {
   padding: 1em;
@@ -312,6 +312,14 @@ a.self-link:hover {
 .heading > a.self-link {
     font-size: 83%;
 }
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
 li > a.self-link {
     left: calc(-1 * (3.5rem - 26px) - 2em);
 }
@@ -462,7 +470,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Ethical Principles for Web Machine Learning</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-06-28">28 June 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-11-25">25 November 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -1094,7 +1102,7 @@ dfn > a.self-link::before      { content: "#"; }
    <h3 class="heading settled" data-level="6.6" id="transparency-and-explainability"><span class="secno">6.6. </span><span class="content">Transparency and explainability</span><a class="self-link" href="#transparency-and-explainability"></a></h3>
    <h4 class="heading settled" data-level="6.6.1" id="risks⑤"><span class="secno">6.6.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑤"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r1">TE-R1</dfn></p>
-   <p class="issue" id="issue-9c077a38③"><a class="self-link" href="#issue-9c077a38③"></a> Identify risk mapping for corresponding mitigation.</p>
+   <p>Web developers are familiar with developer tools integrated into browsers used to inspect HTML, CSS and JavaScript. These developer tools, however, do not currently understand neural network models and model inspection requires specialized tools. This complicates development and raises the barriers to entry for web developers venturing into machine learning.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r2">TE-R2</dfn></p>
    <p>Complexity is the enemy of transparency. ML models are complex and getting more complex over time.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r3">TE-R3</dfn></p>
@@ -1129,7 +1137,7 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn data-dfn-type="dfn" data-noexport id="ra-r5">RA-R5<a class="self-link" href="#ra-r5"></a></dfn></p>
    <p>That the WebML Working Group has very little control over models … is it able to influence those who do build them enough to ensure these principles are operationalised.</p>
    <p><dfn data-dfn-type="dfn" data-noexport id="ra-r6">RA-R6<a class="self-link" href="#ra-r6"></a></dfn></p>
-   <p class="issue" id="issue-9c077a38④"><a class="self-link" href="#issue-9c077a38④"></a> Identify risk mapping for corresponding mitigation.</p>
+   <p class="issue" id="issue-9c077a38③"><a class="self-link" href="#issue-9c077a38③"></a> Identify risk mapping for corresponding mitigation.</p>
    <p><dfn data-dfn-type="dfn" data-noexport id="ra-r7">RA-R7<a class="self-link" href="#ra-r7"></a></dfn></p>
    <p>ML models can operate as black boxes, and when integrated in a platform that already mixes and matches content and code from very many parties, this may make the accountability of a how an app uses ML that much harder to track.</p>
    <h4 class="heading settled" data-level="6.7.2" id="possible-mitigations⑥"><span class="secno">6.7.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑥"></a></h4>
@@ -1186,9 +1194,9 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r4">S-R4</dfn></p>
    <p>Moving ML to browsers means people have to have more powerful computers, which can be financially unachievable as well as more costly environmentally compared to a model of stronger servers and lighter clients.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r5">S-R5</dfn></p>
-   <p class="issue" id="issue-9c077a38⑤"><a class="self-link" href="#issue-9c077a38⑤"></a> Identify risk mapping for corresponding mitigation.</p>
+   <p class="issue" id="issue-9c077a38④"><a class="self-link" href="#issue-9c077a38④"></a> Identify risk mapping for corresponding mitigation.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r6">S-R6</dfn></p>
-   <p class="issue" id="issue-9c077a38⑥"><a class="self-link" href="#issue-9c077a38⑥"></a> Identify risk mapping for corresponding mitigation.</p>
+   <p class="issue" id="issue-9c077a38⑤"><a class="self-link" href="#issue-9c077a38⑤"></a> Identify risk mapping for corresponding mitigation.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r7">S-R7</dfn></p>
    <p>Because inference is happening client-side, what happens to incentives for developers to make that energy efficient - i.e. if they’re not paying for the compute, do they  care? It would be easy to cut corners.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r8">S-R8</dfn></p>
@@ -1222,7 +1230,7 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r1">AL-R1</dfn></p>
    <p>The boundaries and effectiveness of ML (and its grand-sounding umbrella of artificial intelligence) may lead end users to either put more trust than they should in how well they operate, or not feel empowered to understand the impact of its use in a given web app. With the Web reaching 4bn+ users, mitigations that rely on end-users awareness are likely challenging.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r2">AL-R2</dfn></p>
-   <p class="issue" id="issue-9c077a38⑦"><a class="self-link" href="#issue-9c077a38⑦"></a> Identify risk mapping for corresponding mitigation.</p>
+   <p class="issue" id="issue-9c077a38⑥"><a class="self-link" href="#issue-9c077a38⑥"></a> Identify risk mapping for corresponding mitigation.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r3">AL-R3</dfn></p>
    <p>That even the designers/developers do not know of the affordances that their ML systems can provide so it can create a broader need to be able to provide feedback when something is not going well/causing harm.</p>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r4">AL-R4</dfn></p>
@@ -1545,7 +1553,7 @@ and many others for their feedback and comments.</p>
    <dt id="biblio-mehrabi">[Mehrabi]
    <dd>Ninareh Mehrabi; et al. <a href="https://arxiv.org/pdf/1908.09635.pdf"><cite>A Survey on Bias and Fairness in Machine Learning</cite></a>. URL: <a href="https://arxiv.org/pdf/1908.09635.pdf">https://arxiv.org/pdf/1908.09635.pdf</a>
    <dt id="biblio-security-privacy-questionnaire">[SECURITY-PRIVACY-QUESTIONNAIRE]
-   <dd>Theresa O'Connor; Peter Snyder. <a href="https://www.w3.org/TR/security-privacy-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. 16 December 2021. NOTE. URL: <a href="https://www.w3.org/TR/security-privacy-questionnaire/">https://www.w3.org/TR/security-privacy-questionnaire/</a>
+   <dd>Theresa O'Connor; Peter Snyder. <a href="https://w3ctag.github.io/security-questionnaire/"><cite>Self-Review Questionnaire: Security and Privacy</cite></a>. URL: <a href="https://w3ctag.github.io/security-questionnaire/">https://w3ctag.github.io/security-questionnaire/</a>
    <dt id="biblio-smuha">[Smuha]
    <dd>Smuha, N.. <a href="https://policyreview.info/pdf/policyreview-2021-3-1574.pdf"><cite>Beyond the individual: governing AI’s societal harm</cite></a>. URL: <a href="https://policyreview.info/pdf/policyreview-2021-3-1574.pdf">https://policyreview.info/pdf/policyreview-2021-3-1574.pdf</a>
    <dt id="biblio-suresh">[Suresh]
