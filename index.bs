@@ -905,7 +905,7 @@ Can be at least partially mitigated by transparency and third-party auditing.
 
 <dfn>TE-R1</dfn>
 
-<pre class=include>path: gh-contrib-risk.md</pre>
+Web developers are familiar with developer tools integrated into browsers used to inspect HTML, CSS and JavaScript. These developer tools, however, do not currently understand neural network models and model inspection requires specialized tools. This complicates development and raises the barriers to entry for web developers venturing into machine learning.
 
 <dfn>TE-R2</dfn>
 
