@@ -367,8 +367,7 @@ ML actors should ensure that the outcomes of ML applications are fair, and that 
 
 This principle also applies to access to web ML systems: they should be fully accessible to people with disabilities, appropriately localized, and accommodate people on low bandwidth networks and with low specification equipment. 
 
-For further guidance on accessibility, see the Web Content Accessibility Guidelines (WCAG) 2.1 [[WCAG]], or consult the Accessible Platform Architectures (APA) Working Group.
-
+For guidance on digital accessibility, see the [Introduction to Web Accessibility](https://www.w3.org/WAI/fundamentals/accessibility-intro/) published by the W3C [Education and Outreach Working Group](https://www.w3.org/WAI/about/groups/eowg/).
 
 <h4 class=no-num>PRINCIPLE 3) Autonomy</h4>
 
