@@ -194,6 +194,7 @@ In some areas such as credit-scoring or loan approval, increasing the accuracy o
 
 There is also concern about the [over-hyping of the ability of AI to accurately predict certain things at all](https://www.cs.princeton.edu/~arvindn/talks/MIT-STS-AI-snakeoil.pdf), particularly social outcomes such as job performance or criminal recidivism. Accuracy may be a useful measure where an area has a clear, objective ground truth (e.g. vehicle license-plate recognition) but many areas of human judgment are nuanced, messy and contextual, and simple accuracy risks being too reductive a measure.
 
+An incorrect output produced by an ML model can have varying context-dependent impact [[Leslie]]. For example, when identifying cancerous skin growth, *false positives* may increase the cost of cancer detection (by requiring additional lab work to rule them out), while *false negatives* may delay treatment to the point where it is no longer effective. What matters here is lowering the risk of *false negatives*. In a judicial context, *false positives* may send innocents behind bars, while *false negatives* might make it more difficult to convict a criminal. What matters here is lowering the risk of *false positives*.
 
 ## Bias
 
@@ -1436,6 +1437,7 @@ Ningxin Hu,
 Rafael Cintron,
 Robin Berjon,
 Stephen Beckett,
+Tobie Langel,
 Tzviya Siegman,
 and many others for their feedback and comments.
 
