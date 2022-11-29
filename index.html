@@ -8,7 +8,7 @@
   <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
   <meta content="Bikeshed version 63e66730b, updated Tue Oct 25 12:35:05 2022 -0700" name="generator">
   <link href="https://www.w3.org/TR/webmachinelearning-ethics/" rel="canonical">
-  <meta content="bf5c931e3be3d777ea395613a26a2bb5aa8f742c" name="document-revision">
+  <meta content="e2ccf2ebb589f379917184694afd7de2c2ec436a" name="document-revision">
 <style>
 h4[id*="risks"] {
   padding: 1em;
@@ -470,7 +470,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Ethical Principles for Web Machine Learning</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-11-28">28 November 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-11-29">29 November 2022</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -698,6 +698,7 @@ dfn > a.self-link::before      { content: "#"; }
    <p>The accuracy of an ML model is the proportion of examples for which it generates a correct output <a data-link-type="biblio" href="#biblio-leslie">[Leslie]</a>. In general high accuracy is a good thing, and low accuracy can lead to harms, for example where facial recognition systems are used in law enforcement. But highly accurate facial recognition systems can also pose risks to privacy and autonomy (e.g. mass surveillance).</p>
    <p>In some areas such as credit-scoring or loan approval, increasing the accuracy of predictions might come at the cost of requiring access to too much personal data.</p>
    <p>There is also concern about the <a href="https://www.cs.princeton.edu/~arvindn/talks/MIT-STS-AI-snakeoil.pdf">over-hyping of the ability of AI to accurately predict certain things at all</a>, particularly social outcomes such as job performance or criminal recidivism. Accuracy may be a useful measure where an area has a clear, objective ground truth (e.g. vehicle license-plate recognition) but many areas of human judgment are nuanced, messy and contextual, and simple accuracy risks being too reductive a measure.</p>
+   <p>An incorrect output produced by an ML model can have varying context-dependent impact <a data-link-type="biblio" href="#biblio-leslie">[Leslie]</a>. For example, when identifying cancerous skin growth, <em>false positives</em> may increase the cost of cancer detection (by requiring additional lab work to rule them out), while <em>false negatives</em> may delay treatment to the point where it is no longer effective. What matters here is lowering the risk of <em>false negatives</em>. In a judicial context, <em>false positives</em> may send innocents behind bars, while <em>false negatives</em> might make it more difficult to convict a criminal. What matters here is lowering the risk of <em>false positives</em>.</p>
    <h3 class="heading settled" data-level="3.2" id="bias"><span class="secno">3.2. </span><span class="content">Bias</span><a class="self-link" href="#bias"></a></h3>
    <p>Bias has a number of meanings, including a systematic deviation from a true value. This can be positive or negative. Bias is a prominent concern in ML ethics, where the concern more specifically is ‘a systematic skew in decision-making that results in unfair outcomes’ <a data-link-type="biblio" href="#biblio-cdei">[CDEI]</a>.</p>
    <p>Concerns about bias are particularly prominent where negative outcomes (such as inaccurate predictions and their consequences) disproportionately affect individuals or groups who are vulnerable or historically marginalised. Where the unfair treatment relates to protected characteristics such as race, gender, disability or sexuality, bias can constitute illegal discrimination, depending on relevant laws.</p>
@@ -1527,6 +1528,7 @@ Ningxin Hu,
 Rafael Cintron,
 Robin Berjon,
 Stephen Beckett,
+Tobie Langel,
 Tzviya Siegman,
 and many others for their feedback and comments.</p>
   </main>
