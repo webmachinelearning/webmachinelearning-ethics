@@ -7,7 +7,7 @@ Group: webmlwg
 Repository: webmachinelearning/webmachinelearning-ethics
 TR: https://www.w3.org/TR/webmachinelearning-ethics/
 URL: https://webmachinelearning.github.io/webmachinelearning-ethics/
-Editor: James Fletcher 135366, BBC, https://bbc.co.uk
+Former Editor: James Fletcher 135366, BBC, https://bbc.co.uk
 Editor: Anssi Kostiainen 41974, Intel Corporation, https://intel.com/
 Boilerplate: conformance no, index no, issues-index no
 Abstract: This document discusses ethical issues associated with using Machine Learning and outlines considerations for web technologies that enable related use cases.
