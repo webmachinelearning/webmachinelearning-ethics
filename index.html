@@ -5,9 +5,9 @@
   <title>Ethical Principles for Web Machine Learning</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <meta content="Bikeshed version d29f71adb, updated Wed Jul 19 11:08:56 2023 -0700" name="generator">
+  <meta content="Bikeshed version 4416b18d5, updated Tue Jan 2 15:52:39 2024 -0800" name="generator">
   <link href="https://www.w3.org/TR/webmachinelearning-ethics/" rel="canonical">
-  <meta content="7b10ab356c86638ca76bb1ffaeba94908489e441" name="document-revision">
+  <meta content="4c94d5d7df06a0af76c132c3c7d3797bd54cff06" name="revision">
 <style>
 h4[id*="risks"] {
   padding: 1em;
@@ -94,7 +94,6 @@ pre .property::before, pre .property::after {
 }
 </style>
 <style>/* Boilerplate: style-colors */
-
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
     color-scheme: light dark;
@@ -348,11 +347,15 @@ figcaption:not(.no-marker)::before {
 :root {
     --dfnpanel-bg: #ddd;
     --dfnpanel-text: var(--text);
+    --dfnpanel-target-bg: #ffc;
+    --dfnpanel-target-outline: orange;
 }
 @media (prefers-color-scheme: dark) {
     :root {
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
+        --dfnpanel-target-bg: #333;
+        --dfnpanel-target-outline: silver;
     }
 }
 .dfn-panel {
@@ -375,11 +378,13 @@ figcaption:not(.no-marker)::before {
 .dfn-panel > b { display: block; }
 .dfn-panel a { color: var(--dfnpanel-text); }
 .dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel a:focus {
+    outline: 5px auto Highlight;
+    outline: 5px auto -webkit-focus-ring-color;
+}
 .dfn-panel > b + b { margin-top: 0.25em; }
 .dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
 .dfn-panel li a {
-    white-space: pre;
-    display: inline-block;
     max-width: calc(300px - 1.5em - 1em);
     overflow: hidden;
     text-overflow: ellipsis;
@@ -388,14 +393,79 @@ figcaption:not(.no-marker)::before {
 .dfn-panel.activated {
     display: inline-block;
     position: fixed;
-    left: .5em;
+    left: 8px;
     bottom: 2em;
     margin: 0 auto;
     max-width: calc(100vw - 1.5em - .4em - .5em);
     max-height: 30vh;
+    transition: left 1s ease-out, bottom 1s ease-out;
 }
 
-.dfn-paneled[role="button"] { cursor: pointer; }
+.dfn-panel .link-item:hover {
+    text-decoration: underline;
+}
+.dfn-panel .link-item .copy-icon {
+    opacity: 0;
+}
+.dfn-panel .link-item:hover .copy-icon,
+.dfn-panel .link-item .copy-icon:focus {
+    opacity: 1;
+}
+
+.dfn-panel .copy-icon {
+    display: inline-block;
+    margin-right: 0.5em;
+    width: 0.85em;
+    height: 1em;
+    border-radius: 3px;
+    background-color: #ccc;
+    cursor: pointer;
+}
+
+.dfn-panel .copy-icon .icon {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.dfn-panel .copy-icon .icon::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #ccc;
+    opacity: 0.25;
+    transform: translate(3px, -3px);
+}
+
+.dfn-panel .copy-icon:active .icon::before {
+    opacity: 1;
+}
+
+.dfn-paneled[role="button"] { cursor: help; }
+
+.highlighted {
+    animation: target-fade 3s;
+}
+
+@keyframes target-fade {
+    from {
+        background-color: var(--dfnpanel-target-bg);
+        outline: 5px solid var(--dfnpanel-target-outline);
+    }
+    to {
+        color: var(--a-normal-text);
+        background-color: transparent;
+        outline: transparent;
+    }
+}
 </style>
 <style>/* Boilerplate: style-issues */
 a[href].issue-return {
@@ -416,8 +486,40 @@ a[href].issue-return {
     margin-bottom: 0;
 }
 </style>
-<style>/* Boilerplate: style-selflinks */
+<style>/* Boilerplate: style-ref-hints */
+:root {
+    --ref-hint-bg: #ddd;
+    --ref-hint-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --ref-hint-bg: #222;
+        --ref-hint-text: var(--text);
+    }
+}
 
+.ref-hint {
+    display: inline-block;
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.5em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--ref-hint-bg);
+    color: var(--ref-hint-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+
+.ref-hint * { margin: 0; padding: 0; text-indent: 0; }
+
+.ref-hint ul { padding: 0 0 0 1em; list-style: none; }
+</style>
+<style>/* Boilerplate: style-selflinks */
 :root {
     --selflink-text: white;
     --selflink-bg: gray;
@@ -480,7 +582,7 @@ dfn > a.self-link::before      { content: "#"; }
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">Ethical Principles for Web Machine Learning</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2023-08-11">11 August 2023</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-01-08">8 January 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -499,7 +601,7 @@ dfn > a.self-link::before      { content: "#"; }
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2023 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/copyright-software" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -523,7 +625,7 @@ dfn > a.self-link::before      { content: "#"; }
     includes instructions for disclosing a patent. An individual who has actual knowledge of a
     patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
     Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20230612/" id="w3c_process_revision">12 June 2023 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
    <p><em>This section describes the status of this document at the time of its publication. A list of current <abbr title="World Wide Web Consortium">W3C</abbr> publications and the latest revision of this technical report can be found in the <a href="https://www.w3.org/TR/"><abbr title="World Wide Web Consortium">W3C</abbr> technical reports index</a> at https://www.w3.org/TR/.</em></p>
    <p>This document was published by the <a href="https://www.w3.org/groups/wg/webmachinelearning">Machine Learning Working Group</a> as a Group Draft Note using the <a href="https://www.w3.org/2023/Process-20230612/#recs-and-notes">Note track</a>.</p>
@@ -879,11 +981,11 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="pdnh-r3">PDNH-R3</dfn></p>
    <p>Might be used for more sophisticated manipulation of people and their attention.</p>
    <h4 class="heading settled" data-level="6.1.2" id="possible-mitigations"><span class="secno">6.1.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="pdnh-r1-mitigations"><a data-link-type="dfn" href="#pdnh-r1" id="ref-for-pdnh-r1">PDNH-R1</a> Mitigations<a class="self-link" href="#pdnh-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="pdnh-r1-mitigations"><a data-link-type="dfn" href="#pdnh-r1" id="ref-for-pdnh-r1">PDNH-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="pdnh-r2-mitigations"><a data-link-type="dfn" href="#pdnh-r2" id="ref-for-pdnh-r2">PDNH-R2</a> Mitigations<a class="self-link" href="#pdnh-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="pdnh-r2-mitigations"><a data-link-type="dfn" href="#pdnh-r2" id="ref-for-pdnh-r2">PDNH-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="pdnh-r3-mitigations"><a data-link-type="dfn" href="#pdnh-r3" id="ref-for-pdnh-r3">PDNH-R3</a> Mitigations<a class="self-link" href="#pdnh-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="pdnh-r3-mitigations"><a data-link-type="dfn" href="#pdnh-r3" id="ref-for-pdnh-r3">PDNH-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.2" id="fairness-and-non-discrimination"><span class="secno">6.2. </span><span class="content">Fairness and non-discrimination</span><a class="self-link" href="#fairness-and-non-discrimination"></a></h3>
    <h4 class="heading settled" data-level="6.2.1" id="risks①"><span class="secno">6.2.1. </span><span class="content">Risks</span><a class="self-link" href="#risks①"></a></h4>
@@ -908,25 +1010,25 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r10">FND-R10</dfn></p>
    <p>One example is how geographic pricing is employed by companies like Amazon – e.g. depending on where your IP address is located to or depending on your device type, different prices are presented to shoppers – it’s a question if this is unethical or unlawful, but it is something that is happening and also begs to question whether or not this is something we want to speak to → taken further you can also imagine reducing service based on geography or hardware or other factors in a way that is automated through ML systems.</p>
    <h4 class="heading settled" data-level="6.2.2" id="possible-mitigations①"><span class="secno">6.2.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations①"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r1-mitigations"><a data-link-type="dfn" href="#fnd-r1" id="ref-for-fnd-r1">FND-R1</a> Mitigations<a class="self-link" href="#fnd-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r1-mitigations"><a data-link-type="dfn" href="#fnd-r1" id="ref-for-fnd-r1">FND-R1</a> Mitigations</dfn></p>
    <p>Browser-assisted mechanisms to find out about the limitations and performance characteristics of ML models used in a Web app. This could build on an approach published in Model Cards for Model Reporting where making this report machine-discoverable would allow for the web browser to offer a more integrated user experience. Another transparency tool is the <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/6">Open Ethics Transparency Protocol</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r2-mitigations"><a data-link-type="dfn" href="#fnd-r2" id="ref-for-fnd-r2">FND-R2</a> Mitigations<a class="self-link" href="#fnd-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r2-mitigations"><a data-link-type="dfn" href="#fnd-r2" id="ref-for-fnd-r2">FND-R2</a> Mitigations</dfn></p>
    <p>ML actors should  provide fallback solutions for these inevitabilities.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r3-mitigations"><a data-link-type="dfn" href="#fnd-r3" id="ref-for-fnd-r3">FND-R3</a> Mitigations<a class="self-link" href="#fnd-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r3-mitigations"><a data-link-type="dfn" href="#fnd-r3" id="ref-for-fnd-r3">FND-R3</a> Mitigations</dfn></p>
    <p>This issue is not specific to ML and can be mitigated in part by using a Content Delivery Network and by offering reduced size models.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r4-mitigations"><a data-link-type="dfn" href="#fnd-r4" id="ref-for-fnd-r4">FND-R4</a> Mitigations<a class="self-link" href="#fnd-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r4-mitigations"><a data-link-type="dfn" href="#fnd-r4" id="ref-for-fnd-r4">FND-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r5-mitigations"><a data-link-type="dfn" href="#fnd-r5" id="ref-for-fnd-r5">FND-R5</a> Mitigations<a class="self-link" href="#fnd-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r5-mitigations"><a data-link-type="dfn" href="#fnd-r5" id="ref-for-fnd-r5">FND-R5</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r6-mitigations"><a data-link-type="dfn" href="#fnd-r6" id="ref-for-fnd-r6">FND-R6</a> Mitigations<a class="self-link" href="#fnd-r6-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r6-mitigations"><a data-link-type="dfn" href="#fnd-r6" id="ref-for-fnd-r6">FND-R6</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r7-mitigations"><a data-link-type="dfn" href="#fnd-r7" id="ref-for-fnd-r7">FND-R7</a> Mitigations<a class="self-link" href="#fnd-r7-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r7-mitigations"><a data-link-type="dfn" href="#fnd-r7" id="ref-for-fnd-r7">FND-R7</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r8-mitigations"><a data-link-type="dfn" href="#fnd-r8" id="ref-for-fnd-r8">FND-R8</a> Mitigations<a class="self-link" href="#fnd-r8-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r8-mitigations"><a data-link-type="dfn" href="#fnd-r8" id="ref-for-fnd-r8">FND-R8</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r9-mitigations"><a data-link-type="dfn" href="#fnd-r9" id="ref-for-fnd-r9">FND-R9</a> Mitigations<a class="self-link" href="#fnd-r9-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r9-mitigations"><a data-link-type="dfn" href="#fnd-r9" id="ref-for-fnd-r9">FND-R9</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="fnd-r10-mitigations"><a data-link-type="dfn" href="#fnd-r10" id="ref-for-fnd-r10">FND-R10</a> Mitigations<a class="self-link" href="#fnd-r10-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="fnd-r10-mitigations"><a data-link-type="dfn" href="#fnd-r10" id="ref-for-fnd-r10">FND-R10</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.3" id="autonomy"><span class="secno">6.3. </span><span class="content">Autonomy</span><a class="self-link" href="#autonomy"></a></h3>
    <h4 class="heading settled" data-level="6.3.1" id="risks②"><span class="secno">6.3.1. </span><span class="content">Risks</span><a class="self-link" href="#risks②"></a></h4>
@@ -967,21 +1069,21 @@ dfn > a.self-link::before      { content: "#"; }
    <p>People might feel that their trust is betrayed if they don’t know what a web app is doing with their data. This isn’t specific to Web ML, perhaps, but it’s more salient, or more in the news.</p>
    <p>It can be hard to explain why someone might want to enable Web ML. Eg, it’s actually safer, because your personal data will remain on your device and won’t be sent to remote servers. You’ll have a better experience or new features in the web app.</p>
    <h4 class="heading settled" data-level="6.3.2" id="possible-mitigations②"><span class="secno">6.3.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations②"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r1-mitigations"><a data-link-type="dfn" href="#a-r1" id="ref-for-a-r1">A-R1</a> Mitigations<a class="self-link" href="#a-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r1-mitigations"><a data-link-type="dfn" href="#a-r1" id="ref-for-a-r1">A-R1</a> Mitigations</dfn></p>
    <p>Similarly to videos, the sites should make it opt-in to load large models on load or run expensive compute tasks.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r2-mitigations"><a data-link-type="dfn" href="#a-r2" id="ref-for-a-r2">A-R2</a> Mitigations<a class="self-link" href="#a-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r2-mitigations"><a data-link-type="dfn" href="#a-r2" id="ref-for-a-r2">A-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r3-mitigations"><a data-link-type="dfn" href="#a-r3" id="ref-for-a-r3">A-R3</a> Mitigations<a class="self-link" href="#a-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r3-mitigations"><a data-link-type="dfn" href="#a-r3" id="ref-for-a-r3">A-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r4-mitigations"><a data-link-type="dfn" href="#a-r4" id="ref-for-a-r4">A-R4</a> Mitigations<a class="self-link" href="#a-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r4-mitigations"><a data-link-type="dfn" href="#a-r4" id="ref-for-a-r4">A-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r5-mitigations"><a data-link-type="dfn" href="#a-r5" id="ref-for-a-r5">A-R5</a> Mitigations<a class="self-link" href="#a-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r5-mitigations"><a data-link-type="dfn" href="#a-r5" id="ref-for-a-r5">A-R5</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r6-mitigations"><a data-link-type="dfn" href="#a-r6" id="ref-for-a-r6">A-R6</a> Mitigations<a class="self-link" href="#a-r6-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r6-mitigations"><a data-link-type="dfn" href="#a-r6" id="ref-for-a-r6">A-R6</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r7-mitigations"><a data-link-type="dfn" href="#a-r7" id="ref-for-a-r7">A-R7</a> Mitigations<a class="self-link" href="#a-r7-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r7-mitigations"><a data-link-type="dfn" href="#a-r7" id="ref-for-a-r7">A-R7</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r8-mitigations"><a data-link-type="dfn" href="#a-r8" id="ref-for-a-r8">A-R8</a> Mitigations<a class="self-link" href="#a-r8-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r8-mitigations"><a data-link-type="dfn" href="#a-r8" id="ref-for-a-r8">A-R8</a> Mitigations</dfn></p>
    <p>Things that <em>end users</em> could be asked to do…</p>
    <ul>
     <li data-md>
@@ -1022,21 +1124,21 @@ dfn > a.self-link::before      { content: "#"; }
     <li data-md>
      <p>Developers giving users trivial incentives to load a data leaking ML model. Silly hats for all of your data.</p>
    </ul>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r9-mitigations"><a data-link-type="dfn" href="#a-r9" id="ref-for-a-r9">A-R9</a> Mitigations<a class="self-link" href="#a-r9-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r9-mitigations"><a data-link-type="dfn" href="#a-r9" id="ref-for-a-r9">A-R9</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r10-mitigations"><a data-link-type="dfn" href="#a-r10" id="ref-for-a-r10">A-R10</a> Mitigations<a class="self-link" href="#a-r10-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r10-mitigations"><a data-link-type="dfn" href="#a-r10" id="ref-for-a-r10">A-R10</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r11-mitigations"><a data-link-type="dfn" href="#a-r11" id="ref-for-a-r11">A-R11</a> Mitigations<a class="self-link" href="#a-r11-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r11-mitigations"><a data-link-type="dfn" href="#a-r11" id="ref-for-a-r11">A-R11</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r12-mitigations"><a data-link-type="dfn" href="#a-r12" id="ref-for-a-r12">A-R12</a> Mitigations<a class="self-link" href="#a-r12-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r12-mitigations"><a data-link-type="dfn" href="#a-r12" id="ref-for-a-r12">A-R12</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r13-mitigations"><a data-link-type="dfn" href="#a-r13" id="ref-for-a-r13">A-R13</a> Mitigations<a class="self-link" href="#a-r13-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r13-mitigations"><a data-link-type="dfn" href="#a-r13" id="ref-for-a-r13">A-R13</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r14-mitigations"><a data-link-type="dfn" href="#a-r14" id="ref-for-a-r14">A-R14</a> Mitigations<a class="self-link" href="#a-r14-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r14-mitigations"><a data-link-type="dfn" href="#a-r14" id="ref-for-a-r14">A-R14</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r15-mitigations"><a data-link-type="dfn" href="#a-r15" id="ref-for-a-r15">A-R15</a> Mitigations<a class="self-link" href="#a-r15-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r15-mitigations"><a data-link-type="dfn" href="#a-r15" id="ref-for-a-r15">A-R15</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="a-r16-mitigations"><a data-link-type="dfn" href="#a-r16" id="ref-for-a-r16">A-R16</a> Mitigations<a class="self-link" href="#a-r16-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="a-r16-mitigations"><a data-link-type="dfn" href="#a-r16" id="ref-for-a-r16">A-R16</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.4" id="right-to-privacy-and-data-protection"><span class="secno">6.4. </span><span class="content">Right to Privacy, and Data Protection</span><a class="self-link" href="#right-to-privacy-and-data-protection"></a></h3>
    <h4 class="heading settled" data-level="6.4.1" id="risks③"><span class="secno">6.4.1. </span><span class="content">Risks</span><a class="self-link" href="#risks③"></a></h4>
@@ -1064,27 +1166,27 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r11">RPDP-R11</dfn></p>
    <p>Another risk is that people distrust and turn off Web ML, and the alternative is worse, from a privacy perspective. The web app can still use ML, but may do so by sending private data to remote servers that are less secure than the local device.</p>
    <h4 class="heading settled" data-level="6.4.2" id="possible-mitigations③"><span class="secno">6.4.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations③"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r1-mitigations"><a data-link-type="dfn" href="#rpdp-r1" id="ref-for-rpdp-r1">RPDP-R1</a> Mitigations<a class="self-link" href="#rpdp-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r1-mitigations"><a data-link-type="dfn" href="#rpdp-r1" id="ref-for-rpdp-r1">RPDP-R1</a> Mitigations</dfn></p>
    <p>Requiring explicit consent to access privacy-sensitive capabilities such as on-device camera.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r2-mitigations"><a data-link-type="dfn" href="#rpdp-r2" id="ref-for-rpdp-r2">RPDP-R2</a> Mitigations<a class="self-link" href="#rpdp-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r2-mitigations"><a data-link-type="dfn" href="#rpdp-r2" id="ref-for-rpdp-r2">RPDP-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r3-mitigations"><a data-link-type="dfn" href="#rpdp-r3" id="ref-for-rpdp-r3">RPDP-R3</a> Mitigations<a class="self-link" href="#rpdp-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r3-mitigations"><a data-link-type="dfn" href="#rpdp-r3" id="ref-for-rpdp-r3">RPDP-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r4-mitigations"><a data-link-type="dfn" href="#rpdp-r4" id="ref-for-rpdp-r4">RPDP-R4</a> Mitigations<a class="self-link" href="#rpdp-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r4-mitigations"><a data-link-type="dfn" href="#rpdp-r4" id="ref-for-rpdp-r4">RPDP-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r5-mitigations"><a data-link-type="dfn" href="#rpdp-r5" id="ref-for-rpdp-r5">RPDP-R5</a> Mitigations<a class="self-link" href="#rpdp-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r5-mitigations"><a data-link-type="dfn" href="#rpdp-r5" id="ref-for-rpdp-r5">RPDP-R5</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r6-mitigations"><a data-link-type="dfn" href="#rpdp-r6" id="ref-for-rpdp-r6">RPDP-R6</a> Mitigations<a class="self-link" href="#rpdp-r6-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r6-mitigations"><a data-link-type="dfn" href="#rpdp-r6" id="ref-for-rpdp-r6">RPDP-R6</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r7-mitigations"><a data-link-type="dfn" href="#rpdp-r7" id="ref-for-rpdp-r7">RPDP-R7</a> Mitigations<a class="self-link" href="#rpdp-r7-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r7-mitigations"><a data-link-type="dfn" href="#rpdp-r7" id="ref-for-rpdp-r7">RPDP-R7</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r8-mitigations"><a data-link-type="dfn" href="#rpdp-r8" id="ref-for-rpdp-r8">RPDP-R8</a> Mitigations<a class="self-link" href="#rpdp-r8-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r8-mitigations"><a data-link-type="dfn" href="#rpdp-r8" id="ref-for-rpdp-r8">RPDP-R8</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r9-mitigations"><a data-link-type="dfn" href="#rpdp-r9" id="ref-for-rpdp-r9">RPDP-R9</a> Mitigations<a class="self-link" href="#rpdp-r9-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r9-mitigations"><a data-link-type="dfn" href="#rpdp-r9" id="ref-for-rpdp-r9">RPDP-R9</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r10-mitigations"><a data-link-type="dfn" href="#rpdp-r10" id="ref-for-rpdp-r10">RPDP-R10</a> Mitigations<a class="self-link" href="#rpdp-r10-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r10-mitigations"><a data-link-type="dfn" href="#rpdp-r10" id="ref-for-rpdp-r10">RPDP-R10</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="rpdp-r11-mitigations"><a data-link-type="dfn" href="#rpdp-r11" id="ref-for-rpdp-r11">RPDP-R11</a> Mitigations<a class="self-link" href="#rpdp-r11-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="rpdp-r11-mitigations"><a data-link-type="dfn" href="#rpdp-r11" id="ref-for-rpdp-r11">RPDP-R11</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.5" id="safety-and-security"><span class="secno">6.5. </span><span class="content">Safety and security</span><a class="self-link" href="#safety-and-security"></a></h3>
    <h4 class="heading settled" data-level="6.5.1" id="risks④"><span class="secno">6.5.1. </span><span class="content">Risks</span><a class="self-link" href="#risks④"></a></h4>
@@ -1101,15 +1203,15 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r5">SS-R5</dfn></p>
    <p class="issue" id="issue-9c077a38②"><a class="self-link" href="#issue-9c077a38②"></a> Identify risk mapping for corresponding mitigation.</p>
    <h4 class="heading settled" data-level="6.5.2" id="possible-mitigations④"><span class="secno">6.5.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations④"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ss-r1-mitigations"><a data-link-type="dfn" href="#ss-r1" id="ref-for-ss-r1">SS-R1</a> Mitigations<a class="self-link" href="#ss-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r1-mitigations"><a data-link-type="dfn" href="#ss-r1" id="ref-for-ss-r1">SS-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ss-r2-mitigations"><a data-link-type="dfn" href="#ss-r2" id="ref-for-ss-r2">SS-R2</a> Mitigations<a class="self-link" href="#ss-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r2-mitigations"><a data-link-type="dfn" href="#ss-r2" id="ref-for-ss-r2">SS-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ss-r3-mitigations"><a data-link-type="dfn" href="#ss-r3" id="ref-for-ss-r3">SS-R3</a> Mitigations<a class="self-link" href="#ss-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r3-mitigations"><a data-link-type="dfn" href="#ss-r3" id="ref-for-ss-r3">SS-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ss-r4-mitigations"><a data-link-type="dfn" href="#ss-r4" id="ref-for-ss-r4">SS-R4</a> Mitigations<a class="self-link" href="#ss-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r4-mitigations"><a data-link-type="dfn" href="#ss-r4" id="ref-for-ss-r4">SS-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ss-r5-mitigations"><a data-link-type="dfn" href="#ss-r5" id="ref-for-ss-r5">SS-R5</a> Mitigations<a class="self-link" href="#ss-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ss-r5-mitigations"><a data-link-type="dfn" href="#ss-r5" id="ref-for-ss-r5">SS-R5</a> Mitigations</dfn></p>
    <p>Can be at least partially mitigated by transparency and third-party auditing.</p>
    <h3 class="heading settled" data-level="6.6" id="transparency-and-explainability"><span class="secno">6.6. </span><span class="content">Transparency and explainability</span><a class="self-link" href="#transparency-and-explainability"></a></h3>
    <h4 class="heading settled" data-level="6.6.1" id="risks⑤"><span class="secno">6.6.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑤"></a></h4>
@@ -1124,44 +1226,42 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r5">TE-R5</dfn></p>
    <p>The difficulty of explaining Web ML’s benefits and drawbacks may lead people to make choices that are worse for them. Eg, they might turn off Web ML, not understanding that it’s better for privacy to keep the data local. (I’m thinking here about the transparency and explainability of the API, not the ML model.)</p>
    <h4 class="heading settled" data-level="6.6.2" id="possible-mitigations⑤"><span class="secno">6.6.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑤"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="te-r1-mitigations"><a data-link-type="dfn" href="#te-r1" id="ref-for-te-r1">TE-R1</a> Mitigations<a class="self-link" href="#te-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r1-mitigations"><a data-link-type="dfn" href="#te-r1" id="ref-for-te-r1">TE-R1</a> Mitigations</dfn></p>
    <p>Web APIs by their design make it possible to integrate into browsers developer tools features that help build intuition on how neural networks work, in the spirit of "view source" principle.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="te-r2-mitigations"><a data-link-type="dfn" href="#te-r2" id="ref-for-te-r2">TE-R2</a> Mitigations<a class="self-link" href="#te-r2-mitigations"></a></dfn></p>
-   <p>Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.</p>
-   <p>Integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.</p>
-   <p>The ML model could be viewed by an integrated tool and in a visual way such <a href="https://netron.app/">Netron</a> does today.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="te-r3-mitigations"><a data-link-type="dfn" href="#te-r3" id="ref-for-te-r3">TE-R3</a> Mitigations<a class="self-link" href="#te-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r2-mitigations"><a data-link-type="dfn" href="#te-r2" id="ref-for-te-r2">TE-R2</a> Mitigations</dfn></p>
+   <p>Web-based visualization tools have been developed for deep neural networks for educational use. Such tools provide a conceptual graph of a model’s structure to help inspect and understand the model’s architecture. Examples of tools that make use of model-agnostic explainability techniques to provide a visual view include <a href="https://netron.app/">Netron</a> and <a href="https://poloclub.github.io/webshap/">WebSHAP</a>. Integration of this type of transparency and explainability features into browser developer tools remains future work.</p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r3-mitigations"><a data-link-type="dfn" href="#te-r3" id="ref-for-te-r3">TE-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="te-r4-mitigations"><a data-link-type="dfn" href="#te-r4" id="ref-for-te-r4">TE-R4</a> Mitigations<a class="self-link" href="#te-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r4-mitigations"><a data-link-type="dfn" href="#te-r4" id="ref-for-te-r4">TE-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="te-r5-mitigations"><a data-link-type="dfn" href="#te-r5" id="ref-for-te-r5">TE-R5</a> Mitigations<a class="self-link" href="#te-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="te-r5-mitigations"><a data-link-type="dfn" href="#te-r5" id="ref-for-te-r5">TE-R5</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.7" id="responsibility-and-accountability"><span class="secno">6.7. </span><span class="content">Responsibility and accountability</span><a class="self-link" href="#responsibility-and-accountability"></a></h3>
    <h4 class="heading settled" data-level="6.7.1" id="risks⑥"><span class="secno">6.7.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑥"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r1">RA-R1<a class="self-link" href="#ra-r1"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r1">RA-R1</dfn></p>
    <p>During the discussion around DRM on the Web via Encrypted Media Extensions, a lot of focus was on whether security researchers would get protected in case they reverse-engineered DRM systems on the Web (which was seen as a net good for the Web, but a legal risk for researchers); a similar challenge may arise for ML models as they get reviewed against e.g. bias.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r2">RA-R2<a class="self-link" href="#ra-r2"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r2">RA-R2</dfn></p>
    <p>Assuming long-tail web developers will prefer to use 3rd party ML models due to cost of training your own (similarly to JS frameworks in general). This means the ethical responsibility and liability is deferred (in part?) to the 3rd party.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r3">RA-R3<a class="self-link" href="#ra-r3"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r3">RA-R3</dfn></p>
    <p>The use of 3rd party models introduces an external dependency to a possibly critical component of the web (app) experience.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r4">RA-R4<a class="self-link" href="#ra-r4"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r4">RA-R4</dfn></p>
    <p>We can’t force developers to follow these principles and guidelines.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r5">RA-R5<a class="self-link" href="#ra-r5"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r5">RA-R5</dfn></p>
    <p>That the WebML Working Group has very little control over models … is it able to influence those who do build them enough to ensure these principles are operationalised.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r6">RA-R6<a class="self-link" href="#ra-r6"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r6">RA-R6</dfn></p>
    <p class="issue" id="issue-9c077a38③"><a class="self-link" href="#issue-9c077a38③"></a> Identify risk mapping for corresponding mitigation.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ra-r7">RA-R7<a class="self-link" href="#ra-r7"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ra-r7">RA-R7</dfn></p>
    <p>ML models can operate as black boxes, and when integrated in a platform that already mixes and matches content and code from very many parties, this may make the accountability of a how an app uses ML that much harder to track.</p>
    <h4 class="heading settled" data-level="6.7.2" id="possible-mitigations⑥"><span class="secno">6.7.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑥"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r1-mitigations"><a data-link-type="dfn">TA-R1</a> Mitigations<a class="self-link" href="#ta-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r1-mitigations"><a data-link-type="dfn">TA-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r2-mitigations"><a data-link-type="dfn">TA-R2</a> Mitigations<a class="self-link" href="#ta-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r2-mitigations"><a data-link-type="dfn">TA-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r3-mitigations"><a data-link-type="dfn">TA-R3</a> Mitigations<a class="self-link" href="#ta-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r3-mitigations"><a data-link-type="dfn">TA-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r4-mitigations"><a data-link-type="dfn">TA-R4</a> Mitigations<a class="self-link" href="#ta-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r4-mitigations"><a data-link-type="dfn">TA-R4</a> Mitigations</dfn></p>
    <p>But they should get incentives (e.g. better performance) to use the purpose-built approach with more guarantees baked-in.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r5-mitigations"><a data-link-type="dfn">TA-R5</a> Mitigations<a class="self-link" href="#ta-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r5-mitigations"><a data-link-type="dfn">TA-R5</a> Mitigations</dfn></p>
    <p>Things that <em>end users</em> could be asked to do…</p>
    <ul>
     <li data-md>
@@ -1191,9 +1291,9 @@ dfn > a.self-link::before      { content: "#"; }
     <li data-md>
      <p>Ensure Web ML guidelines are evaluatable or certifiable</p>
    </ul>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r6-mitigations"><a data-link-type="dfn">TA-R6</a> Mitigations<a class="self-link" href="#ta-r6-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r6-mitigations"><a data-link-type="dfn">TA-R6</a> Mitigations</dfn></p>
    <p>Wonder if something like model cards could include (or maybe they do) accountability details, or even any details at all, so that models are linked back to actual people / companies.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="ta-r7-mitigations"><a data-link-type="dfn">TA-R7</a> Mitigations<a class="self-link" href="#ta-r7-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="ta-r7-mitigations"><a data-link-type="dfn">TA-R7</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.8" id="sustainability"><span class="secno">6.8. </span><span class="content">Sustainability</span><a class="self-link" href="#sustainability"></a></h3>
    <h4 class="heading settled" data-level="6.8.1" id="risks⑦"><span class="secno">6.8.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑦"></a></h4>
@@ -1214,28 +1314,28 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r8">S-R8</dfn></p>
    <p>Web developers have Web APIs at their disposal to help adapt the experience to be more energy efficient, see Compute Pressure API or Battery Status API. This requires balancing between enough information to satisfy the use case and not disclosing too much information to become a fingerprinting vector.</p>
    <h4 class="heading settled" data-level="6.8.2" id="possible-mitigations⑦"><span class="secno">6.8.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑦"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r1-mitigations"><a data-link-type="dfn" href="#s-r1" id="ref-for-s-r1">S-R1</a> Mitigations<a class="self-link" href="#s-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r1-mitigations"><a data-link-type="dfn" href="#s-r1" id="ref-for-s-r1">S-R1</a> Mitigations</dfn></p>
    <p>Opportunity for web browsers to make visible the energy impact of various workloads running in the browser, for example through the proposed Compute Pressure API.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r2-mitigations"><a data-link-type="dfn" href="#s-r2" id="ref-for-s-r2">S-R2</a> Mitigations<a class="self-link" href="#s-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r2-mitigations"><a data-link-type="dfn" href="#s-r2" id="ref-for-s-r2">S-R2</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r3-mitigations"><a data-link-type="dfn" href="#s-r3" id="ref-for-s-r3">S-R3</a> Mitigations<a class="self-link" href="#s-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r3-mitigations"><a data-link-type="dfn" href="#s-r3" id="ref-for-s-r3">S-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r4-mitigations"><a data-link-type="dfn" href="#s-r4" id="ref-for-s-r4">S-R4</a> Mitigations<a class="self-link" href="#s-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r4-mitigations"><a data-link-type="dfn" href="#s-r4" id="ref-for-s-r4">S-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r5-mitigations"><a data-link-type="dfn" href="#s-r5" id="ref-for-s-r5">S-R5</a> Mitigations<a class="self-link" href="#s-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r5-mitigations"><a data-link-type="dfn" href="#s-r5" id="ref-for-s-r5">S-R5</a> Mitigations</dfn></p>
    <p>There is probably room to improve in-browser energy impact reporting: “this tab is using significant amount of energy” – wondering if there’s room for an explicit web developer-facing API to surface energy impact more explicitly?</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r6-mitigations"><a data-link-type="dfn" href="#s-r6" id="ref-for-s-r6">S-R6</a> Mitigations<a class="self-link" href="#s-r6-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r6-mitigations"><a data-link-type="dfn" href="#s-r6" id="ref-for-s-r6">S-R6</a> Mitigations</dfn></p>
    <p>Web experiences should not depend solely on ML capabilities but enable graceful degradation path should the user or user agent wish to minimize the environmental impact.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r7-mitigations"><a data-link-type="dfn" href="#s-r7" id="ref-for-s-r7">S-R7</a> Mitigations<a class="self-link" href="#s-r7-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r7-mitigations"><a data-link-type="dfn" href="#s-r7" id="ref-for-s-r7">S-R7</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="s-r8-mitigations"><a data-link-type="dfn" href="#s-r8" id="ref-for-s-r8">S-R8</a> Mitigations<a class="self-link" href="#s-r8-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="s-r8-mitigations"><a data-link-type="dfn" href="#s-r8" id="ref-for-s-r8">S-R8</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.9" id="human-oversight-and-determination"><span class="secno">6.9. </span><span class="content">Human oversight and determination</span><a class="self-link" href="#human-oversight-and-determination"></a></h3>
    <h4 class="heading settled" data-level="6.9.1" id="risks⑧"><span class="secno">6.9.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑧"></a></h4>
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="hod-r1">HOD-R1</dfn></p>
    <p>That ML models determining things like of access to welfare / insurance / healthcare etc. could rely on client-side inference?</p>
    <h4 class="heading settled" data-level="6.9.2" id="possible-mitigations⑧"><span class="secno">6.9.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑧"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="hod-r1-mitigations"><a data-link-type="dfn" href="#hod-r1" id="ref-for-hod-r1">HOD-R1</a> Mitigations<a class="self-link" href="#hod-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="hod-r1-mitigations"><a data-link-type="dfn" href="#hod-r1" id="ref-for-hod-r1">HOD-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.10" id="awareness-and-literacy"><span class="secno">6.10. </span><span class="content">Awareness and literacy</span><a class="self-link" href="#awareness-and-literacy"></a></h3>
    <h4 class="heading settled" data-level="6.10.1" id="risks⑨"><span class="secno">6.10.1. </span><span class="content">Risks</span><a class="self-link" href="#risks⑨"></a></h4>
@@ -1250,15 +1350,15 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r5">AL-R5</dfn></p>
    <p>That without literacy and awareness users will be unable to identify the uncanny valley which can be important for privacy and security (e.g. the use of conversational bots that might be used to deceive you to gain access to your login credentials etc).</p>
    <h4 class="heading settled" data-level="6.10.2" id="possible-mitigations⑨"><span class="secno">6.10.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations⑨"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="al-r1-mitigations"><a data-link-type="dfn" href="#al-r1" id="ref-for-al-r1">AL-R1</a> Mitigations<a class="self-link" href="#al-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r1-mitigations"><a data-link-type="dfn" href="#al-r1" id="ref-for-al-r1">AL-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="al-r2-mitigations"><a data-link-type="dfn" href="#al-r2" id="ref-for-al-r2">AL-R2</a> Mitigations<a class="self-link" href="#al-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r2-mitigations"><a data-link-type="dfn" href="#al-r2" id="ref-for-al-r2">AL-R2</a> Mitigations</dfn></p>
    <p>Perhaps specs could enable innovative use cases for developers to come up with good ways to help people be informed and aware of what’s going on under the hood with ML.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="al-r3-mitigations"><a data-link-type="dfn" href="#al-r3" id="ref-for-al-r3">AL-R3</a> Mitigations<a class="self-link" href="#al-r3-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r3-mitigations"><a data-link-type="dfn" href="#al-r3" id="ref-for-al-r3">AL-R3</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="al-r4-mitigations"><a data-link-type="dfn" href="#al-r4" id="ref-for-al-r4">AL-R4</a> Mitigations<a class="self-link" href="#al-r4-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r4-mitigations"><a data-link-type="dfn" href="#al-r4" id="ref-for-al-r4">AL-R4</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="al-r5-mitigations"><a data-link-type="dfn" href="#al-r5" id="ref-for-al-r5">AL-R5</a> Mitigations<a class="self-link" href="#al-r5-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="al-r5-mitigations"><a data-link-type="dfn" href="#al-r5" id="ref-for-al-r5">AL-R5</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
    <h3 class="heading settled" data-level="6.11" id="multi-stakeholder-and-adaptive-governance-and-collaboration"><span class="secno">6.11. </span><span class="content">Multi-stakeholder and adaptive governance and collaboration</span><a class="self-link" href="#multi-stakeholder-and-adaptive-governance-and-collaboration"></a></h3>
    <h4 class="heading settled" data-level="6.11.1" id="risks①⓪"><span class="secno">6.11.1. </span><span class="content">Risks</span><a class="self-link" href="#risks①⓪"></a></h4>
@@ -1267,9 +1367,9 @@ dfn > a.self-link::before      { content: "#"; }
    <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="magc-r2">MAGC-R2</dfn></p>
    <p>"Big players" – global corporations/EU/governments – can make unilateral decisions that affect billions of people. What decision making process will they participate in?</p>
    <h4 class="heading settled" data-level="6.11.2" id="possible-mitigations①⓪"><span class="secno">6.11.2. </span><span class="content">Possible Mitigations</span><a class="self-link" href="#possible-mitigations①⓪"></a></h4>
-   <p><dfn data-dfn-type="dfn" data-noexport id="magc-r1-mitigations"><a data-link-type="dfn" href="#magc-r1" id="ref-for-magc-r1">MAGC-R1</a> Mitigations<a class="self-link" href="#magc-r1-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="magc-r1-mitigations"><a data-link-type="dfn" href="#magc-r1" id="ref-for-magc-r1">MAGC-R1</a> Mitigations</dfn></p>
    <p class="note" role="note"><span class="marker">Note:</span> Contributions welcome via <a href="https://github.com/webmachinelearning/ethical-webmachinelearning/issues/new">GitHub</a>.</p>
-   <p><dfn data-dfn-type="dfn" data-noexport id="magc-r2-mitigations"><a data-link-type="dfn" href="#magc-r2" id="ref-for-magc-r2">MAGC-R2</a> Mitigations<a class="self-link" href="#magc-r2-mitigations"></a></dfn></p>
+   <p><dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="magc-r2-mitigations"><a data-link-type="dfn" href="#magc-r2" id="ref-for-magc-r2">MAGC-R2</a> Mitigations</dfn></p>
    <p>It feels like the secret sauce in thinking about governance is trying to do as much as possible to build bridges across the many/various stakeholders to try to motivate maintaining and applying the principles set out in this document.</p>
    <h2 class="heading settled" id="appendix-background"><span class="content">Appendix 1. Background: Ethics &amp; Machine Learning</span><a class="self-link" href="#appendix-background"></a></h2>
    <h3 class="heading settled" id="what-is-ethics"><span class="content">What is ethics?</span><a class="self-link" href="#what-is-ethics"></a></h3>
@@ -1582,229 +1682,8 @@ and many others for their feedback and comments.</p>
    <dt id="biblio-xue">[Xue]
    <dd>M. Xue; et al. <a href="https://ieeexplore.ieee.org/document/9064510"><cite>Machine Learning Security: Threats, Countermeasures, and Evaluations</cite></a>. URL: <a href="https://ieeexplore.ieee.org/document/9064510">https://ieeexplore.ieee.org/document/9064510</a>
   </dl>
-<script>/* Boilerplate: script-dfn-panel */
-"use strict";
-{
-    const dfnsJson = window.dfnsJson || {};
-
-    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
-        return mk.aside({
-            class: "dfn-panel",
-            id: `infopanel-for-${dfnID}`,
-            "data-for": dfnID,
-            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
-            },
-            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
-                `Info about the '${dfnText}' ${external?"external":""} reference.`),
-            mk.a({href:url}, url),
-            mk.b({}, "Referenced in:"),
-            mk.ul({},
-                ...refSections.map(section=>
-                    mk.li({},
-                        ...section.refs.map((ref, refI)=>
-                            [
-                                mk.a({
-                                    href: `#${ref.id}`
-                                    },
-                                    (refI == 0) ? section.title : `(${refI + 1})`
-                                ),
-                                " ",
-                            ]
-                        ),
-                    ),
-                ),
-            ),
-        );
-    }
-
-    function genAllDfnPanels() {
-        for(const panelData of Object.values(window.dfnpanelData)) {
-            const dfnID = panelData.dfnID;
-            const dfn = document.getElementById(dfnID);
-            if(!dfn) {
-                console.log(`Can't find dfn#${dfnID}.`, panelData);
-            } else {
-                const panel = genDfnPanel(panelData);
-                append(document.body, panel);
-                insertDfnPopupAction(dfn, panel)
-            }
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", ()=>{
-        genAllDfnPanels();
-
-        // Add popup behavior to all dfns to show the corresponding dfn-panel.
-        var dfns = queryAll('.dfn-paneled');
-        for(let dfn of dfns) { ; }
-
-        document.body.addEventListener("click", (e) => {
-            // If not handled already, just hide all dfn panels.
-            hideAllDfnPanels();
-        });
-    })
-
-
-    function hideAllDfnPanels() {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
-    }
-
-    function showDfnPanel(dfnPanel, dfn) {
-        hideAllDfnPanels(); // Only display one at this time.
-        dfn.setAttribute("aria-expanded", "true");
-        dfnPanel.classList.add("on");
-        dfnPanel.style.left = "5px";
-        dfnPanel.style.top = "0px";
-        const panelRect = dfnPanel.getBoundingClientRect();
-        const panelWidth = panelRect.right - panelRect.left;
-        if (panelRect.right > document.body.scrollWidth) {
-            // Panel's overflowing the screen.
-            // Just drop it below the dfn and flip it rightward instead.
-            // This still wont' fix things if the screen is *really* wide,
-            // but fixing that's a lot harder without 'anchor()'.
-            dfnPanel.style.top = "1.5em";
-            dfnPanel.style.left = "auto";
-            dfnPanel.style.right = "0px";
-        }
-    }
-
-    function pinDfnPanel(dfnPanel) {
-        // Switch it to "activated" state, which pins it.
-        dfnPanel.classList.add("activated");
-        dfnPanel.style.left = null;
-        dfnPanel.style.top = null;
-    }
-
-    function hideDfnPanel(dfnPanel, dfn) {
-        if(!dfn) {
-            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
-        }
-        dfn.setAttribute("aria-expanded", "false")
-        dfnPanel.classList.remove("on");
-        dfnPanel.classList.remove("activated");
-    }
-
-    function toggleDfnPanel(dfnPanel, dfn) {
-        if(dfnPanel.classList.contains("on")) {
-            hideDfnPanel(dfnPanel, dfn);
-        } else {
-            showDfnPanel(dfnPanel, dfn);
-        }
-    }
-
-    function insertDfnPopupAction(dfn, dfnPanel) {
-        // Find dfn panel
-        const panelWrapper = document.createElement('span');
-        panelWrapper.appendChild(dfnPanel);
-        panelWrapper.style.position = "relative";
-        panelWrapper.style.height = "0px";
-        dfn.insertAdjacentElement("afterend", panelWrapper);
-        dfn.setAttribute('role', 'button');
-        dfn.setAttribute('aria-expanded', 'false')
-        dfn.tabIndex = 0;
-        dfn.classList.add('has-dfn-panel');
-        dfn.addEventListener('click', (event) => {
-            showDfnPanel(dfnPanel, dfn);
-            event.stopPropagation();
-        });
-        dfn.addEventListener('keypress', (event) => {
-            const kc = event.keyCode;
-            // 32->Space, 13->Enter
-            if(kc == 32 || kc == 13) {
-                toggleDfnPanel(dfnPanel, dfn);
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        });
-
-        dfnPanel.addEventListener('click', (event) => {
-            if (event.target.nodeName == 'A') {
-                pinDfnPanel(dfnPanel);
-            }
-            event.stopPropagation();
-        });
-
-        dfnPanel.addEventListener('keydown', (event) => {
-            if(event.keyCode == 27) { // Escape key
-                hideDfnPanel(dfnPanel, dfn);
-                event.stopPropagation();
-                event.preventDefault();
-            }
-        })
-    }
-}
-</script>
-<script>/* Boilerplate: script-dfn-panel-json */
-window.dfnpanelData = {};
-window.dfnpanelData['pdnh-r1'] = {"dfnID": "pdnh-r1", "url": "#pdnh-r1", "dfnText": "PDNH-R1", "refSections": [{"refs": [{"id": "ref-for-pdnh-r1"}], "title": "6.1.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['pdnh-r2'] = {"dfnID": "pdnh-r2", "url": "#pdnh-r2", "dfnText": "PDNH-R2", "refSections": [{"refs": [{"id": "ref-for-pdnh-r2"}], "title": "6.1.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['pdnh-r3'] = {"dfnID": "pdnh-r3", "url": "#pdnh-r3", "dfnText": "PDNH-R3", "refSections": [{"refs": [{"id": "ref-for-pdnh-r3"}], "title": "6.1.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r1'] = {"dfnID": "fnd-r1", "url": "#fnd-r1", "dfnText": "FND-R1", "refSections": [{"refs": [{"id": "ref-for-fnd-r1"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r2'] = {"dfnID": "fnd-r2", "url": "#fnd-r2", "dfnText": "FND-R2", "refSections": [{"refs": [{"id": "ref-for-fnd-r2"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r3'] = {"dfnID": "fnd-r3", "url": "#fnd-r3", "dfnText": "FND-R3", "refSections": [{"refs": [{"id": "ref-for-fnd-r3"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r4'] = {"dfnID": "fnd-r4", "url": "#fnd-r4", "dfnText": "FND-R4", "refSections": [{"refs": [{"id": "ref-for-fnd-r4"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r5'] = {"dfnID": "fnd-r5", "url": "#fnd-r5", "dfnText": "FND-R5", "refSections": [{"refs": [{"id": "ref-for-fnd-r5"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r6'] = {"dfnID": "fnd-r6", "url": "#fnd-r6", "dfnText": "FND-R6", "refSections": [{"refs": [{"id": "ref-for-fnd-r6"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r7'] = {"dfnID": "fnd-r7", "url": "#fnd-r7", "dfnText": "FND-R7", "refSections": [{"refs": [{"id": "ref-for-fnd-r7"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r8'] = {"dfnID": "fnd-r8", "url": "#fnd-r8", "dfnText": "FND-R8", "refSections": [{"refs": [{"id": "ref-for-fnd-r8"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r9'] = {"dfnID": "fnd-r9", "url": "#fnd-r9", "dfnText": "FND-R9", "refSections": [{"refs": [{"id": "ref-for-fnd-r9"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['fnd-r10'] = {"dfnID": "fnd-r10", "url": "#fnd-r10", "dfnText": "FND-R10", "refSections": [{"refs": [{"id": "ref-for-fnd-r10"}], "title": "6.2.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r1'] = {"dfnID": "a-r1", "url": "#a-r1", "dfnText": "A-R1", "refSections": [{"refs": [{"id": "ref-for-a-r1"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r2'] = {"dfnID": "a-r2", "url": "#a-r2", "dfnText": "A-R2", "refSections": [{"refs": [{"id": "ref-for-a-r2"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r3'] = {"dfnID": "a-r3", "url": "#a-r3", "dfnText": "A-R3", "refSections": [{"refs": [{"id": "ref-for-a-r3"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r4'] = {"dfnID": "a-r4", "url": "#a-r4", "dfnText": "A-R4", "refSections": [{"refs": [{"id": "ref-for-a-r4"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r5'] = {"dfnID": "a-r5", "url": "#a-r5", "dfnText": "A-R5", "refSections": [{"refs": [{"id": "ref-for-a-r5"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r6'] = {"dfnID": "a-r6", "url": "#a-r6", "dfnText": "A-R6", "refSections": [{"refs": [{"id": "ref-for-a-r6"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r7'] = {"dfnID": "a-r7", "url": "#a-r7", "dfnText": "A-R7", "refSections": [{"refs": [{"id": "ref-for-a-r7"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r8'] = {"dfnID": "a-r8", "url": "#a-r8", "dfnText": "A-R8", "refSections": [{"refs": [{"id": "ref-for-a-r8"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r9'] = {"dfnID": "a-r9", "url": "#a-r9", "dfnText": "A-R9", "refSections": [{"refs": [{"id": "ref-for-a-r9"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r10'] = {"dfnID": "a-r10", "url": "#a-r10", "dfnText": "A-R10", "refSections": [{"refs": [{"id": "ref-for-a-r10"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r11'] = {"dfnID": "a-r11", "url": "#a-r11", "dfnText": "A-R11", "refSections": [{"refs": [{"id": "ref-for-a-r11"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r12'] = {"dfnID": "a-r12", "url": "#a-r12", "dfnText": "A-R12", "refSections": [{"refs": [{"id": "ref-for-a-r12"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r13'] = {"dfnID": "a-r13", "url": "#a-r13", "dfnText": "A-R13", "refSections": [{"refs": [{"id": "ref-for-a-r13"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r14'] = {"dfnID": "a-r14", "url": "#a-r14", "dfnText": "A-R14", "refSections": [{"refs": [{"id": "ref-for-a-r14"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r15'] = {"dfnID": "a-r15", "url": "#a-r15", "dfnText": "A-R15", "refSections": [{"refs": [{"id": "ref-for-a-r15"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['a-r16'] = {"dfnID": "a-r16", "url": "#a-r16", "dfnText": "A-R16", "refSections": [{"refs": [{"id": "ref-for-a-r16"}], "title": "6.3.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r1'] = {"dfnID": "rpdp-r1", "url": "#rpdp-r1", "dfnText": "RPDP-R1", "refSections": [{"refs": [{"id": "ref-for-rpdp-r1"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r2'] = {"dfnID": "rpdp-r2", "url": "#rpdp-r2", "dfnText": "RPDP-R2", "refSections": [{"refs": [{"id": "ref-for-rpdp-r2"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r3'] = {"dfnID": "rpdp-r3", "url": "#rpdp-r3", "dfnText": "RPDP-R3", "refSections": [{"refs": [{"id": "ref-for-rpdp-r3"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r4'] = {"dfnID": "rpdp-r4", "url": "#rpdp-r4", "dfnText": "RPDP-R4", "refSections": [{"refs": [{"id": "ref-for-rpdp-r4"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r5'] = {"dfnID": "rpdp-r5", "url": "#rpdp-r5", "dfnText": "RPDP-R5", "refSections": [{"refs": [{"id": "ref-for-rpdp-r5"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r6'] = {"dfnID": "rpdp-r6", "url": "#rpdp-r6", "dfnText": "RPDP-R6", "refSections": [{"refs": [{"id": "ref-for-rpdp-r6"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r7'] = {"dfnID": "rpdp-r7", "url": "#rpdp-r7", "dfnText": "RPDP-R7", "refSections": [{"refs": [{"id": "ref-for-rpdp-r7"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r8'] = {"dfnID": "rpdp-r8", "url": "#rpdp-r8", "dfnText": "RPDP-R8", "refSections": [{"refs": [{"id": "ref-for-rpdp-r8"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r9'] = {"dfnID": "rpdp-r9", "url": "#rpdp-r9", "dfnText": "RPDP-R9", "refSections": [{"refs": [{"id": "ref-for-rpdp-r9"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r10'] = {"dfnID": "rpdp-r10", "url": "#rpdp-r10", "dfnText": "RPDP-R10", "refSections": [{"refs": [{"id": "ref-for-rpdp-r10"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['rpdp-r11'] = {"dfnID": "rpdp-r11", "url": "#rpdp-r11", "dfnText": "RPDP-R11", "refSections": [{"refs": [{"id": "ref-for-rpdp-r11"}], "title": "6.4.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['ss-r1'] = {"dfnID": "ss-r1", "url": "#ss-r1", "dfnText": "SS-R1", "refSections": [{"refs": [{"id": "ref-for-ss-r1"}], "title": "6.5.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['ss-r2'] = {"dfnID": "ss-r2", "url": "#ss-r2", "dfnText": "SS-R2", "refSections": [{"refs": [{"id": "ref-for-ss-r2"}], "title": "6.5.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['ss-r3'] = {"dfnID": "ss-r3", "url": "#ss-r3", "dfnText": "SS-R3", "refSections": [{"refs": [{"id": "ref-for-ss-r3"}], "title": "6.5.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['ss-r4'] = {"dfnID": "ss-r4", "url": "#ss-r4", "dfnText": "SS-R4", "refSections": [{"refs": [{"id": "ref-for-ss-r4"}], "title": "6.5.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['ss-r5'] = {"dfnID": "ss-r5", "url": "#ss-r5", "dfnText": "SS-R5", "refSections": [{"refs": [{"id": "ref-for-ss-r5"}], "title": "6.5.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['te-r1'] = {"dfnID": "te-r1", "url": "#te-r1", "dfnText": "TE-R1", "refSections": [{"refs": [{"id": "ref-for-te-r1"}], "title": "6.6.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['te-r2'] = {"dfnID": "te-r2", "url": "#te-r2", "dfnText": "TE-R2", "refSections": [{"refs": [{"id": "ref-for-te-r2"}], "title": "6.6.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['te-r3'] = {"dfnID": "te-r3", "url": "#te-r3", "dfnText": "TE-R3", "refSections": [{"refs": [{"id": "ref-for-te-r3"}], "title": "6.6.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['te-r4'] = {"dfnID": "te-r4", "url": "#te-r4", "dfnText": "TE-R4", "refSections": [{"refs": [{"id": "ref-for-te-r4"}], "title": "6.6.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['te-r5'] = {"dfnID": "te-r5", "url": "#te-r5", "dfnText": "TE-R5", "refSections": [{"refs": [{"id": "ref-for-te-r5"}], "title": "6.6.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r1'] = {"dfnID": "s-r1", "url": "#s-r1", "dfnText": "S-R1", "refSections": [{"refs": [{"id": "ref-for-s-r1"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r2'] = {"dfnID": "s-r2", "url": "#s-r2", "dfnText": "S-R2", "refSections": [{"refs": [{"id": "ref-for-s-r2"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r3'] = {"dfnID": "s-r3", "url": "#s-r3", "dfnText": "S-R3", "refSections": [{"refs": [{"id": "ref-for-s-r3"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r4'] = {"dfnID": "s-r4", "url": "#s-r4", "dfnText": "S-R4", "refSections": [{"refs": [{"id": "ref-for-s-r4"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r5'] = {"dfnID": "s-r5", "url": "#s-r5", "dfnText": "S-R5", "refSections": [{"refs": [{"id": "ref-for-s-r5"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r6'] = {"dfnID": "s-r6", "url": "#s-r6", "dfnText": "S-R6", "refSections": [{"refs": [{"id": "ref-for-s-r6"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r7'] = {"dfnID": "s-r7", "url": "#s-r7", "dfnText": "S-R7", "refSections": [{"refs": [{"id": "ref-for-s-r7"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['s-r8'] = {"dfnID": "s-r8", "url": "#s-r8", "dfnText": "S-R8", "refSections": [{"refs": [{"id": "ref-for-s-r8"}], "title": "6.8.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['hod-r1'] = {"dfnID": "hod-r1", "url": "#hod-r1", "dfnText": "HOD-R1", "refSections": [{"refs": [{"id": "ref-for-hod-r1"}], "title": "6.9.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['al-r1'] = {"dfnID": "al-r1", "url": "#al-r1", "dfnText": "AL-R1", "refSections": [{"refs": [{"id": "ref-for-al-r1"}], "title": "6.10.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['al-r2'] = {"dfnID": "al-r2", "url": "#al-r2", "dfnText": "AL-R2", "refSections": [{"refs": [{"id": "ref-for-al-r2"}], "title": "6.10.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['al-r3'] = {"dfnID": "al-r3", "url": "#al-r3", "dfnText": "AL-R3", "refSections": [{"refs": [{"id": "ref-for-al-r3"}], "title": "6.10.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['al-r4'] = {"dfnID": "al-r4", "url": "#al-r4", "dfnText": "AL-R4", "refSections": [{"refs": [{"id": "ref-for-al-r4"}], "title": "6.10.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['al-r5'] = {"dfnID": "al-r5", "url": "#al-r5", "dfnText": "AL-R5", "refSections": [{"refs": [{"id": "ref-for-al-r5"}], "title": "6.10.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['magc-r1'] = {"dfnID": "magc-r1", "url": "#magc-r1", "dfnText": "MAGC-R1", "refSections": [{"refs": [{"id": "ref-for-magc-r1"}], "title": "6.11.2. Possible Mitigations"}], "external": false};
-window.dfnpanelData['magc-r2'] = {"dfnID": "magc-r2", "url": "#magc-r2", "dfnText": "MAGC-R2", "refSections": [{"refs": [{"id": "ref-for-magc-r2"}], "title": "6.11.2. Possible Mitigations"}], "external": false};
-</script>
 <script>/* Boilerplate: script-dom-helper */
+"use strict";
 function query(sel) { return document.querySelector(sel); }
 
 function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
@@ -1998,5 +1877,830 @@ function parseHTML(markup) {
 		el.innerHTML = markup;
 		return el.content;
 	}
+}</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+let dfnPanelData = {
+"a-r1": {"dfnID":"a-r1","dfnText":"A-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r1"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r1"},
+"a-r1-mitigations": {"dfnID":"a-r1-mitigations","dfnText":"A-R1 Mitigations","external":false,"refSections":[],"url":"#a-r1-mitigations"},
+"a-r10": {"dfnID":"a-r10","dfnText":"A-R10","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r10"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r10"},
+"a-r10-mitigations": {"dfnID":"a-r10-mitigations","dfnText":"A-R10 Mitigations","external":false,"refSections":[],"url":"#a-r10-mitigations"},
+"a-r11": {"dfnID":"a-r11","dfnText":"A-R11","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r11"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r11"},
+"a-r11-mitigations": {"dfnID":"a-r11-mitigations","dfnText":"A-R11 Mitigations","external":false,"refSections":[],"url":"#a-r11-mitigations"},
+"a-r12": {"dfnID":"a-r12","dfnText":"A-R12","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r12"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r12"},
+"a-r12-mitigations": {"dfnID":"a-r12-mitigations","dfnText":"A-R12 Mitigations","external":false,"refSections":[],"url":"#a-r12-mitigations"},
+"a-r13": {"dfnID":"a-r13","dfnText":"A-R13","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r13"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r13"},
+"a-r13-mitigations": {"dfnID":"a-r13-mitigations","dfnText":"A-R13 Mitigations","external":false,"refSections":[],"url":"#a-r13-mitigations"},
+"a-r14": {"dfnID":"a-r14","dfnText":"A-R14","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r14"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r14"},
+"a-r14-mitigations": {"dfnID":"a-r14-mitigations","dfnText":"A-R14 Mitigations","external":false,"refSections":[],"url":"#a-r14-mitigations"},
+"a-r15": {"dfnID":"a-r15","dfnText":"A-R15","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r15"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r15"},
+"a-r15-mitigations": {"dfnID":"a-r15-mitigations","dfnText":"A-R15 Mitigations","external":false,"refSections":[],"url":"#a-r15-mitigations"},
+"a-r16": {"dfnID":"a-r16","dfnText":"A-R16","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r16"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r16"},
+"a-r16-mitigations": {"dfnID":"a-r16-mitigations","dfnText":"A-R16 Mitigations","external":false,"refSections":[],"url":"#a-r16-mitigations"},
+"a-r2": {"dfnID":"a-r2","dfnText":"A-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r2"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r2"},
+"a-r2-mitigations": {"dfnID":"a-r2-mitigations","dfnText":"A-R2 Mitigations","external":false,"refSections":[],"url":"#a-r2-mitigations"},
+"a-r3": {"dfnID":"a-r3","dfnText":"A-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r3"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r3"},
+"a-r3-mitigations": {"dfnID":"a-r3-mitigations","dfnText":"A-R3 Mitigations","external":false,"refSections":[],"url":"#a-r3-mitigations"},
+"a-r4": {"dfnID":"a-r4","dfnText":"A-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r4"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r4"},
+"a-r4-mitigations": {"dfnID":"a-r4-mitigations","dfnText":"A-R4 Mitigations","external":false,"refSections":[],"url":"#a-r4-mitigations"},
+"a-r5": {"dfnID":"a-r5","dfnText":"A-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r5"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r5"},
+"a-r5-mitigations": {"dfnID":"a-r5-mitigations","dfnText":"A-R5 Mitigations","external":false,"refSections":[],"url":"#a-r5-mitigations"},
+"a-r6": {"dfnID":"a-r6","dfnText":"A-R6","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r6"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r6"},
+"a-r6-mitigations": {"dfnID":"a-r6-mitigations","dfnText":"A-R6 Mitigations","external":false,"refSections":[],"url":"#a-r6-mitigations"},
+"a-r7": {"dfnID":"a-r7","dfnText":"A-R7","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r7"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r7"},
+"a-r7-mitigations": {"dfnID":"a-r7-mitigations","dfnText":"A-R7 Mitigations","external":false,"refSections":[],"url":"#a-r7-mitigations"},
+"a-r8": {"dfnID":"a-r8","dfnText":"A-R8","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r8"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r8"},
+"a-r8-mitigations": {"dfnID":"a-r8-mitigations","dfnText":"A-R8 Mitigations","external":false,"refSections":[],"url":"#a-r8-mitigations"},
+"a-r9": {"dfnID":"a-r9","dfnText":"A-R9","external":false,"refSections":[{"refs":[{"id":"ref-for-a-r9"}],"title":"6.3.2. Possible Mitigations"}],"url":"#a-r9"},
+"a-r9-mitigations": {"dfnID":"a-r9-mitigations","dfnText":"A-R9 Mitigations","external":false,"refSections":[],"url":"#a-r9-mitigations"},
+"al-r1": {"dfnID":"al-r1","dfnText":"AL-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-al-r1"}],"title":"6.10.2. Possible Mitigations"}],"url":"#al-r1"},
+"al-r1-mitigations": {"dfnID":"al-r1-mitigations","dfnText":"AL-R1 Mitigations","external":false,"refSections":[],"url":"#al-r1-mitigations"},
+"al-r2": {"dfnID":"al-r2","dfnText":"AL-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-al-r2"}],"title":"6.10.2. Possible Mitigations"}],"url":"#al-r2"},
+"al-r2-mitigations": {"dfnID":"al-r2-mitigations","dfnText":"AL-R2 Mitigations","external":false,"refSections":[],"url":"#al-r2-mitigations"},
+"al-r3": {"dfnID":"al-r3","dfnText":"AL-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-al-r3"}],"title":"6.10.2. Possible Mitigations"}],"url":"#al-r3"},
+"al-r3-mitigations": {"dfnID":"al-r3-mitigations","dfnText":"AL-R3 Mitigations","external":false,"refSections":[],"url":"#al-r3-mitigations"},
+"al-r4": {"dfnID":"al-r4","dfnText":"AL-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-al-r4"}],"title":"6.10.2. Possible Mitigations"}],"url":"#al-r4"},
+"al-r4-mitigations": {"dfnID":"al-r4-mitigations","dfnText":"AL-R4 Mitigations","external":false,"refSections":[],"url":"#al-r4-mitigations"},
+"al-r5": {"dfnID":"al-r5","dfnText":"AL-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-al-r5"}],"title":"6.10.2. Possible Mitigations"}],"url":"#al-r5"},
+"al-r5-mitigations": {"dfnID":"al-r5-mitigations","dfnText":"AL-R5 Mitigations","external":false,"refSections":[],"url":"#al-r5-mitigations"},
+"fnd-r1": {"dfnID":"fnd-r1","dfnText":"FND-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r1"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r1"},
+"fnd-r1-mitigations": {"dfnID":"fnd-r1-mitigations","dfnText":"FND-R1 Mitigations","external":false,"refSections":[],"url":"#fnd-r1-mitigations"},
+"fnd-r10": {"dfnID":"fnd-r10","dfnText":"FND-R10","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r10"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r10"},
+"fnd-r10-mitigations": {"dfnID":"fnd-r10-mitigations","dfnText":"FND-R10 Mitigations","external":false,"refSections":[],"url":"#fnd-r10-mitigations"},
+"fnd-r2": {"dfnID":"fnd-r2","dfnText":"FND-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r2"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r2"},
+"fnd-r2-mitigations": {"dfnID":"fnd-r2-mitigations","dfnText":"FND-R2 Mitigations","external":false,"refSections":[],"url":"#fnd-r2-mitigations"},
+"fnd-r3": {"dfnID":"fnd-r3","dfnText":"FND-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r3"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r3"},
+"fnd-r3-mitigations": {"dfnID":"fnd-r3-mitigations","dfnText":"FND-R3 Mitigations","external":false,"refSections":[],"url":"#fnd-r3-mitigations"},
+"fnd-r4": {"dfnID":"fnd-r4","dfnText":"FND-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r4"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r4"},
+"fnd-r4-mitigations": {"dfnID":"fnd-r4-mitigations","dfnText":"FND-R4 Mitigations","external":false,"refSections":[],"url":"#fnd-r4-mitigations"},
+"fnd-r5": {"dfnID":"fnd-r5","dfnText":"FND-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r5"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r5"},
+"fnd-r5-mitigations": {"dfnID":"fnd-r5-mitigations","dfnText":"FND-R5 Mitigations","external":false,"refSections":[],"url":"#fnd-r5-mitigations"},
+"fnd-r6": {"dfnID":"fnd-r6","dfnText":"FND-R6","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r6"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r6"},
+"fnd-r6-mitigations": {"dfnID":"fnd-r6-mitigations","dfnText":"FND-R6 Mitigations","external":false,"refSections":[],"url":"#fnd-r6-mitigations"},
+"fnd-r7": {"dfnID":"fnd-r7","dfnText":"FND-R7","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r7"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r7"},
+"fnd-r7-mitigations": {"dfnID":"fnd-r7-mitigations","dfnText":"FND-R7 Mitigations","external":false,"refSections":[],"url":"#fnd-r7-mitigations"},
+"fnd-r8": {"dfnID":"fnd-r8","dfnText":"FND-R8","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r8"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r8"},
+"fnd-r8-mitigations": {"dfnID":"fnd-r8-mitigations","dfnText":"FND-R8 Mitigations","external":false,"refSections":[],"url":"#fnd-r8-mitigations"},
+"fnd-r9": {"dfnID":"fnd-r9","dfnText":"FND-R9","external":false,"refSections":[{"refs":[{"id":"ref-for-fnd-r9"}],"title":"6.2.2. Possible Mitigations"}],"url":"#fnd-r9"},
+"fnd-r9-mitigations": {"dfnID":"fnd-r9-mitigations","dfnText":"FND-R9 Mitigations","external":false,"refSections":[],"url":"#fnd-r9-mitigations"},
+"hod-r1": {"dfnID":"hod-r1","dfnText":"HOD-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-hod-r1"}],"title":"6.9.2. Possible Mitigations"}],"url":"#hod-r1"},
+"hod-r1-mitigations": {"dfnID":"hod-r1-mitigations","dfnText":"HOD-R1 Mitigations","external":false,"refSections":[],"url":"#hod-r1-mitigations"},
+"magc-r1": {"dfnID":"magc-r1","dfnText":"MAGC-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-magc-r1"}],"title":"6.11.2. Possible Mitigations"}],"url":"#magc-r1"},
+"magc-r1-mitigations": {"dfnID":"magc-r1-mitigations","dfnText":"MAGC-R1 Mitigations","external":false,"refSections":[],"url":"#magc-r1-mitigations"},
+"magc-r2": {"dfnID":"magc-r2","dfnText":"MAGC-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-magc-r2"}],"title":"6.11.2. Possible Mitigations"}],"url":"#magc-r2"},
+"magc-r2-mitigations": {"dfnID":"magc-r2-mitigations","dfnText":"MAGC-R2 Mitigations","external":false,"refSections":[],"url":"#magc-r2-mitigations"},
+"pdnh-r1": {"dfnID":"pdnh-r1","dfnText":"PDNH-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-pdnh-r1"}],"title":"6.1.2. Possible Mitigations"}],"url":"#pdnh-r1"},
+"pdnh-r1-mitigations": {"dfnID":"pdnh-r1-mitigations","dfnText":"PDNH-R1 Mitigations","external":false,"refSections":[],"url":"#pdnh-r1-mitigations"},
+"pdnh-r2": {"dfnID":"pdnh-r2","dfnText":"PDNH-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-pdnh-r2"}],"title":"6.1.2. Possible Mitigations"}],"url":"#pdnh-r2"},
+"pdnh-r2-mitigations": {"dfnID":"pdnh-r2-mitigations","dfnText":"PDNH-R2 Mitigations","external":false,"refSections":[],"url":"#pdnh-r2-mitigations"},
+"pdnh-r3": {"dfnID":"pdnh-r3","dfnText":"PDNH-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-pdnh-r3"}],"title":"6.1.2. Possible Mitigations"}],"url":"#pdnh-r3"},
+"pdnh-r3-mitigations": {"dfnID":"pdnh-r3-mitigations","dfnText":"PDNH-R3 Mitigations","external":false,"refSections":[],"url":"#pdnh-r3-mitigations"},
+"ra-r1": {"dfnID":"ra-r1","dfnText":"RA-R1","external":false,"refSections":[],"url":"#ra-r1"},
+"ra-r2": {"dfnID":"ra-r2","dfnText":"RA-R2","external":false,"refSections":[],"url":"#ra-r2"},
+"ra-r3": {"dfnID":"ra-r3","dfnText":"RA-R3","external":false,"refSections":[],"url":"#ra-r3"},
+"ra-r4": {"dfnID":"ra-r4","dfnText":"RA-R4","external":false,"refSections":[],"url":"#ra-r4"},
+"ra-r5": {"dfnID":"ra-r5","dfnText":"RA-R5","external":false,"refSections":[],"url":"#ra-r5"},
+"ra-r6": {"dfnID":"ra-r6","dfnText":"RA-R6","external":false,"refSections":[],"url":"#ra-r6"},
+"ra-r7": {"dfnID":"ra-r7","dfnText":"RA-R7","external":false,"refSections":[],"url":"#ra-r7"},
+"rpdp-r1": {"dfnID":"rpdp-r1","dfnText":"RPDP-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r1"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r1"},
+"rpdp-r1-mitigations": {"dfnID":"rpdp-r1-mitigations","dfnText":"RPDP-R1 Mitigations","external":false,"refSections":[],"url":"#rpdp-r1-mitigations"},
+"rpdp-r10": {"dfnID":"rpdp-r10","dfnText":"RPDP-R10","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r10"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r10"},
+"rpdp-r10-mitigations": {"dfnID":"rpdp-r10-mitigations","dfnText":"RPDP-R10 Mitigations","external":false,"refSections":[],"url":"#rpdp-r10-mitigations"},
+"rpdp-r11": {"dfnID":"rpdp-r11","dfnText":"RPDP-R11","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r11"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r11"},
+"rpdp-r11-mitigations": {"dfnID":"rpdp-r11-mitigations","dfnText":"RPDP-R11 Mitigations","external":false,"refSections":[],"url":"#rpdp-r11-mitigations"},
+"rpdp-r2": {"dfnID":"rpdp-r2","dfnText":"RPDP-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r2"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r2"},
+"rpdp-r2-mitigations": {"dfnID":"rpdp-r2-mitigations","dfnText":"RPDP-R2 Mitigations","external":false,"refSections":[],"url":"#rpdp-r2-mitigations"},
+"rpdp-r3": {"dfnID":"rpdp-r3","dfnText":"RPDP-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r3"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r3"},
+"rpdp-r3-mitigations": {"dfnID":"rpdp-r3-mitigations","dfnText":"RPDP-R3 Mitigations","external":false,"refSections":[],"url":"#rpdp-r3-mitigations"},
+"rpdp-r4": {"dfnID":"rpdp-r4","dfnText":"RPDP-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r4"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r4"},
+"rpdp-r4-mitigations": {"dfnID":"rpdp-r4-mitigations","dfnText":"RPDP-R4 Mitigations","external":false,"refSections":[],"url":"#rpdp-r4-mitigations"},
+"rpdp-r5": {"dfnID":"rpdp-r5","dfnText":"RPDP-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r5"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r5"},
+"rpdp-r5-mitigations": {"dfnID":"rpdp-r5-mitigations","dfnText":"RPDP-R5 Mitigations","external":false,"refSections":[],"url":"#rpdp-r5-mitigations"},
+"rpdp-r6": {"dfnID":"rpdp-r6","dfnText":"RPDP-R6","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r6"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r6"},
+"rpdp-r6-mitigations": {"dfnID":"rpdp-r6-mitigations","dfnText":"RPDP-R6 Mitigations","external":false,"refSections":[],"url":"#rpdp-r6-mitigations"},
+"rpdp-r7": {"dfnID":"rpdp-r7","dfnText":"RPDP-R7","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r7"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r7"},
+"rpdp-r7-mitigations": {"dfnID":"rpdp-r7-mitigations","dfnText":"RPDP-R7 Mitigations","external":false,"refSections":[],"url":"#rpdp-r7-mitigations"},
+"rpdp-r8": {"dfnID":"rpdp-r8","dfnText":"RPDP-R8","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r8"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r8"},
+"rpdp-r8-mitigations": {"dfnID":"rpdp-r8-mitigations","dfnText":"RPDP-R8 Mitigations","external":false,"refSections":[],"url":"#rpdp-r8-mitigations"},
+"rpdp-r9": {"dfnID":"rpdp-r9","dfnText":"RPDP-R9","external":false,"refSections":[{"refs":[{"id":"ref-for-rpdp-r9"}],"title":"6.4.2. Possible Mitigations"}],"url":"#rpdp-r9"},
+"rpdp-r9-mitigations": {"dfnID":"rpdp-r9-mitigations","dfnText":"RPDP-R9 Mitigations","external":false,"refSections":[],"url":"#rpdp-r9-mitigations"},
+"s-r1": {"dfnID":"s-r1","dfnText":"S-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r1"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r1"},
+"s-r1-mitigations": {"dfnID":"s-r1-mitigations","dfnText":"S-R1 Mitigations","external":false,"refSections":[],"url":"#s-r1-mitigations"},
+"s-r2": {"dfnID":"s-r2","dfnText":"S-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r2"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r2"},
+"s-r2-mitigations": {"dfnID":"s-r2-mitigations","dfnText":"S-R2 Mitigations","external":false,"refSections":[],"url":"#s-r2-mitigations"},
+"s-r3": {"dfnID":"s-r3","dfnText":"S-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r3"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r3"},
+"s-r3-mitigations": {"dfnID":"s-r3-mitigations","dfnText":"S-R3 Mitigations","external":false,"refSections":[],"url":"#s-r3-mitigations"},
+"s-r4": {"dfnID":"s-r4","dfnText":"S-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r4"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r4"},
+"s-r4-mitigations": {"dfnID":"s-r4-mitigations","dfnText":"S-R4 Mitigations","external":false,"refSections":[],"url":"#s-r4-mitigations"},
+"s-r5": {"dfnID":"s-r5","dfnText":"S-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r5"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r5"},
+"s-r5-mitigations": {"dfnID":"s-r5-mitigations","dfnText":"S-R5 Mitigations","external":false,"refSections":[],"url":"#s-r5-mitigations"},
+"s-r6": {"dfnID":"s-r6","dfnText":"S-R6","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r6"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r6"},
+"s-r6-mitigations": {"dfnID":"s-r6-mitigations","dfnText":"S-R6 Mitigations","external":false,"refSections":[],"url":"#s-r6-mitigations"},
+"s-r7": {"dfnID":"s-r7","dfnText":"S-R7","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r7"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r7"},
+"s-r7-mitigations": {"dfnID":"s-r7-mitigations","dfnText":"S-R7 Mitigations","external":false,"refSections":[],"url":"#s-r7-mitigations"},
+"s-r8": {"dfnID":"s-r8","dfnText":"S-R8","external":false,"refSections":[{"refs":[{"id":"ref-for-s-r8"}],"title":"6.8.2. Possible Mitigations"}],"url":"#s-r8"},
+"s-r8-mitigations": {"dfnID":"s-r8-mitigations","dfnText":"S-R8 Mitigations","external":false,"refSections":[],"url":"#s-r8-mitigations"},
+"ss-r1": {"dfnID":"ss-r1","dfnText":"SS-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-ss-r1"}],"title":"6.5.2. Possible Mitigations"}],"url":"#ss-r1"},
+"ss-r1-mitigations": {"dfnID":"ss-r1-mitigations","dfnText":"SS-R1 Mitigations","external":false,"refSections":[],"url":"#ss-r1-mitigations"},
+"ss-r2": {"dfnID":"ss-r2","dfnText":"SS-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-ss-r2"}],"title":"6.5.2. Possible Mitigations"}],"url":"#ss-r2"},
+"ss-r2-mitigations": {"dfnID":"ss-r2-mitigations","dfnText":"SS-R2 Mitigations","external":false,"refSections":[],"url":"#ss-r2-mitigations"},
+"ss-r3": {"dfnID":"ss-r3","dfnText":"SS-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-ss-r3"}],"title":"6.5.2. Possible Mitigations"}],"url":"#ss-r3"},
+"ss-r3-mitigations": {"dfnID":"ss-r3-mitigations","dfnText":"SS-R3 Mitigations","external":false,"refSections":[],"url":"#ss-r3-mitigations"},
+"ss-r4": {"dfnID":"ss-r4","dfnText":"SS-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-ss-r4"}],"title":"6.5.2. Possible Mitigations"}],"url":"#ss-r4"},
+"ss-r4-mitigations": {"dfnID":"ss-r4-mitigations","dfnText":"SS-R4 Mitigations","external":false,"refSections":[],"url":"#ss-r4-mitigations"},
+"ss-r5": {"dfnID":"ss-r5","dfnText":"SS-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-ss-r5"}],"title":"6.5.2. Possible Mitigations"}],"url":"#ss-r5"},
+"ss-r5-mitigations": {"dfnID":"ss-r5-mitigations","dfnText":"SS-R5 Mitigations","external":false,"refSections":[],"url":"#ss-r5-mitigations"},
+"ta-r1-mitigations": {"dfnID":"ta-r1-mitigations","dfnText":"TA-R1 Mitigations","external":false,"refSections":[],"url":"#ta-r1-mitigations"},
+"ta-r2-mitigations": {"dfnID":"ta-r2-mitigations","dfnText":"TA-R2 Mitigations","external":false,"refSections":[],"url":"#ta-r2-mitigations"},
+"ta-r3-mitigations": {"dfnID":"ta-r3-mitigations","dfnText":"TA-R3 Mitigations","external":false,"refSections":[],"url":"#ta-r3-mitigations"},
+"ta-r4-mitigations": {"dfnID":"ta-r4-mitigations","dfnText":"TA-R4 Mitigations","external":false,"refSections":[],"url":"#ta-r4-mitigations"},
+"ta-r5-mitigations": {"dfnID":"ta-r5-mitigations","dfnText":"TA-R5 Mitigations","external":false,"refSections":[],"url":"#ta-r5-mitigations"},
+"ta-r6-mitigations": {"dfnID":"ta-r6-mitigations","dfnText":"TA-R6 Mitigations","external":false,"refSections":[],"url":"#ta-r6-mitigations"},
+"ta-r7-mitigations": {"dfnID":"ta-r7-mitigations","dfnText":"TA-R7 Mitigations","external":false,"refSections":[],"url":"#ta-r7-mitigations"},
+"te-r1": {"dfnID":"te-r1","dfnText":"TE-R1","external":false,"refSections":[{"refs":[{"id":"ref-for-te-r1"}],"title":"6.6.2. Possible Mitigations"}],"url":"#te-r1"},
+"te-r1-mitigations": {"dfnID":"te-r1-mitigations","dfnText":"TE-R1 Mitigations","external":false,"refSections":[],"url":"#te-r1-mitigations"},
+"te-r2": {"dfnID":"te-r2","dfnText":"TE-R2","external":false,"refSections":[{"refs":[{"id":"ref-for-te-r2"}],"title":"6.6.2. Possible Mitigations"}],"url":"#te-r2"},
+"te-r2-mitigations": {"dfnID":"te-r2-mitigations","dfnText":"TE-R2 Mitigations","external":false,"refSections":[],"url":"#te-r2-mitigations"},
+"te-r3": {"dfnID":"te-r3","dfnText":"TE-R3","external":false,"refSections":[{"refs":[{"id":"ref-for-te-r3"}],"title":"6.6.2. Possible Mitigations"}],"url":"#te-r3"},
+"te-r3-mitigations": {"dfnID":"te-r3-mitigations","dfnText":"TE-R3 Mitigations","external":false,"refSections":[],"url":"#te-r3-mitigations"},
+"te-r4": {"dfnID":"te-r4","dfnText":"TE-R4","external":false,"refSections":[{"refs":[{"id":"ref-for-te-r4"}],"title":"6.6.2. Possible Mitigations"}],"url":"#te-r4"},
+"te-r4-mitigations": {"dfnID":"te-r4-mitigations","dfnText":"TE-R4 Mitigations","external":false,"refSections":[],"url":"#te-r4-mitigations"},
+"te-r5": {"dfnID":"te-r5","dfnText":"TE-R5","external":false,"refSections":[{"refs":[{"id":"ref-for-te-r5"}],"title":"6.6.2. Possible Mitigations"}],"url":"#te-r5"},
+"te-r5-mitigations": {"dfnID":"te-r5-mitigations","dfnText":"TE-R5 Mitigations","external":false,"refSections":[],"url":"#te-r5-mitigations"},
+};
+
+document.addEventListener("DOMContentLoaded", ()=>{
+    genAllDfnPanels();
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all dfn panels.
+        hideAllDfnPanels();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Pin any visible dfn panel
+    queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>positionDfnPanel(el));
+});
+
+function genAllDfnPanels() {
+    for(const panelData of Object.values(dfnPanelData)) {
+        const dfnID = panelData.dfnID;
+        const dfn = document.getElementById(dfnID);
+        if(!dfn) {
+            console.log(`Can't find dfn#${dfnID}.`, panelData);
+            continue;
+        }
+        dfn.panelData = panelData;
+        insertDfnPopupAction(dfn);
+    }
+}
+
+function genDfnPanel(dfn, { dfnID, url, dfnText, refSections, external }) {
+    const dfnPanel = mk.aside({
+        class: "dfn-panel on",
+        id: `infopanel-for-${dfnID}`,
+        "data-for": dfnID,
+        "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+        },
+        mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+            `Info about the '${dfnText}' ${external?"external":""} reference.`),
+        mk.a({href:url, class:"dfn-link"}, url),
+        refSections.length == 0 ? [] :
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({ href: `#${ref.id}` },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        genLinkingSyntaxes(dfn),
+    );
+
+    dfnPanel.addEventListener('click', (event) => {
+        if (event.target.nodeName == 'A') {
+            scrollToTargetAndHighlight(event);
+            pinDfnPanel(dfnPanel);
+        }
+        event.stopPropagation();
+        refocusOnTarget(event);
+    });
+    dfnPanel.addEventListener('keydown', (event) => {
+        if(event.keyCode == 27) { // Escape key
+            hideDfnPanel({dfnPanel});
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+
+    dfnPanel.dfn = dfn;
+    dfn.dfnPanel = dfnPanel;
+    return dfnPanel;
+}
+
+
+
+function hideAllDfnPanels() {
+    // Delete the currently-active dfn panel.
+    queryAll(".dfn-panel").forEach(dfnPanel=>hideDfnPanel({dfnPanel}));
+}
+
+function showDfnPanel(dfn) {
+    hideAllDfnPanels(); // Only display one at a time.
+
+    dfn.setAttribute("aria-expanded", "true");
+
+    const dfnPanel = genDfnPanel(dfn, dfn.panelData);
+
+    // Give the dfn a unique tabindex, and then
+    // give all the tabbable panel bits successive indexes.
+    let tabIndex = 100;
+    dfn.tabIndex = tabIndex++;
+    const tabbable = dfnPanel.querySelectorAll(":is(a, button)");
+    for (const el of tabbable) {
+        el.tabIndex = tabIndex++;
+    }
+
+    append(document.body, dfnPanel);
+    positionDfnPanel(dfnPanel);
+}
+
+function positionDfnPanel(dfnPanel) {
+    const dfn = dfnPanel.dfn;
+    const dfnPos = getRootLevelAbsolutePosition(dfn);
+    dfnPanel.style.top = dfnPos.bottom + "px";
+    dfnPanel.style.left = dfnPos.left + "px";
+
+    const panelPos = dfnPanel.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, dfnPos.left - overflowAmount);
+        dfnPanel.style.left = newLeft + "px";
+    }
+}
+
+function pinDfnPanel(dfnPanel) {
+    // Switch it to "activated" state, which pins it.
+    dfnPanel.classList.add("activated");
+    dfnPanel.style.position = "fixed";
+    dfnPanel.style.left = null;
+    dfnPanel.style.top = null;
+}
+
+function hideDfnPanel({dfn, dfnPanel}) {
+    if(!dfnPanel) dfnPanel = dfn.dfnPanel;
+    if(!dfn) dfn = dfnPanel.dfn;
+    dfn.dfnPanel = undefined;
+    dfnPanel.dfn = undefined;
+    dfn.setAttribute("aria-expanded", "false");
+    dfn.tabIndex = undefined;
+    dfnPanel.remove()
+}
+
+function toggleDfnPanel(dfn) {
+    if(dfn.dfnPanel) {
+        hideDfnPanel(dfn);
+    } else {
+        showDfnPanel(dfn);
+    }
+}
+
+function insertDfnPopupAction(dfn) {
+    dfn.setAttribute('role', 'button');
+    dfn.setAttribute('aria-expanded', 'false')
+    dfn.tabIndex = 0;
+    dfn.classList.add('has-dfn-panel');
+    dfn.addEventListener('click', (event) => {
+        toggleDfnPanel(dfn);
+        event.stopPropagation();
+    });
+    dfn.addEventListener('keypress', (event) => {
+        const kc = event.keyCode;
+        // 32->Space, 13->Enter
+        if(kc == 32 || kc == 13) {
+            toggleDfnPanel(dfn);
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    });
+}
+
+function refocusOnTarget(event) {
+    const target = event.target;
+    setTimeout(() => {
+        // Refocus on the event.target element.
+        // This is needed after browser scrolls to the destination.
+        target.focus();
+    });
+}
+
+// Returns the root-level absolute position {left and top} of element.
+function getRootLevelAbsolutePosition(el) {
+    const boundsRect = el.getBoundingClientRect();
+    let xPos = 0;
+    let yPos = 0;
+
+    while (el) {
+        let xScroll = el.scrollLeft;
+        let yScroll = el.scrollTop;
+
+        // Ignore scrolling of body.
+        if (el.tagName === "BODY") {
+            xScroll = 0;
+            yScroll = 0;
+        }
+        xPos += (el.offsetLeft - xScroll + el.clientLeft);
+        yPos += (el.offsetTop - yScroll + el.clientTop);
+
+        el = el.offsetParent;
+    }
+    return {
+        left: xPos,
+        top: yPos,
+        right: xPos + boundsRect.width,
+        bottom: yPos + boundsRect.height,
+    };
+}
+
+function scrolledIntoView(element) {
+    const rect = element.getBoundingClientRect();
+    return (
+        rect.top > 0 &&
+        rect.bottom < window.innerHeight
+    );
+}
+
+function scrollToTargetAndHighlight(event) {
+    let hash = event.target.hash;
+    if (hash) {
+        hash = decodeURIComponent(hash.substring(1));
+        const dest = document.getElementById(hash);
+        if (dest) {
+            // Maybe prevent default scroll.
+            if (scrolledIntoView(dest)) {
+                event.preventDefault();
+            }
+            dest.classList.add('highlighted');
+            setTimeout(() => dest.classList.remove('highlighted'), 1000);
+        }
+    }
+}
+
+// Functions, divided by link type, that wrap an autolink's
+// contents with the appropriate outer syntax.
+// Alternately, a string naming another type they format
+// the same as.
+function needsFor(type) {
+    switch(type) {
+        case "descriptor":
+        case "value":
+        case "element-attr":
+        case "attr-value":
+        case "element-state":
+        case "method":
+        case "constructor":
+        case "argument":
+        case "attribute":
+        case "const":
+        case "dict-member":
+        case "event":
+        case "enum-value":
+        case "stringifier":
+        case "serializer":
+        case "iterator":
+        case "maplike":
+        case "setlike":
+        case "state":
+        case "mode":
+        case "context":
+        case "facet": return true;
+
+        default: return false;
+    }
+}
+function refusesFor(type) {
+    switch(type) {
+        case "property":
+        case "element":
+        case "interface":
+        case "namespace":
+        case "callback":
+        case "dictionary":
+        case "enum":
+        case "exception":
+        case "typedef":
+        case "http-header":
+        case "permission": return true;
+
+        default: return false;
+    }
+}
+function linkFormatterFromType(type) {
+    switch(type) {
+        case 'scheme':
+        case 'permission':
+        case 'dfn': return (text) => `[=${text}=]`;
+
+        case 'abstract-op': return (text) => `[\$${text}\$]`;
+
+        case 'function':
+        case 'at-rule':
+        case 'selector':
+        case 'value': return (text) => `''${text}''`;
+
+        case 'http-header': return (text) => `[:${text}:]`;
+
+        case 'interface':
+        case 'constructor':
+        case 'method':
+        case 'argument':
+        case 'attribute':
+        case 'callback':
+        case 'dictionary':
+        case 'dict-member':
+        case 'enum':
+        case 'enum-value':
+        case 'exception':
+        case 'const':
+        case 'typedef':
+        case 'stringifier':
+        case 'serializer':
+        case 'iterator':
+        case 'maplike':
+        case 'setlike':
+        case 'extended-attribute':
+        case 'event':
+        case 'idl': return (text) => `{{${text}}}`;
+
+        case 'element-state':
+        case 'element-attr':
+        case 'attr-value':
+        case 'element': return (element) => `<{${element}}>`;
+
+        case 'grammar': return (text) => `${text} (within a <pre class=prod>)`;
+
+        case 'type': return (text)=> `<<${text}>>`;
+
+        case 'descriptor':
+        case 'property': return (text) => `'${text}'`;
+
+        default: return;
+    };
+};
+
+function genLinkingSyntaxes(dfn) {
+    if(dfn.tagName != "DFN") return;
+
+    const type = dfn.getAttribute('data-dfn-type');
+    if(!type) {
+        console.log(`<dfn> doesn't have a data-dfn-type:`, dfn);
+        return [];
+    }
+
+    // Return a function that wraps link text based on the type
+    const linkFormatter = linkFormatterFromType(type);
+    if(!linkFormatter) {
+        console.log(`<dfn> has an unknown data-dfn-type:`, dfn);
+        return [];
+    }
+
+    let ltAlts;
+    if(dfn.hasAttribute('data-lt')) {
+        ltAlts = dfn.getAttribute('data-lt')
+            .split("|")
+            .map(x=>x.trim());
+    } else {
+        ltAlts = [dfn.textContent.trim()];
+    }
+    if(type == "type") {
+        // lt of "<foo>", but "foo" is the interior;
+        // <<foo/bar>> is how you write it with a for,
+        // not <foo/<bar>> or whatever.
+        for(var i = 0; i < ltAlts.length; i++) {
+            const lt = ltAlts[i];
+            const match = /<(.*)>/.exec(lt);
+            if(match) { ltAlts[i] = match[1]; }
+        }
+    }
+
+    let forAlts;
+    if(dfn.hasAttribute('data-dfn-for')) {
+        forAlts = dfn.getAttribute('data-dfn-for')
+            .split(",")
+            .map(x=>x.trim());
+    } else {
+        forAlts = [''];
+    }
+
+    let linkingSyntaxes = [];
+    if(!needsFor(type)) {
+        for(const lt of ltAlts) {
+            linkingSyntaxes.push(linkFormatter(lt));
+        }
+    }
+    if(!refusesFor(type)) {
+        for(const f of forAlts) {
+            linkingSyntaxes.push(linkFormatter(`${f}/${ltAlts[0]}`))
+        }
+    }
+    return [
+        mk.b({}, 'Possible linking syntaxes:'),
+        mk.ul({},
+            ...linkingSyntaxes.map(link => {
+                const copyLink = async () =>
+                    await navigator.clipboard.writeText(link);
+                return mk.li({},
+                    mk.div({ class: 'link-item' },
+                        mk.button({
+                            class: 'copy-icon', title: 'Copy',
+                            type: 'button',
+                            _onclick: copyLink,
+                            tabindex: 0,
+                        }, mk.span({ class: 'icon' }) ),
+                        mk.span({}, link)
+                    )
+                );
+            })
+        )
+    ];
+}
+}
+</script>
+<script>/* Boilerplate: script-ref-hints */
+"use strict";
+{
+let refsData = {
+"#a-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r1","type":"dfn","url":"#a-r1"},
+"#a-r10": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r10","type":"dfn","url":"#a-r10"},
+"#a-r11": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r11","type":"dfn","url":"#a-r11"},
+"#a-r12": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r12","type":"dfn","url":"#a-r12"},
+"#a-r13": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r13","type":"dfn","url":"#a-r13"},
+"#a-r14": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r14","type":"dfn","url":"#a-r14"},
+"#a-r15": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r15","type":"dfn","url":"#a-r15"},
+"#a-r16": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r16","type":"dfn","url":"#a-r16"},
+"#a-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r2","type":"dfn","url":"#a-r2"},
+"#a-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r3","type":"dfn","url":"#a-r3"},
+"#a-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r4","type":"dfn","url":"#a-r4"},
+"#a-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r5","type":"dfn","url":"#a-r5"},
+"#a-r6": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r6","type":"dfn","url":"#a-r6"},
+"#a-r7": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r7","type":"dfn","url":"#a-r7"},
+"#a-r8": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r8","type":"dfn","url":"#a-r8"},
+"#a-r9": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"a-r9","type":"dfn","url":"#a-r9"},
+"#al-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"al-r1","type":"dfn","url":"#al-r1"},
+"#al-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"al-r2","type":"dfn","url":"#al-r2"},
+"#al-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"al-r3","type":"dfn","url":"#al-r3"},
+"#al-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"al-r4","type":"dfn","url":"#al-r4"},
+"#al-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"al-r5","type":"dfn","url":"#al-r5"},
+"#fnd-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r1","type":"dfn","url":"#fnd-r1"},
+"#fnd-r10": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r10","type":"dfn","url":"#fnd-r10"},
+"#fnd-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r2","type":"dfn","url":"#fnd-r2"},
+"#fnd-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r3","type":"dfn","url":"#fnd-r3"},
+"#fnd-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r4","type":"dfn","url":"#fnd-r4"},
+"#fnd-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r5","type":"dfn","url":"#fnd-r5"},
+"#fnd-r6": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r6","type":"dfn","url":"#fnd-r6"},
+"#fnd-r7": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r7","type":"dfn","url":"#fnd-r7"},
+"#fnd-r8": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r8","type":"dfn","url":"#fnd-r8"},
+"#fnd-r9": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"fnd-r9","type":"dfn","url":"#fnd-r9"},
+"#hod-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"hod-r1","type":"dfn","url":"#hod-r1"},
+"#magc-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"magc-r1","type":"dfn","url":"#magc-r1"},
+"#magc-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"magc-r2","type":"dfn","url":"#magc-r2"},
+"#pdnh-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"pdnh-r1","type":"dfn","url":"#pdnh-r1"},
+"#pdnh-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"pdnh-r2","type":"dfn","url":"#pdnh-r2"},
+"#pdnh-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"pdnh-r3","type":"dfn","url":"#pdnh-r3"},
+"#rpdp-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r1","type":"dfn","url":"#rpdp-r1"},
+"#rpdp-r10": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r10","type":"dfn","url":"#rpdp-r10"},
+"#rpdp-r11": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r11","type":"dfn","url":"#rpdp-r11"},
+"#rpdp-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r2","type":"dfn","url":"#rpdp-r2"},
+"#rpdp-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r3","type":"dfn","url":"#rpdp-r3"},
+"#rpdp-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r4","type":"dfn","url":"#rpdp-r4"},
+"#rpdp-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r5","type":"dfn","url":"#rpdp-r5"},
+"#rpdp-r6": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r6","type":"dfn","url":"#rpdp-r6"},
+"#rpdp-r7": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r7","type":"dfn","url":"#rpdp-r7"},
+"#rpdp-r8": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r8","type":"dfn","url":"#rpdp-r8"},
+"#rpdp-r9": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"rpdp-r9","type":"dfn","url":"#rpdp-r9"},
+"#s-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r1","type":"dfn","url":"#s-r1"},
+"#s-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r2","type":"dfn","url":"#s-r2"},
+"#s-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r3","type":"dfn","url":"#s-r3"},
+"#s-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r4","type":"dfn","url":"#s-r4"},
+"#s-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r5","type":"dfn","url":"#s-r5"},
+"#s-r6": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r6","type":"dfn","url":"#s-r6"},
+"#s-r7": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r7","type":"dfn","url":"#s-r7"},
+"#s-r8": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"s-r8","type":"dfn","url":"#s-r8"},
+"#ss-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"ss-r1","type":"dfn","url":"#ss-r1"},
+"#ss-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"ss-r2","type":"dfn","url":"#ss-r2"},
+"#ss-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"ss-r3","type":"dfn","url":"#ss-r3"},
+"#ss-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"ss-r4","type":"dfn","url":"#ss-r4"},
+"#ss-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"ss-r5","type":"dfn","url":"#ss-r5"},
+"#te-r1": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"te-r1","type":"dfn","url":"#te-r1"},
+"#te-r2": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"te-r2","type":"dfn","url":"#te-r2"},
+"#te-r3": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"te-r3","type":"dfn","url":"#te-r3"},
+"#te-r4": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"te-r4","type":"dfn","url":"#te-r4"},
+"#te-r5": {"export":true,"for_":[],"level":"","normative":true,"shortname":"webmachinelearning-ethics","spec":"webmachinelearning-ethics","status":"local","text":"te-r5","type":"dfn","url":"#te-r5"},
+};
+
+function mkRefHint(link, ref) {
+    const linkText = link.textContent;
+    let dfnTextElements = '';
+    if (ref.text != linkText) {
+        dfnTextElements =
+            mk.li({},
+                mk.b({}, "Term: "),
+                mk.span({}, ref.text)
+            );
+    }
+    const forList = ref.for_;
+    let forListElements;
+    if(forList.length == 0) {
+        forListElements = [];
+    } else if(forList.length == 1) {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.span({}, forList[0]),
+        );
+    } else {
+        forListElements = mk.li({},
+            mk.b({}, "For: "),
+            mk.ul({},
+                ...forList.map(forItem =>
+                    mk.li({},
+                        mk.span({}, forItem)
+                    ),
+                ),
+            ),
+        );
+    }
+    const url = ref.url;
+    const safeUrl = encodeURIComponent(url);
+    const hintPanel = mk.aside({
+        class: "ref-hint",
+        id: `ref-hint-for-${safeUrl}`,
+        "data-for": url,
+        "aria-labelled-by": `ref-hint-for-${safeUrl}`,
+    },
+        mk.ul({},
+            dfnTextElements,
+            mk.li({},
+                mk.b({}, "URL: "),
+                mk.a({ href: url, class: "ref" }, url),
+            ),
+            mk.li({},
+                mk.b({}, "Type: "),
+                mk.span({}, `${ref.type}`),
+            ),
+            mk.li({},
+                mk.b({}, "Spec: "),
+                mk.span({}, `${ref.spec ? ref.spec : ''}`),
+            ),
+            forListElements
+        ),
+    );
+    hintPanel.forLink = link;
+    setupRefHintEventListeners(link, hintPanel);
+    return hintPanel;
+}
+
+function hideAllRefHints() {
+    queryAll(".ref-hint").forEach(el=>hideRefHint(el));
+}
+
+function hideRefHint(refHint) {
+    const link = refHint.forLink;
+    link.setAttribute("aria-expanded", "false");
+    if(refHint.teardownEventListeners) {
+        refHint.teardownEventListeners();
+    }
+    refHint.remove();
+}
+
+function showRefHint(link) {
+    if(link.classList.contains("dfn-link")) return;
+    const url = link.getAttribute("href");
+    const ref = refsData[url];
+    if(!ref) return;
+
+    hideAllRefHints(); // Only display one at this time.
+
+    const refHint = mkRefHint(link, ref);
+    append(document.body, refHint);
+    link.setAttribute("aria-expanded", "true");
+    positionRefHint(refHint);
+}
+
+function setupRefHintEventListeners(link, refHint) {
+    if (refHint.teardownEventListeners) return;
+    // Add event handlers to hide the refHint after the user moves away
+    // from both the link and refHint, if not hovering either within one second.
+    let timeout = null;
+    const startHidingRefHint = (event) => {
+        if (timeout) {
+            clearTimeout(timeout);
+        }
+        timeout = setTimeout(() => {
+            hideRefHint(refHint);
+        }, 1000);
+    }
+    const resetHidingRefHint = (event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = null;
+    };
+    link.addEventListener("mouseleave", startHidingRefHint);
+    link.addEventListener("mouseenter", resetHidingRefHint);
+    link.addEventListener("blur", startHidingRefHint);
+    link.addEventListener("focus", resetHidingRefHint);
+    refHint.addEventListener("mouseleave", startHidingRefHint);
+    refHint.addEventListener("mouseenter", resetHidingRefHint);
+    refHint.addEventListener("blur", startHidingRefHint);
+    refHint.addEventListener("focus", resetHidingRefHint);
+
+    refHint.teardownEventListeners = () => {
+        // remove event listeners
+        resetHidingRefHint();
+        link.removeEventListener("mouseleave", startHidingRefHint);
+        link.removeEventListener("mouseenter", resetHidingRefHint);
+        link.removeEventListener("blur", startHidingRefHint);
+        link.removeEventListener("focus", resetHidingRefHint);
+        refHint.removeEventListener("mouseleave", startHidingRefHint);
+        refHint.removeEventListener("mouseenter", resetHidingRefHint);
+        refHint.removeEventListener("blur", startHidingRefHint);
+        refHint.removeEventListener("focus", resetHidingRefHint);
+    };
+}
+
+function positionRefHint(refHint) {
+    const link = refHint.forLink;
+    const linkPos = getRootLevelAbsolutePosition(link);
+    refHint.style.top = linkPos.bottom + "px";
+    refHint.style.left = linkPos.left + "px";
+
+    const panelPos = refHint.getBoundingClientRect();
+    const panelMargin = 8;
+    const maxRight = document.body.parentNode.clientWidth - panelMargin;
+    if (panelPos.right > maxRight) {
+        const overflowAmount = panelPos.right - maxRight;
+        const newLeft = Math.max(panelMargin, linkPos.left - overflowAmount);
+        refHint.style.left = newLeft + "px";
+    }
+}
+
+// TODO: shared util
+// Returns the root-level absolute position {left and top} of element.
+function getRootLevelAbsolutePosition(el) {
+    const boundsRect = el.getBoundingClientRect();
+    let xPos = 0;
+    let yPos = 0;
+
+    while (el) {
+        let xScroll = el.scrollLeft;
+        let yScroll = el.scrollTop;
+
+        // Ignore scrolling of body.
+        if (el.tagName === "BODY") {
+            xScroll = 0;
+            yScroll = 0;
+        }
+        xPos += (el.offsetLeft - xScroll + el.clientLeft);
+        yPos += (el.offsetTop - yScroll + el.clientTop);
+
+        el = el.offsetParent;
+    }
+    return {
+        left: xPos,
+        top: yPos,
+        right: xPos + boundsRect.width,
+        bottom: yPos + boundsRect.height,
+    };
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    document.body.addEventListener("mouseover", e=>{
+        let link = e.target.closest("a");
+        if(link) showRefHint(link);
+    });
+    document.body.addEventListener("focus", e=>{
+        let link = e.target.closest("a");
+        if(link) showRefHint(link);
+    });
+
+    document.body.addEventListener("click", (e) => {
+        // If not handled already, just hide all link panels.
+        hideAllRefHints();
+    });
+});
+
+window.addEventListener("resize", () => {
+    // Hide any open ref hint.
+    hideAllRefHints();
+});
 }
 </script>
