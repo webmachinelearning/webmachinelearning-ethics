@@ -931,7 +931,7 @@ Web APIs by their design make it possible to integrate into browsers developer t
 
 <dfn><a>TE-R2</a> Mitigations</dfn>
 
-Web-based visualization tools have been developed for deep networks for educational use and their integration into browsers remains further work.<p>Integrate into web browser developer tools a conceptual graph of the model’s structure to inspect and understand the model architecture.<p>The ML model could be viewed by an integrated tool and in a visual way such [Netron](https://netron.app/) does today.
+Web-based visualization tools have been developed for deep neural networks for educational use. Such tools provide a conceptual graph of a model's structure to help inspect and understand the model's architecture. Examples of tools that make use of model-agnostic explainability techniques to provide a visual view include [Netron](https://netron.app/) and [WebSHAP](https://poloclub.github.io/webshap/). Integration of this type of transparency and explainability features into browser developer tools remains future work.
 
 <dfn><a>TE-R3</a> Mitigations</dfn>
 
