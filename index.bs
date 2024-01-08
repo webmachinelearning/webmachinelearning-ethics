@@ -208,7 +208,7 @@ There are a number of causes of bias [[Mehrabi]], ranging from issues with data 
 
 ## Fairness
 
-There is [no single definition of fairness](https://www.youtube.com/watch?v=jIXIuYdnyyk&ab_channel=ArvindNarayanan) ([[Mehrabi]] also has a good survey of definitions) - like ethics it is contextual and varies according to different values, perspectives and societies. But one core idea is that people should be treated equally unless there is a justified, relevant reason not to.
+There is [no single definition of fairness](https://www.youtube.com/watch?v=jIXIuYdnyyk&amp;ab_channel=ArvindNarayanan) ([[Mehrabi]] also has a good survey of definitions) - like ethics it is contextual and varies according to different values, perspectives and societies. But one core idea is that people should be treated equally unless there is a justified, relevant reason not to.
 
 Fairness is often a lens through which to make sense of other ethical concerns. As noted above, bias can be positive or negative - it’s when it leads to ‘unfair’ outcomes that it is problematic. Where ethical principles or concerns need to be balanced against each other, considering fairness often provides a guide to how to do that. 
 
@@ -1346,7 +1346,7 @@ UNESCO also continues to actively consider issues of universality and cultural d
 
 To check for completeness and appropriate breadth, we can compare with meta-analyses of AI Principles. There are a number of these, often referring to each other, but the following two provide a good level of coverage and depth. 
 
-- [Principled Artificial Intelligence Mapping Consensus in Ethical and Rights - based Approaches to Principles for AI](https://dash.harvard.edu/bitstream/handle/1/42160420/HLS%20White%20Paper%20Final_v3.pdf?sequence=1&isAllowed=y) by Harvard Berkman Klein Centre
+- [Principled Artificial Intelligence Mapping Consensus in Ethical and Rights - based Approaches to Principles for AI](https://dash.harvard.edu/bitstream/handle/1/42160420/HLS%20White%20Paper%20Final_v3.pdf?sequence=1&amp;isAllowed=y) by Harvard Berkman Klein Centre
 - [The Ethics of AI: Evaluation of Guidelines](https://link.springer.com/content/pdf/10.1007/s11023-020-09517-8.pdf) by Thilo Hagendorf
 
 Here again [we can see](#appendix-comparison) (comparing UNESCO with the ones highlighted in pink) that there is good alignment of the UNESCO principles with the most popular principles that emerge from the meta-analyses. UNESCO covers them all, but is not going too far beyond them - the main differences are that “awareness and literacy” is not among the top principles in either meta-analysis, and “sustainability” does not appear in the Harvard one. 
